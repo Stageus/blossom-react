@@ -1,3 +1,4 @@
+// App.js 에서 라우팅
 import logo from './logo.svg';
 import './App.css';
 
