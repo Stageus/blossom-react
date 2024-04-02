@@ -27,20 +27,19 @@ const App = () => {
     <RecoilRoot>
       <BrowserRouter>
         <Routes>
-          <Route exact path="/" element={<Main />}>
-            <Route path="signup" element={<Signup />} />
-            <Route path="login" element={<Login />} />
-            <Route path="findid" element={<FindId />} />
-            <Route path="findpw" element={<FindPw />} />
-            <Route path="changepw" element={<ChangePw />} />
-            <Route path="setup" element={<Setup />} />
-            <Route path="schedule" element={<Schedule />} />
-            <Route path="matching" element={<Matching />} />
-            <Route path="feed" element={<Feed />} />
-            <Route path="feededitor" element={<FeedEditor />} />
-            <Route path="qna" element={<QnA />} />
-            <Route path="qnalist" element={<QnAList />} />
-          </Route>
+          <Route exact path="/" element={<Main />} />
+          <Route path="/signup" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/findid" element={<FindId />} />
+          <Route path="/findpw" element={<FindPw />} />
+          <Route path="/changepw" element={<ChangePw />} />
+          <Route path="/setup" element={<Setup />} />
+          <Route path="/schedule" element={<Schedule />} />
+          <Route path="/matching" element={<Matching />} />
+          <Route path="/feed" element={<Feed />} />
+          <Route path="/feededitor" element={<FeedEditor />} />
+          <Route path="/qna" element={<QnA />} />
+          <Route path="/qnalist" element={<QnAList />} />
 
           <Route path="*" element={<NotFound />} />
         </Routes>
