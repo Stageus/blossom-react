@@ -6,8 +6,8 @@ export const Button = styled.button`
   height: ${(props) => props.height || "fit-content"};
 
   /* colors */
-  background-color: ${(props) => props.bgColor || "pink"};
-  color: ${(props) => props.textColor || "white"};
+  background-color: ${(props) => props.backgroundColor || "#FFC4D0"};
+  color: ${(props) => props.textColor || "#32250F"};
 
   /* fonts */
   /* font 설정 여부 고민 중 */
@@ -19,6 +19,6 @@ export const Button = styled.button`
   border-radius: ${(props) => props.borderRadius || "0"};
 
   &:hover {
-    ${(props) => props.hoverColor || "pink"};
+    ${(props) => props.hoverColor || "#F7DDDE"};
   }
 `;

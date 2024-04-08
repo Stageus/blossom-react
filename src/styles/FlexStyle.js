@@ -1,12 +1,15 @@
 import styled from "styled-components";
 
 export const FlexBox = styled.div`
+  /* flex setting */
   display: flex;
   flex-direction: ${({ dir }) => setFlexDirection(dir)};
   justify-content: ${({ row }) => setJustifyContent(row)};
   align-items: ${({ col }) => setAlignItems(col)};
-  width: ${({ width }) => width};
-  height: ${({ height }) => height};
+
+  /* box setting */
+  width: ${(props) => props.width || "fit-content"};
+  height: ${(props) => props.height || "fit-content"};
   margin: ${({ margin }) => margin};
   padding: ${({ padding }) => padding};
 `;
