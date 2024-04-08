@@ -1,8 +1,6 @@
 import styled from "styled-components";
 
 export const Button = styled.button`
-  cursor: pointer;
-
   /* dimensions */
   width: ${(props) => props.width || "fit-content"};
   height: ${(props) => props.height || "fit-content"};

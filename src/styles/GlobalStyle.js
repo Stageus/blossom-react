@@ -1,0 +1,42 @@
+import { createGlobalStyle } from "styled-components";
+
+const GlobalStyle = createGlobalStyle`
+
+  // 배민 도현체
+  @font-face {
+    font-family: 'BMDOHYEON';
+    src: url("/fonts/BMDOHYEON_otf.otf") format('opentype');
+  }
+
+  body {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  input, select {
+    background-color: #fff;
+    outline: 0;
+  }
+
+  textarea {
+    outline: 0;
+    resize: none;
+  }
+
+  a:hover, button:hover, input[type="submit"] {
+    cursor: pointer;
+  }
+
+`;
+
+export default GlobalStyle;
