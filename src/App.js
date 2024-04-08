@@ -2,6 +2,9 @@ import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { RecoilRoot } from "recoil";
 
+// ===== style import =====
+import GlobalStyle from "./styles/GlobalStyle";
+
 // ===== pages import =====
 // === Auth pages ===
 import Signup from "./pages/Signup";
@@ -26,6 +29,7 @@ const App = () => {
   return (
     <RecoilRoot>
       <BrowserRouter>
+        <GlobalStyle />
         <Routes>
           <Route exact path="/" element={<Main />} />
           <Route path="/signup" element={<Signup />} />
