@@ -8,6 +8,10 @@ const GlobalStyle = createGlobalStyle`
     src: url("/fonts/BMDOHYEON_otf.otf") format('opentype');
   }
 
+  * {
+  font-family: 'BMDOHYEON', sans-serif;
+  }
+
   body {
     margin: 0;
     padding: 0;
@@ -27,6 +31,14 @@ const GlobalStyle = createGlobalStyle`
   input, select {
     background-color: #fff;
     outline: 0;
+  }
+
+  input[type="password"] {
+    font-family: sans-serif;
+  }
+
+  input[type="password"]::placeholder {
+    font-family: 'BMDOHYEON', sans-serif;
   }
 
   textarea {
