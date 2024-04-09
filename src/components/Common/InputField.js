@@ -1,9 +1,10 @@
 import React from "react";
 
-// ===== style import =====
+// ===== styles import =====
 import { Label } from "../../styles/TextStyle";
 import { Input } from "../../styles/InputStyle";
 
+// ===== component =====
 const InputField = ({
   hasLabel,
   labelMessage,
@@ -15,8 +16,6 @@ const InputField = ({
   const updateValueEvent = (e) => {
     const value = e.target.value;
     inputRef.current.value = value;
-
-    console.log(value);
   };
 
   return (
@@ -34,7 +33,7 @@ const InputField = ({
         placeholder={placeholderMessage}
         onChange={updateValueEvent}
         disabled={disabled}
-      ></Input>
+      />
     </>
   );
 };
