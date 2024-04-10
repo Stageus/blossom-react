@@ -3,28 +3,31 @@ import styled from "styled-components";
 export const FlexBox = styled.div`
   /* flex setting */
   display: flex;
-  flex-direction: ${({ dir }) => setFlexDirection(dir)};
-  justify-content: ${({ row }) => setJustifyContent(row)};
-  align-items: ${({ col }) => setAlignItems(col)};
+  flex-direction: ${({ $dir }) => setFlexDirection($dir)};
+  justify-content: ${({ $row }) => setJustifyContent($row)};
+  align-items: ${({ $col }) => setAlignItems($col)};
 
   /* box setting */
-  width: ${(props) => props.width || "fit-content"};
-  height: ${(props) => props.height || "fit-content"};
-  margin: ${({ margin }) => margin};
-  padding: ${({ padding }) => padding};
+  width: ${(props) => props.$width || "fit-content"};
+  height: ${(props) => props.$height || "fit-content"};
+  margin: ${({ $margin }) => $margin};
+  padding: ${({ $padding }) => $padding};
+
+  /* colors */
+  background-color: ${(props) => props.$backgroundColor || null};
 `;
 
 // flex-box의 flex-direction 설정
-const setFlexDirection = (dir) => {
-  switch (dir) {
+const setFlexDirection = ($dir) => {
+  switch ($dir) {
     case "col":
       return "column";
   }
 };
 
 // flex-box 안의 justify-content 값 설정
-const setJustifyContent = (row) => {
-  switch (row) {
+const setJustifyContent = ($row) => {
+  switch ($row) {
     case "center":
       return "center";
     case "start":
@@ -43,8 +46,8 @@ const setJustifyContent = (row) => {
 };
 
 // flex-box 안의 align-items 값 설정
-const setAlignItems = (col) => {
-  switch (col) {
+const setAlignItems = ($col) => {
+  switch ($col) {
     case "center":
       return "center";
     case "start":
