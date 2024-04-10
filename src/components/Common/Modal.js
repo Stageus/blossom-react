@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 
 // ===== styles import =====
 import FlexBox from "../../styles/FlexStyle";
@@ -12,7 +12,10 @@ const TrnasformDiv = styled(Div)`
 `;
 
 // ===== component =====
-const Modal = ({ children, width = "37.5rem", height = "25rem", setIsOpen }) => {
+const Modal = ({ children, width = "37.5rem", height = "22rem", setIsOpen }) => {
+  // children : Modal Content (버튼을 포함하여 모달에 들어가는 내용을 할당)
+  // setIsOpen : Modal 닫힘을 위한 funtion
+
   return (
     <>
       {/* Modal Background */}
@@ -24,7 +27,7 @@ const Modal = ({ children, width = "37.5rem", height = "25rem", setIsOpen }) => 
         $opacity="0.7"
         $top="0"
         $left="0"
-        onClick={() => setIsOpen(false)}
+        onClick={setIsOpen}
       />
       {/* Modal Wrapper */}
       <TrnasformDiv $position="fixed" $top="50%" $left="50%" $width={width} $height={height}>
@@ -37,7 +40,7 @@ const Modal = ({ children, width = "37.5rem", height = "25rem", setIsOpen }) => 
             $backgroundColor="#FF7979"
             $borderRadius="50%"
             $hoverColor="#CF5757"
-            onClick={() => setIsOpen(false)}
+            onClick={setIsOpen}
           />
         </FlexBox>
 
