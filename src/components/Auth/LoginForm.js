@@ -18,7 +18,7 @@ const LoginForm = () => {
   const passwordRef = useRef("");
 
   // === state ===
-  const [loginError, setLoginError] = useState(false);
+  const [loginError, setLoginError] = useState("");
 
   // === navigate ===
   const navigate = useNavigate();
@@ -34,16 +34,22 @@ const LoginForm = () => {
 
     // 아이디, 비밀번호 유효성 검사
     if (!isIdValid(id) || !isPwValid(password)) {
-      setLoginError(true);
+      setLoginError("아이디 혹은 비밀번호를 확인해 주세요.");
     } else {
       // 로그인 에러 메세지 초기화
-      setLoginError(false);
+      setLoginError("");
 
       // 로그인 API 호출 코드
       const status = 200;
 
-      if (status !== 200) {
-        setLoginError(true);
+      if (status == 400) {
+        setLoginError("아이디 혹은 비밀번호를 확인해 주세요.");
+      } else if (status == 401) {
+        setLoginError("아이디 혹은 비밀번호가 일치하지 않습니다.");
+      } else if (status == 404) {
+        setLoginError("계정이 존재하지 않습니다.");
+      } else if (status == 500) {
+        return;
       } else {
         navigate("/matching");
       }
@@ -60,7 +66,7 @@ const LoginForm = () => {
 
       {loginError && (
         <FlexBox $width="25.625rem" $margin="15px 0 10px 0">
-          <ErrorMessage message="로그인에 실패했습니다." />
+          <ErrorMessage message={loginError} />
         </FlexBox>
       )}
 
