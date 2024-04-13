@@ -4,9 +4,9 @@ import React from "react";
 import { P } from "../../styles/TextStyle";
 
 // ===== component =====
-const ErrorMessage = ({ message }) => {
+const ErrorMessage = ({ message, margin }) => {
   return (
-    <P textColor="#FF6C6C" fontSize="14px">
+    <P $textColor="#FF6C6C" $fontSize="14px" $margin={margin}>
       {message}
     </P>
   );

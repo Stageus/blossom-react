@@ -12,7 +12,14 @@ import LoginForm from "../components/Auth/LoginForm";
 // ===== component =====
 const Login = () => {
   return (
-    <>
+    <FlexBox
+      $dir="col"
+      $row="center"
+      $col="center"
+      $width="32.438rem"
+      $height="100vh;"
+      $backgroundColor="#FBE8E7"
+    >
       {/* 로그인 Form */}
       <LoginForm />
 
@@ -57,7 +64,7 @@ const Login = () => {
           </Link>
         </Div>
       </FlexBox>
-    </>
+    </FlexBox>
   );
 };
 

@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 // ===== styles import =====
 import FlexBox from "../../styles/FlexStyle";
@@ -9,6 +10,7 @@ import { isIdValid, isPwValid } from "../../utils/validation";
 
 // ===== components import =====
 import InputField from "../../components/Common/InputField";
+import ErrorMessage from "../Common/ErrorMessage";
 
 const LoginForm = () => {
   // === ref ===
@@ -17,6 +19,9 @@ const LoginForm = () => {
 
   // === state ===
   const [loginError, setLoginError] = useState(false);
+
+  // === navigate ===
+  const navigate = useNavigate();
 
   useEffect(() => {
     // 로그인 실패 시, Error Message 출력
@@ -35,8 +40,13 @@ const LoginForm = () => {
       setLoginError(false);
 
       // 로그인 API 호출 코드
+      const status = 200;
 
-      // 페이지 이동
+      if (status !== 200) {
+        setLoginError(true);
+      } else {
+        navigate("/matching");
+      }
     }
   };
 
@@ -46,11 +56,16 @@ const LoginForm = () => {
       <FlexBox $dir="col" $row="between" $width="25.625rem" $height="9.875rem">
         <InputField inputRef={IdRef} placeholderMessage="아이디 입력" />
         <InputField inputRef={passwordRef} type="password" placeholderMessage="비밀번호 입력" />
-        {/* {loginError && <ErrorMessage message="로그인에 실패했습니다." />} */}
       </FlexBox>
 
+      {loginError && (
+        <FlexBox $width="25.625rem" $margin="15px 0 10px 0">
+          <ErrorMessage message="로그인에 실패했습니다." />
+        </FlexBox>
+      )}
+
       {/* 로그인 Button */}
-      <Button $width="25.625rem" $height="5rem" onClick={handleLogin}>
+      <Button $width="25.625rem" $height="5rem" $margin="30px 0 50px 0" onClick={handleLogin}>
         로그인
       </Button>
     </>
