@@ -33,3 +33,19 @@ export const Span = styled.span`
   margin: ${(props) => props.$margin || "0"};
   padding: ${(props) => props.$padding || "0"};
 `;
+
+export const H1 = styled.h1`
+  /* dimensions */
+  width: ${(props) => props.$width || "fit-content"};
+  height: ${(props) => props.$height || "fit-content"};
+
+  /* colors */
+  color: ${(props) => props.$textColor || "#32250F"};
+
+  /* fonts */
+  font-size: ${(props) => props.$fontSize || "42px"};
+  margin: ${(props) => props.$margin || "0"};
+  padding: ${(props) => props.$padding || "0"};
+`;
+
+export default P;

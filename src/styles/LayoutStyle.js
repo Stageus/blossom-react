@@ -29,3 +29,25 @@ export const Div = styled.div`
 
   box-sizing: border-box;
 `;
+
+export const Tr = styled.tr`
+  /* dimensions */
+  width: ${(props) => props.$width || "fit-content"};
+  height: ${(props) => props.$height || "fit-content"};
+
+  /* spacing */
+  margin: ${(props) => props.$margin || "0"};
+  padding: ${(props) => props.$padding || "0"};
+`;
+
+export const Td = styled.td`
+  /* dimensions */
+  width: ${(props) => props.$width || "fit-content"};
+  height: ${(props) => props.$height || "fit-content"};
+  min-width: ${(props) => props.$minWidth || null};
+
+  /* spacing */
+  padding: ${(props) => props.$padding || "0"};
+`;
+
+export default Div;

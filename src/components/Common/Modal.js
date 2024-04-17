@@ -1,10 +1,10 @@
 import React from "react";
+import styled from "styled-components";
 
 // ===== styles import =====
 import FlexBox from "../../styles/FlexStyle";
-import { Div } from "../../styles/LayoutStyle";
+import Div from "../../styles/LayoutStyle";
 import { Button } from "../../styles/ButtonStyle";
-import styled from "styled-components";
 
 // ===== style ====
 const TrnasformDiv = styled(Div)`
