@@ -1,7 +1,7 @@
 import React from "react";
 
 // ===== styles import =====
-import { P } from "../../styles/TextStyle";
+import P from "../../styles/TextStyle";
 
 // ===== component =====
 const ErrorMessage = ({ message, margin }) => {

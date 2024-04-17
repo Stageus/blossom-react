@@ -6,11 +6,15 @@ import { Input } from "../../styles/InputStyle";
 
 // ===== component =====
 const InputField = ({
+  fontSize,
+  width,
+  margin,
   hasLabel,
   labelMessage,
   inputRef,
   type = "text",
   placeholderMessage,
+  onBlur,
   disabled,
 }) => {
   const updateValueEvent = (e) => {
@@ -22,16 +26,20 @@ const InputField = ({
     <>
       {/* haeLabel : true or false */}
       {/* labelMessage : String */}
-      {hasLabel && <Label>{labelMessage}</Label>}
+      {hasLabel && <Label $fontSize={fontSize}>{labelMessage}</Label>}
 
       {/* type : text, password or email, etc. */}
       {/* placeholderMessage : String */}
       {/* disabled : true or false */}
+      {/* onChane, onBlur : Funtion */}
       <Input
+        $width={width}
+        $margin={margin}
         ref={inputRef}
         type={type}
         placeholder={placeholderMessage}
         onChange={updateValueEvent}
+        onBlur={onBlur}
         disabled={disabled}
       />
     </>

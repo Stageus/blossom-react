@@ -12,6 +12,7 @@ import { isIdValid, isPwValid } from "../../utils/validation";
 import InputField from "../../components/Common/InputField";
 import ErrorMessage from "../Common/ErrorMessage";
 
+// ===== component =====
 const LoginForm = () => {
   // === ref ===
   const IdRef = useRef("");
@@ -64,6 +65,7 @@ const LoginForm = () => {
         <InputField inputRef={passwordRef} type="password" placeholderMessage="비밀번호 입력" />
       </FlexBox>
 
+      {/* 로그인 에러 시 출력되는 Error Message */}
       {loginError && (
         <FlexBox $width="25.625rem" $margin="15px 0 10px 0">
           <ErrorMessage message={loginError} />

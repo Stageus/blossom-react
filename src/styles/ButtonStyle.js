@@ -10,7 +10,6 @@ export const Button = styled.button`
   color: ${(props) => props.$textColor || "#32250F"};
 
   /* fonts */
-  /* font 설정 여부 고민 중 */
   font-size: ${(props) => props.$size || "32px"};
   font-weight: ${(props) => props.$weight || "400"};
 
@@ -22,7 +21,11 @@ export const Button = styled.button`
   margin: ${(props) => props.$margin || "0"};
   padding: ${(props) => props.$padding || "0"};
 
+  &:disabled {
+    background-color: #d9d9d9;
+  }
+
   &:hover {
-    ${(props) => props.$hoverColor || "#F7DDDE"};
+    background-color: ${(props) => props.$hoverColor || "#F7DDDE"};
   }
 `;
