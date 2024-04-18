@@ -15,6 +15,11 @@ export const FlexBox = styled.div`
 
   /* colors */
   background-color: ${(props) => props.$backgroundColor || null};
+
+  /* border */
+  border: ${(props) => props.$border || "none"};
+  border-top: ${(props) => props.$borderTop || "none"};
+  border-bottom: ${(props) => props.$borderBottom || "none"};
 `;
 
 // flex-box의 flex-direction 설정
