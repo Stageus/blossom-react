@@ -17,8 +17,12 @@ const ConfirmModal = ({ message, setIsOpen, onClick }) => {
   return (
     <Modal setIsOpen={() => setIsOpen(false)}>
       <FlexBox $dir="col" $row="between" $col="center" $height="8rem">
-        <P $fontSize="32px">{message}</P>
-        <FlexBox $width="27rem" $row="between">
+        {message.map((line, index) => (
+          <P key={index} $fontSize="32px">
+            {line}
+          </P>
+        ))}
+        <FlexBox $width="27rem" $row="between" $margin="10px 0 0 0">
           <Button
             $width="12.75rem"
             $height="3.25rem"
