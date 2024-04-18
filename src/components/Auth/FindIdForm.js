@@ -56,15 +56,15 @@ const FindIdForm = () => {
     }
   };
 
-  const handleClickLoginButton = () => {};
-
   return (
     <>
       {hasUserId ? (
         <>
           {/* 아이디 출력부 */}
           <FlexBox $margin="30px 0 0 0">
-            <P>회원님의 아이디는 {userId}입니다.</P>
+            <Span $textColor="#FFC4D0">회원님의 아이디는</Span>
+            <Span $margin="0 10px 0 10px">{userId}</Span>
+            <Span $textColor="#FFC4D0">입니다.</Span>
           </FlexBox>
 
           {/* 로그인, 비밀번호 찾기 페이지 이동 */}
@@ -133,14 +133,9 @@ const FindIdForm = () => {
               <Span $margin="0 5px 0 0" $textColor="#FFFFFF" $fontSize="16px">
                 아이디가 생각나셨나요?
               </Span>
-              <Button
-                $textColor="#32250F"
-                $backgroundColor="transparent"
-                $hoverColor="null"
-                onClick={handleClickLoginButton}
-              >
+              <Link to="/login">
                 <Span $fontSize="16px">로그인하기</Span>
-              </Button>
+              </Link>
             </Div>
           </FlexBox>
         </>
