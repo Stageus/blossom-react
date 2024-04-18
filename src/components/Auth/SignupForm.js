@@ -4,9 +4,8 @@ import { useNavigate } from "react-router-dom";
 // ===== styles import =====
 import FlexBox from "../../styles/FlexStyle";
 import { Button } from "../../styles/ButtonStyle";
-import { P, H1 } from "../../styles/TextStyle";
+import { P } from "../../styles/TextStyle";
 import { Tr, Td } from "../../styles/LayoutStyle";
-import { Img } from "../../styles/ImgStyle";
 
 // ===== utils import =====
 import { isIdValid, isPwValid, isNameValid, isPhoneNumberValid } from "../../utils/validation";
@@ -16,7 +15,6 @@ import InputField from "../../components/Common/InputField";
 import ErrorMessage from "../../components/Common/ErrorMessage";
 import ConfirmModal from "../../components/Modal/ConfirmModal";
 import AlertModal from "../../components/Modal/AlertModal";
-import WhiteArrow from "../../assets/images/icon-park_left.png";
 
 // ===== component =====
 const SignupForm = () => {
@@ -25,7 +23,6 @@ const SignupForm = () => {
   const pwRef = useRef("");
   const confirmPwRef = useRef("");
   const nameRef = useRef("");
-  const phonenumberRef = useRef("");
   const birthdayRef = useRef("");
 
   // === state ===
@@ -34,6 +31,7 @@ const SignupForm = () => {
   const [passwordError, setPasswordError] = useState("");
   const [confirmPwError, setConfirmPwError] = useState("");
   const [nameError, setNameError] = useState("");
+  const [phonenumberError, setPhonenumberError] = useState("");
   const [birthdayError, setBirthdayError] = useState("");
 
   const [isIdAvailable, setIsIdAvailable] = useState(false); // id 사용 가능 설정 state
@@ -99,6 +97,15 @@ const SignupForm = () => {
     }
   };
 
+  // 전화번호 유효성 검사
+  const handleValidatePhonenumber = (phonenumber) => {
+    if (!isPhoneNumberValid(phonenumber)) {
+      setPhonenumberError("전화번호 형식이 올바르지 않습니다.");
+    } else {
+      setPhonenumberError("");
+    }
+  };
+
   // 생년월일 유효성 검사
   const handleValidateBirthday = () => {
     const birthday = birthdayRef.current.value;
@@ -115,12 +122,12 @@ const SignupForm = () => {
     const id = idRef.current.value;
 
     if (!isIdValid(id)) {
-      return;
+      setIdError("아이디 형식이 올바르지 않습니다.");
     } else {
       // 중복 확인 API 호출 코드
       const status = 200;
 
-      if (status == 400) {
+      if (status === 400) {
         setIdError("사용 불가한 아이디입니다.");
       } else {
         setIsDuplicationModalOpen(true);
@@ -142,15 +149,16 @@ const SignupForm = () => {
       !passwordError &&
       !confirmPwError &&
       !nameError &&
+      !phonenumberError &&
       !birthdayError &&
       isIdAvailable
     ) {
       // 회원가입 API 호출 코드
       const status = 200;
 
-      if (status == 400) {
+      if (status === 400) {
         setIsAlertModalOpen(true);
-      } else if (status == 500) {
+      } else if (status === 500) {
         return;
       } else {
         navigate("/login");
@@ -165,7 +173,7 @@ const SignupForm = () => {
       {/* 아이디 중복 확인 Modal */}
       {isDuplicationModalOpen && (
         <ConfirmModal
-          message="사용 가능한 아이디입니다. 사용하시겠습니까?"
+          message={["사용 가능한 아이디입니다.", "사용하시겠습니까?"]}
           setIsOpen={setIsDuplicationModalOpen}
           onClick={handleUseId}
         />
@@ -175,14 +183,6 @@ const SignupForm = () => {
       {isAlertModalOpen && (
         <AlertModal message="회원가입에 실패했습니다." setIsOpen={setIsAlertModalOpen} />
       )}
-
-      {/* 회원가입 페이지 Header */}
-      <FlexBox $col="center">
-        <Button $backgroundColor="transparent">
-          <Img src={WhiteArrow} />
-        </Button>
-        <H1 $margin="0 0 0 265px">회원가입</H1>
-      </FlexBox>
 
       {/* 회원가입 입력칸 */}
       <table>
@@ -266,10 +266,11 @@ const SignupForm = () => {
             </Td>
             <Td>
               <InputField
+                inputType="phone"
                 margin="15px 0 10px 0"
-                placeholderMessage="01012345678의 형식으로 입력해 주세요."
-                inputRef={phonenumberRef}
+                onValidateAndSend={handleValidatePhonenumber}
               />
+              {phonenumberError && <ErrorMessage message={phonenumberError} />}
             </Td>
           </Tr>
           <Tr>

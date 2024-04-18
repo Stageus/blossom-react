@@ -46,6 +46,8 @@ export const H1 = styled.h1`
   font-size: ${(props) => props.$fontSize || "42px"};
   margin: ${(props) => props.$margin || "0"};
   padding: ${(props) => props.$padding || "0"};
+
+  text-align: ${(props) => props.$textAlign || null};
 `;
 
 export default P;

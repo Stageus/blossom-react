@@ -22,6 +22,10 @@ const setFlexDirection = ($dir) => {
   switch ($dir) {
     case "col":
       return "column";
+    case "row":
+      return "row";
+    default:
+      return "row";
   }
 };
 
