@@ -23,7 +23,7 @@ const FindPwForm = () => {
 
   // === state ===
   const [phonenumber, setPhonenumber] = useState("");
-  const [findPwError, setFindPwError] = useState(false);
+  const [findPwError, setFindPwError] = useState("");
 
   // === navigate ===
   const navigate = useNavigate();
