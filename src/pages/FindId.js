@@ -24,7 +24,7 @@ const FindId = () => {
             <H1 $fontSize="36px" $margin="0 0 10px 0">
               아이디 찾기
             </H1>
-            <P $fontSize="16px">회원가입 시 등록하신 아이디와 전화번호를 입력해 주세요.</P>
+            <P $fontSize="16px">회원가입 시 등록하신 이름과 전화번호를 입력해 주세요.</P>
           </FlexBox>
 
           {/* 아이디 찾기 Form */}

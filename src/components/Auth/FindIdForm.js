@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 // ===== styles import =====
 import FlexBox from "../../styles/FlexStyle";
 import Div from "../../styles/LayoutStyle";
-import P, { Span } from "../../styles/TextStyle";
+import { Span } from "../../styles/TextStyle";
 import { Button } from "../../styles/ButtonStyle";
 
 // ===== utils import =====
@@ -23,7 +23,7 @@ const FindIdForm = () => {
   const [phonenumber, setPhonenumber] = useState("");
   const [userId, setUserId] = useState("");
   const [hasUserId, setHasUserId] = useState(false);
-  const [FindIdError, setFindIdError] = useState("");
+  const [findIdError, setFindIdError] = useState("");
 
   useEffect(() => {
     // 아이디 찾기 성공 시, 아이디 출력
@@ -113,7 +113,7 @@ const FindIdForm = () => {
               inputType="phone"
               onValidateAndSend={handleSendPhonenumber}
             />
-            {FindIdError && <ErrorMessage message={FindIdError} />}
+            {findIdError && <ErrorMessage message={findIdError} />}
           </FlexBox>
 
           {/* 아이디 찾기 Button */}
