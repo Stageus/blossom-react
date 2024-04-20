@@ -23,7 +23,7 @@ const FindPwForm = () => {
 
   // === state ===
   const [phonenumber, setPhonenumber] = useState("");
-  const [findPwError, setFindPwError] = useState(false);
+  const [findPwError, setFindPwError] = useState("");
 
   // === navigate ===
   const navigate = useNavigate();
@@ -45,6 +45,8 @@ const FindPwForm = () => {
     if (!isIdValid(id) || !isNameValid(name) || !isPhoneNumberValid(phonenumber)) {
       setFindPwError("입력하신 정보를 확인해 주세요.");
     } else {
+      setFindPwError(""); // 비밀번호 찾기 에러 메세지 초기화
+
       // 비밀번호 찾기 API 호출 코드
       const status = 200;
 
@@ -52,9 +54,11 @@ const FindPwForm = () => {
         setFindPwError("입력하신 정보를 확인해 주세요.");
       } else if (status === 404) {
         setFindPwError("해당 정보가 존재하지 않습니다.");
+      } else if (status === 500) {
+        return;
       } else {
-        // 비밀번호 변경 페이지로 이동
-        navigate("/changepw");
+        setFindPwError("");
+        navigate("/changepw"); // 비밀번호 변경 페이지로 이동
       }
     }
   };

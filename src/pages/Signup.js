@@ -20,33 +20,31 @@ const Signup = () => {
   };
 
   return (
-    <>
-      <FlexBox $row="center" $width="100%">
-        <FlexBox
-          $dir="col"
-          $col="center"
-          $width="64.063rem"
-          $height="100vh"
-          $backgroundColor="#FBE8E7"
-        >
-          {/* 회원가입 Header */}
-          <FlexBox $row="between" $col="center" $margin="40px 0 0 0" $width="100%">
-            <Button
-              $backgroundColor="transparent"
-              $hoverColor="null"
-              $margin="0 0 0 50px"
-              onClick={handleGoBack}
-            >
-              <Img src={WhiteArrow} />
-            </Button>
-            <H1 $margin="0 410px 0 0">회원가입</H1>
-          </FlexBox>
-
-          {/* 회원가입 Form */}
-          <SignupForm />
+    <FlexBox $row="center" $width="100%">
+      <FlexBox
+        $dir="col"
+        $col="center"
+        $width="64.063rem"
+        $height="100vh"
+        $backgroundColor="#FBE8E7"
+      >
+        {/* 회원가입 Header */}
+        <FlexBox $row="between" $col="center" $margin="40px 0 0 0" $width="100%">
+          <Button
+            $backgroundColor="transparent"
+            $hoverColor="null"
+            $margin="0 0 0 50px"
+            onClick={handleGoBack}
+          >
+            <Img src={WhiteArrow} />
+          </Button>
+          <H1 $margin="0 410px 0 0">회원가입</H1>
         </FlexBox>
+
+        {/* 회원가입 Form */}
+        <SignupForm />
       </FlexBox>
-    </>
+    </FlexBox>
   );
 };
 

@@ -37,21 +37,21 @@ const LoginForm = () => {
     if (!isIdValid(id) || !isPwValid(password)) {
       setLoginError("아이디 혹은 비밀번호를 확인해 주세요.");
     } else {
-      // 로그인 에러 메세지 초기화
-      setLoginError("");
+      setLoginError(""); // 로그인 에러 메세지 초기화
 
       // 로그인 API 호출 코드
       const status = 200;
 
-      if (status == 400) {
+      if (status === 400) {
         setLoginError("아이디 혹은 비밀번호를 확인해 주세요.");
-      } else if (status == 401) {
+      } else if (status === 401) {
         setLoginError("아이디 혹은 비밀번호가 일치하지 않습니다.");
-      } else if (status == 404) {
+      } else if (status === 404) {
         setLoginError("계정이 존재하지 않습니다.");
-      } else if (status == 500) {
+      } else if (status === 500) {
         return;
       } else {
+        setLoginError("");
         navigate("/matching");
       }
     }
