@@ -67,6 +67,8 @@ const ChangePwForm = () => {
         setConfirmPwError("비밀번호가 일치하지 않습니다.");
       } else if (status === 404) {
         setFailModalOpen(true);
+      } else if (status === 500) {
+        return;
       } else {
         navigate("/login"); // 로그인 페이지로 이동
       }

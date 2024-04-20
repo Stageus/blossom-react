@@ -42,6 +42,8 @@ const FindIdForm = () => {
     if (!isNameValid(name) || !isPhoneNumberValid(phonenumber)) {
       setFindIdError("이름 혹은 전화번호를 확인해 주세요.");
     } else {
+      setFindIdError(""); // 아이디 찾기 에러 메세지 초기화
+
       // 아이디 찾기 API 호출 코드
       const status = 200;
 
@@ -49,6 +51,8 @@ const FindIdForm = () => {
         setFindIdError("이름 혹은 전화번호를 확인해 주세요.");
       } else if (status === 404) {
         setFindIdError("해당 정보가 존재하지 않습니다.");
+      } else if (status === 500) {
+        return;
       } else {
         setHasUserId(true);
         setUserId(id);
