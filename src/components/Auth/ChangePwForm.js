@@ -54,10 +54,12 @@ const ChangePwForm = () => {
   };
 
   const handleChangePw = () => {
-    // const password = pwRef.current.value;
-    // const confirmPassword = confirmPwRef.current.value;
+    setPwError("");
+    setConfirmPwError("");
 
     if (!pwError && !confirmPwError) {
+      // const password = pwRef.current.value;
+      // const confirmPassword = confirmPwRef.current.value;
       // 비밀번호 변경 API 호출 코드
       const status = 200;
 
@@ -84,7 +86,7 @@ const ChangePwForm = () => {
         <AlertModal message="비밀번호 변경에 실패했습니다." setIsOpen={setFailModalOpen} />
       )}
 
-      {/* 비밀번호 찾기 Input Field */}
+      {/* 비밀번호 변경 Input Field */}
       <FlexBox $dir="col" $row="between" $width="25.625rem" $height="16rem">
         <InputField
           hasLabel="true"
@@ -94,8 +96,10 @@ const ChangePwForm = () => {
           placeholderMessage="영어, 숫자를 필수 포함한 8자 ~ 15자를 입력해 주세요. (특수문자 허용)"
           inputRef={pwRef}
           onBlur={handleValidatePw}
+          autoFocus={true}
         />
         {pwError && <ErrorMessage message={pwError} />}
+
         <InputField
           hasLabel="true"
           labelMessage="비밀번호 확인"

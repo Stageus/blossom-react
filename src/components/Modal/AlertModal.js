@@ -9,22 +9,28 @@ import FlexBox from "../../styles/FlexStyle";
 import Modal from "../Common/Modal";
 
 // ===== component =====
-const AlertModal = ({ message, setIsOpen }) => {
+const AlertModal = ({ message, hasFunc, onClick, setIsOpen }) => {
   // message : String
   // setIsOpen : Funtion
 
   return (
-    <Modal setIsOpen={() => setIsOpen(false)}>
+    <Modal setIsOpen={hasFunc ? onClick : () => setIsOpen(false)}>
       <FlexBox $dir="col" $row="between" $col="center" $height="8rem">
         <P $fontSize="32px">{message}</P>
-        <Button
-          $width="12.75rem"
-          $height="3.25rem"
-          $backgroundColor="#E1F2FB"
-          onClick={() => setIsOpen(false)}
-        >
-          확인
-        </Button>
+        {hasFunc ? (
+          <Button $width="12.75rem" $height="3.25rem" $backgroundColor="#E1F2FB" onClick={onClick}>
+            확인
+          </Button>
+        ) : (
+          <Button
+            $width="12.75rem"
+            $height="3.25rem"
+            $backgroundColor="#E1F2FB"
+            onClick={() => setIsOpen(false)}
+          >
+            확인
+          </Button>
+        )}
       </FlexBox>
     </Modal>
   );

@@ -19,6 +19,7 @@ const InputField = ({
   onBlur,
   disabled,
   onValidateAndSend,
+  autoFocus,
 }) => {
   // === ref ===
   const numbersRef = Array(3)
@@ -28,13 +29,13 @@ const InputField = ({
   // Set Current Date
   const currentDate = new Date().toISOString().split("T")[0];
 
-  // Update input value funtion
+  // Update input value
   const updateValueEvent = (e) => {
     const value = e.target.value;
     inputRef.current.value = value;
   };
 
-  // Set Changing Phone Number and Send that
+  // Set Changed Phone Number and Send that
   const handleChangePhonenumber = (e) => {
     const refIndex = numbersRef.findIndex((ref) => ref.current === e.target);
     const phoneNumber = numbersRef.map((ref) => ref.current.value).join("-");
@@ -95,6 +96,7 @@ const InputField = ({
           onBlur={onBlur}
           disabled={disabled}
           max={currentDate}
+          autoFocus={autoFocus}
         />
       )}
     </>
