@@ -31,6 +31,10 @@ const SetupForm = () => {
     // 초기 설정 실패 시, Error Message 출력
   }, []);
 
+  const handleCloseErrorModal = () => {
+    navigate("/login");
+  };
+
   const handleClickSettingButton = () => {
     const nickname = nicknameRef.current.value;
     const firstDay = firstDayRef.current.value;
@@ -40,7 +44,7 @@ const SetupForm = () => {
       setSetupError("애칭 혹은 기념일을 확인해 주세요.");
     } else {
       // 초기 설정 API 호출 코드
-      const status = 200;
+      const status = 401;
 
       if (status === 400) {
         setSetupError("애칭 혹은 기념일을 확인해 주세요.");
@@ -62,7 +66,7 @@ const SetupForm = () => {
   return (
     <>
       {tokenErrorModalOpen && (
-        <AlertModal message="로그인이 필요합니다." setIsOpen={setTokenErrorModalOpen} />
+        <AlertModal hasFunc={true} message="로그인이 필요합니다." onClick={handleCloseErrorModal} />
       )}
 
       <FlexBox $dir="col" $row="between" $width="25.625rem" $height="15rem">

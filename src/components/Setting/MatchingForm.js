@@ -43,6 +43,14 @@ const MatchingForm = () => {
     // 매칭 실패 시, 페이지 새로고침
   }, [hasLoverId]);
 
+  const handleClickCancelButton = () => {
+    window.location.reload();
+  };
+
+  const handleCloseErrorModal = () => {
+    navigate("/login");
+  };
+
   const handleClickInquiryLoverIdButton = () => {
     const id = idRef.current.value;
 
@@ -70,7 +78,7 @@ const MatchingForm = () => {
 
   const handleClickMatchingButton = () => {
     // 커플 매칭 API 호출 코드
-    const status = 200;
+    const status = 401;
 
     if (status === 400) {
       setMatchingError("매칭이 불가한 아이디입니다.");
@@ -87,14 +95,10 @@ const MatchingForm = () => {
     }
   };
 
-  const handleClickCancelButton = () => {
-    window.location.reload();
-  };
-
   return (
     <>
       {tokenErrorModalOpen && (
-        <AlertModal message="로그인이 필요합니다." setIsOpen={setTokenErrorModalOpen} />
+        <AlertModal hasFunc={true} message="로그인이 필요합니다." onClick={handleCloseErrorModal} />
       )}
 
       {hasLoverId ? (
