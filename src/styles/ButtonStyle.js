@@ -10,8 +10,8 @@ export const Button = styled.button`
   color: ${(props) => props.$textColor || "#32250F"};
 
   /* fonts */
-  font-size: ${(props) => props.$size || "32px"};
-  font-weight: ${(props) => props.$weight || "400"};
+  font-size: ${(props) => props.$fontSize || "32px"};
+  font-weight: ${(props) => props.$fontWeight || "400"};
 
   /* border */
   border: ${(props) => props.$border || "none"};

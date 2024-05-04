@@ -204,7 +204,7 @@ const SignupForm = () => {
                 <Button
                   $width="7.75rem"
                   $height="4.375rem"
-                  $size="24px"
+                  $fontSize="24px"
                   disabled={isDisable}
                   onClick={handleDuplicateId}
                 >

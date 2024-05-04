@@ -11,6 +11,8 @@ import Modal from "../Common/Modal";
 // ===== component =====
 const AlertModal = ({ message, hasFunc, onClick, setIsOpen }) => {
   // message : String
+  // hasFunc : Boolean
+  // onClick : Funtion
   // setIsOpen : Funtion
 
   return (
