@@ -1,5 +1,5 @@
 import React from "react";
 
-const Anniversary = () => {};
+const Anniversary = ({ anniversary }) => {};
 
 export default Anniversary;
