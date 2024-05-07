@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -10,21 +10,10 @@ import { faCalendarDays } from "@fortawesome/free-solid-svg-icons"; // 일정 �
 import { faImage } from "@fortawesome/free-solid-svg-icons"; // 피드 아이콘
 import { faComments } from "@fortawesome/free-solid-svg-icons"; // 문답 아이콘
 
-// ===== components import =====
-import AlertModal from "../Modal/AlertModal";
-
 // ===== component =====
 const Nav = () => {
-  // === state ===
-  const [isLogoutFailModal, setIsLogoutFailModal] = useState(false);
-
   // === navigate ===
   const navigate = useNavigate();
-
-  useEffect(() => {
-    // 로그아웃 성공 시, 로그아웃 처리
-    // 로그아웃 실패 시, modal 출력
-  }, []);
 
   // 일정 버튼 클릭 시, 일정 페이지로 이동
   const handleClickScheduleButton = () => {
@@ -41,24 +30,14 @@ const Nav = () => {
     navigate("/qnalist");
   };
 
-  // 로그아웃 버튼 클릭 시, 로그아웃 API 호출
+  // 로그아웃 버튼 클릭 시, 로그아웃 처리
   const handleClickLogoutButton = () => {
-    // 로그아웃 API 호출 코드
-    const status = 200;
-
-    if (status === 400) {
-      setIsLogoutFailModal(true);
-    } else {
-      navigate("/login");
-    }
+    // 토큰 삭제
+    navigate("/login");
   };
 
   return (
     <>
-      {isLogoutFailModal && (
-        <AlertModal message="로그아웃에 실패했습니다." setIsOpen={setIsLogoutFailModal} />
-      )}
-
       <FlexBox
         $dir="col"
         $row="between"
