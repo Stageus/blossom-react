@@ -1,5 +1,178 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from "react";
+import styled from "styled-components";
+import { useRecoilState } from "recoil";
+import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-const Anniversary = () => {};
+// ===== styles import =====
+import P from "../../styles/TextStyle";
+import FlexBox from "../../styles/FlexStyle";
+import { Button } from "../../styles/ButtonStyle";
+import AlertModal from "../Modal/AlertModal";
+
+import { faPenToSquare } from "@fortawesome/free-solid-svg-icons"; // 수정 아이콘
+
+// ===== components import =====
+import InputField from "../Common/InputField";
+import ErrorMessage from "../Common/ErrorMessage";
+
+// ===== recoil & utils import =====
+import { isClickedEditButton } from "../../recoil/editButtonState";
+import { calculateAnniversary } from "../../utils/calculation";
+
+// ===== style =====
+const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
+  width: 24px;
+  height: 24px;
+  color: #d9d9d9;
+`;
+
+// ===== component =====
+const Anniversary = ({ anniversary }) => {
+  // === ref ===
+  const firstDayRef = useRef("");
+
+  // === state ===
+  const [isNicknameEditMode, setIsNicknameEditMode] = useState(false);
+  const [isToggledEditButton, setIsToggledEditButton] = useRecoilState(isClickedEditButton);
+  const [anniversaryError, setAnniversaryError] = useState("");
+  const [tokenErrorModalOpen, setTokenErrorModalOpen] = useState(false);
+  const [ourAnniversary, setOurAnniversary] = useState("");
+
+  // === navigate ===
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // 기념일 수정 성공 시, 수정 사항 반영
+    // 기념일 수정 실패 시, Error Message 출력
+    setOurAnniversary(anniversary);
+  }, [anniversary]);
+
+  // 수정 버튼 클릭 시
+  const handleClickEditModeButton = () => {
+    setIsNicknameEditMode(true);
+    setIsToggledEditButton((prevState) => ({
+      ...prevState,
+      isNicknameEditButtonVisible: false,
+      isThumbnailEditButtonVisible: false,
+    }));
+  };
+
+  // 취소 버튼 클릭 시
+  const handleClickCancelButton = () => {
+    const firstDay = firstDayRef.current.value;
+
+    if (firstDay.trim() === "") {
+      setAnniversaryError("입력한 기념일을 다시 확인해 주세요.");
+    } else {
+      setIsNicknameEditMode(false);
+
+      setIsToggledEditButton((prevState) => ({
+        ...prevState,
+        isNicknameEditButtonVisible: true,
+        isThumbnailEditButtonVisible: true,
+      }));
+    }
+  };
+
+  // 저장 버튼 클릭 시
+  const handleClickSaveButton = () => {
+    const today = new Date().toISOString().slice(0, 10);
+    const firstDay = firstDayRef.current.value;
+
+    const daysUntilAnniversary = calculateAnniversary(firstDay, today);
+
+    if (firstDay.trim() === "") {
+      setAnniversaryError("입력한 기념일을 다시 확인해 주세요.");
+    } else {
+      // 연애 날짜 수정하기 API 호출 코드
+      const status = 200;
+
+      if (status === 400) {
+        setAnniversaryError("입력한 기념일을 다시 확인해 주세요.");
+      } else if (status === 401) {
+        setTokenErrorModalOpen(true);
+      } else if (status === 403) {
+        setAnniversaryError("우리의 기념일만 수정 가능합니다.");
+      } else if (status === 404) {
+        setAnniversaryError("입력한 기념일을 다시 확인해 주세요.");
+      } else if (status === 500) {
+        return;
+      } else {
+        setIsNicknameEditMode(false);
+        setOurAnniversary(daysUntilAnniversary);
+
+        setIsToggledEditButton((prevState) => ({
+          ...prevState,
+          isNicknameEditButtonVisible: true,
+          isThumbnailEditButtonVisible: true,
+        }));
+      }
+    }
+  };
+
+  const handleCloseErrorModal = () => {
+    navigate("/login");
+  };
+
+  return (
+    <>
+      {tokenErrorModalOpen && (
+        <AlertModal hasFunc={true} message="로그인이 필요합니다." onClick={handleCloseErrorModal} />
+      )}
+
+      {isNicknameEditMode ? (
+        <>
+          <FlexBox $width="30.625rem" $row="between" $col="center">
+            <FlexBox $width="18.75rem">
+              <InputField type="date" inputRef={firstDayRef} />
+            </FlexBox>
+
+            <FlexBox $width="10.625rem" $row="between">
+              <Button
+                $width="5rem"
+                $height="4.375rem"
+                $fontSize="20px"
+                onClick={handleClickSaveButton}
+              >
+                저장
+              </Button>
+              <Button
+                $width="5rem"
+                $height="4.375rem"
+                $fontSize="20px"
+                $backgroundColor="#d9d9d9"
+                onClick={handleClickCancelButton}
+              >
+                취소
+              </Button>
+            </FlexBox>
+          </FlexBox>
+
+          <FlexBox $width="30.625rem">
+            {anniversaryError && <ErrorMessage message={anniversaryError} />}
+          </FlexBox>
+        </>
+      ) : (
+        <>
+          <FlexBox $width="11rem" $height="3.1rem" $row="between" $col="center">
+            <P $fontSize="36px">D + {ourAnniversary}</P>
+            {isToggledEditButton.isAnniversaryEditButtonVisible && (
+              <>
+                <Button
+                  $backgroundColor="transparent"
+                  $margin="1px 0 0 0"
+                  onClick={handleClickEditModeButton}
+                >
+                  <StyledFontAwesomeIcon icon={faPenToSquare} />
+                </Button>
+              </>
+            )}
+          </FlexBox>
+        </>
+      )}
+    </>
+  );
+};
 
 export default Anniversary;

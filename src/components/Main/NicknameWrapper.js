@@ -1,5 +1,5 @@
 import React from "react";
 
-const NicknameWrapper = () => {};
+const NicknameWrapper = ({ myNickname, LoverNickname }) => {};
 
 export default NicknameWrapper;

@@ -1,5 +1,5 @@
 import React from "react";
 
-const Thumbnail = () => {};
+const Thumbnail = ({ thumbnail }) => {};
 
 export default Thumbnail;
