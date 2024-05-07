@@ -5,6 +5,7 @@ import Nav from "../components/Main/Nav";
 import Anniversary from "../components/Main/Anniversary";
 import Thumbnail from "../components/Main/Thumbnail";
 import NicknameWrapper from "../components/Main/NicknameWrapper";
+import FlexBox from "../styles/FlexStyle";
 
 // ===== component =====
 const Main = () => {
@@ -20,6 +21,7 @@ const Main = () => {
       partnerNickname: "뿅아리",
       imageUrl: "",
       startDate: "123",
+      // 초기 정보가 yyyy-dd-mm 로 오는 경우, utils/calculation을 활용해 기념일 계산하여 props로 내려주기
     };
 
     setInitialData(data);
@@ -27,13 +29,20 @@ const Main = () => {
 
   return (
     <>
-      <Nav />
-      <Anniversary anniversary={initialData.startDate} />
-      <Thumbnail thumbnail={initialData.imageUrl} />
-      <NicknameWrapper
-        myNickname={initialData.myNickname}
-        LoverNickname={initialData.partnerNickname}
-      />
+      <FlexBox $width="100%">
+        {/* nav */}
+        <Nav />
+
+        {/* 기념일, 대표 사진, 애칭 */}
+        <FlexBox $dir="col" $width="100%" $col="center">
+          <Anniversary anniversary={initialData.startDate} />
+          <Thumbnail thumbnail={initialData.imageUrl} />
+          <NicknameWrapper
+            myNickname={initialData.myNickname}
+            LoverNickname={initialData.partnerNickname}
+          />
+        </FlexBox>
+      </FlexBox>
     </>
   );
 };
