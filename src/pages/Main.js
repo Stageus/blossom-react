@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from "react";
 
+// ===== styles & img import =====
+import FlexBox from "../styles/FlexStyle";
+import TestImage from "../assets/images/test.jpg";
+
 // ===== components import =====
 import Nav from "../components/Main/Nav";
 import Anniversary from "../components/Main/Anniversary";
 import Thumbnail from "../components/Main/Thumbnail";
 import NicknameWrapper from "../components/Main/NicknameWrapper";
-import FlexBox from "../styles/FlexStyle";
+
+import ImageUploader from "../components/Common/ImageUploader";
 
 // ===== component =====
 const Main = () => {
@@ -19,7 +24,8 @@ const Main = () => {
     const data = {
       myNickname: "왕왕이",
       partnerNickname: "뿅아리",
-      imageUrl: "",
+      imageUrl: TestImage,
+      // initialData.imageUrl? initialData.imageUrl : 기본 이미지
       startDate: "123",
       // 초기 정보가 yyyy-dd-mm 로 오는 경우, utils/calculation을 활용해 기념일 계산하여 props로 내려주기
     };
@@ -34,7 +40,7 @@ const Main = () => {
         <Nav />
 
         {/* 기념일, 대표 사진, 애칭 */}
-        <FlexBox $dir="col" $width="100%" $col="center">
+        <FlexBox $dir="col" $width="100%" $height="100vh" $col="center">
           <Anniversary anniversary={initialData.startDate} />
           <Thumbnail thumbnail={initialData.imageUrl} />
           <NicknameWrapper
@@ -43,6 +49,8 @@ const Main = () => {
           />
         </FlexBox>
       </FlexBox>
+
+      <ImageUploader />
     </>
   );
 };

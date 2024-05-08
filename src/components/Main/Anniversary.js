@@ -161,6 +161,7 @@ const Anniversary = ({ anniversary }) => {
               <>
                 <Button
                   $backgroundColor="transparent"
+                  $hoverColor="transparent"
                   $margin="1px 0 0 0"
                   onClick={handleClickEditModeButton}
                 >
