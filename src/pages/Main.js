@@ -45,12 +45,12 @@ const Main = () => {
           <Thumbnail thumbnail={initialData.imageUrl} />
           <NicknameWrapper
             myNickname={initialData.myNickname}
-            LoverNickname={initialData.partnerNickname}
+            loverNickname={initialData.partnerNickname}
           />
         </FlexBox>
       </FlexBox>
 
-      <ImageUploader />
+      {/* <ImageUploader /> */}
     </>
   );
 };

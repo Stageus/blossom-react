@@ -8,13 +8,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import P from "../../styles/TextStyle";
 import FlexBox from "../../styles/FlexStyle";
 import { Button } from "../../styles/ButtonStyle";
-import AlertModal from "../Modal/AlertModal";
 
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons"; // 수정 아이콘
 
 // ===== components import =====
 import InputField from "../Common/InputField";
 import ErrorMessage from "../Common/ErrorMessage";
+import AlertModal from "../Modal/AlertModal";
 
 // ===== recoil & utils import =====
 import { isClickedEditButton } from "../../recoil/editButtonState";
@@ -33,7 +33,7 @@ const Anniversary = ({ anniversary }) => {
   const firstDayRef = useRef("");
 
   // === state ===
-  const [isNicknameEditMode, setIsNicknameEditMode] = useState(false);
+  const [isAnniversaryEditMode, setIsAnniversaryEditMode] = useState(false);
   const [isToggledEditButton, setIsToggledEditButton] = useRecoilState(isClickedEditButton);
   const [anniversaryError, setAnniversaryError] = useState("");
   const [tokenErrorModalOpen, setTokenErrorModalOpen] = useState(false);
@@ -50,7 +50,7 @@ const Anniversary = ({ anniversary }) => {
 
   // 수정 버튼 클릭 시
   const handleClickEditModeButton = () => {
-    setIsNicknameEditMode(true);
+    setIsAnniversaryEditMode(true);
     setIsToggledEditButton((prevState) => ({
       ...prevState,
       isNicknameEditButtonVisible: false,
@@ -65,7 +65,7 @@ const Anniversary = ({ anniversary }) => {
     if (firstDay.trim() === "") {
       setAnniversaryError("입력한 기념일을 다시 확인해 주세요.");
     } else {
-      setIsNicknameEditMode(false);
+      setIsAnniversaryEditMode(false);
 
       setIsToggledEditButton((prevState) => ({
         ...prevState,
@@ -80,7 +80,7 @@ const Anniversary = ({ anniversary }) => {
     const today = new Date().toISOString().slice(0, 10);
     const firstDay = firstDayRef.current.value;
 
-    const daysUntilAnniversary = calculateAnniversary(firstDay, today);
+    const daysUntilAnniversary = calculateAnniversary(firstDay, today); // 디데이 계산을 통한 결과값
 
     if (firstDay.trim() === "") {
       setAnniversaryError("입력한 기념일을 다시 확인해 주세요.");
@@ -99,7 +99,7 @@ const Anniversary = ({ anniversary }) => {
       } else if (status === 500) {
         return;
       } else {
-        setIsNicknameEditMode(false);
+        setIsAnniversaryEditMode(false);
         setOurAnniversary(daysUntilAnniversary);
 
         setIsToggledEditButton((prevState) => ({
@@ -121,7 +121,7 @@ const Anniversary = ({ anniversary }) => {
         <AlertModal hasFunc={true} message="로그인이 필요합니다." onClick={handleCloseErrorModal} />
       )}
 
-      {isNicknameEditMode ? (
+      {isAnniversaryEditMode ? (
         <>
           <FlexBox $width="30.625rem" $row="between" $col="center">
             <FlexBox $width="18.75rem">
