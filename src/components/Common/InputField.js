@@ -20,6 +20,7 @@ const InputField = ({
   disabled,
   onValidateAndSend,
   autoFocus,
+  defaultValue,
 }) => {
   // === ref ===
   const numbersRef = Array(3)
@@ -97,6 +98,7 @@ const InputField = ({
           disabled={disabled}
           max={currentDate}
           autoFocus={autoFocus}
+          defaultValue={defaultValue}
         />
       )}
     </>

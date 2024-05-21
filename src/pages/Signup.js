@@ -9,7 +9,7 @@ import { H1 } from "../styles/TextStyle";
 
 // ===== components import =====
 import SignupForm from "../components/Auth/SignupForm";
-import WhiteArrow from "../assets/images/icon-park_left.png";
+import WhiteArrow from "../assets/images/icon_park_left.png";
 
 const Signup = () => {
   // === navigate ===
