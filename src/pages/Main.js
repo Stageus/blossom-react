@@ -40,7 +40,7 @@ const Main = () => {
         <Nav />
 
         {/* 기념일, 대표 사진, 애칭 */}
-        <FlexBox $dir="col" $width="100%" $height="100vh" $col="center">
+        <FlexBox $dir="col" $width="100%" $height="100vh" $row="between" $col="center">
           <Anniversary anniversary={initialData.startDate} />
           <Thumbnail thumbnail={initialData.imageUrl} />
           <NicknameWrapper
