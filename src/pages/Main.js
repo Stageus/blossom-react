@@ -10,8 +10,6 @@ import Anniversary from "../components/Main/Anniversary";
 import Thumbnail from "../components/Main/Thumbnail";
 import NicknameWrapper from "../components/Main/NicknameWrapper";
 
-import ImageUploader from "../components/Common/ImageUploader";
-
 // ===== component =====
 const Main = () => {
   // === state ===
@@ -40,7 +38,7 @@ const Main = () => {
         <Nav />
 
         {/* 기념일, 대표 사진, 애칭 */}
-        <FlexBox $dir="col" $width="100%" $height="100vh" $col="center">
+        <FlexBox $dir="col" $width="100%" $height="100vh" $row="between" $col="center">
           <Anniversary anniversary={initialData.startDate} />
           <Thumbnail thumbnail={initialData.imageUrl} />
           <NicknameWrapper
@@ -49,8 +47,6 @@ const Main = () => {
           />
         </FlexBox>
       </FlexBox>
-
-      {/* <ImageUploader /> */}
     </>
   );
 };

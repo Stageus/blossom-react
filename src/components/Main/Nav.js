@@ -87,6 +87,7 @@ const Nav = () => {
           $height="62px"
           $borderRadius="20%"
           $fontSize="28px"
+          $backgroundColor="#d9d9d9"
           onClick={handleClickLogoutButton}
         >
           Logout
