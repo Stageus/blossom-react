@@ -10,8 +10,6 @@ import Anniversary from "../components/Main/Anniversary";
 import Thumbnail from "../components/Main/Thumbnail";
 import NicknameWrapper from "../components/Main/NicknameWrapper";
 
-import ImageUploader from "../components/Common/ImageUploader";
-
 // ===== component =====
 const Main = () => {
   // === state ===
@@ -49,8 +47,6 @@ const Main = () => {
           />
         </FlexBox>
       </FlexBox>
-
-      {/* <ImageUploader /> */}
     </>
   );
 };
