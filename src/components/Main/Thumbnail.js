@@ -1,15 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { useRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 // ===== styles import =====
 import { Img } from "../../styles/ImgStyle";
 import Div from "../../styles/LayoutStyle";
 import { Button } from "../../styles/ButtonStyle";
-
-import { faPenToSquare } from "@fortawesome/free-solid-svg-icons"; // 수정 아이콘
 
 // ===== components import =====
 import ImageUploader from "../Common/ImageUploader";
@@ -25,14 +22,13 @@ const StyledRelativeDiv = styled(Div)`
 
 const StyledAbsoluteButton = styled(Button)`
   position: absolute;
-  top: 4px;
-  right: 4px;
-`;
+  bottom: ${(props) => props.$bottom || null};
+  right: ${(props) => props.$right || null};
 
-const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
-  width: 24px;
-  height: 24px;
-  color: #d9d9d9;
+  background-color: ${(props) => props.$backgroundColor || "transparent"};
+  &:hover {
+    background-color: ${(props) => props.$hoverColor || "transparent"};
+  }
 `;
 
 // ===== component =====
@@ -103,8 +99,12 @@ const Thumbnail = ({ thumbnail }) => {
     }
   };
 
-  const handleFile = (image) => {
-    setOurThumbnail(image);
+  const handleFile = (preview) => {
+    if (preview) {
+      setOurThumbnail(preview);
+    } else {
+      setOurThumbnail(thumbnail);
+    }
   };
 
   const handleCloseErrorModal = () => {
@@ -119,26 +119,41 @@ const Thumbnail = ({ thumbnail }) => {
 
       {uploadErrorModalOpen && <AlertModal message={message} setIsOpen={setUploadErrorModalOpen} />}
 
-      {isThumbnailEditMode ? (
-        <ImageUploader
-          onSelectImage={handleFile}
-          onSaveButtonClick={handleClickSaveButton}
-          onCancelButtonClick={handleClickCancelButton}
-        />
-      ) : (
+      <>
         <StyledRelativeDiv $width="36.75rem" $height="36.75rem" $margin="10px 0 0 0">
           <Img $width="36.75rem" $height="36.75rem" src={ourThumbnail} />
           {isToggledEditButton.isThumbnailEditButtonVisible && (
-            <StyledAbsoluteButton
-              $backgroundColor="transparent"
-              $hoverColor="transparent"
+            <ImageUploader
+              onSelectImage={handleFile}
               onClick={handleClickEditModeButton}
-            >
-              <StyledFontAwesomeIcon icon={faPenToSquare} />
-            </StyledAbsoluteButton>
+              isEditMode={isThumbnailEditMode}
+            />
+          )}
+
+          {isThumbnailEditMode && (
+            <>
+              <StyledAbsoluteButton
+                $bottom="4px"
+                $right="54px"
+                $fontSize="24px"
+                $backgroundColor="#ffffff"
+                onClick={handleClickSaveButton}
+              >
+                확인
+              </StyledAbsoluteButton>
+              <StyledAbsoluteButton
+                $bottom="4px"
+                $right="4px"
+                $fontSize="24px"
+                $backgroundColor="#ffffff"
+                onClick={handleClickCancelButton}
+              >
+                취소
+              </StyledAbsoluteButton>
+            </>
           )}
         </StyledRelativeDiv>
-      )}
+      </>
     </>
   );
 };
