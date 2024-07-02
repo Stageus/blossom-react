@@ -42,7 +42,8 @@ const App = () => {
           <Route path="/matching" element={<Matching />} />
           <Route path="/feed" element={<Feed />} />
           <Route path="/feededitor" element={<FeedEditor />} />
-          <Route path="/qna" element={<QnA />} />
+          <Route path="/qna/:id" element={<QnA />} />
+          <Route path="/qna/today" element={<QnA />} />
           <Route path="/qnalist" element={<QnAList />} />
 
           <Route path="*" element={<NotFound />} />
