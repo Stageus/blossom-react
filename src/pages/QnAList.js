@@ -35,6 +35,9 @@ const QnAList = () => {
     navigate(`/qna/${questionId}`);
   };
 
+  // 최신순으로 출력하기 위해 데이터 재정렬
+  const sortedData = initialData.slice().reverse();
+
   return (
     <>
       <FlexBox $row="center" $width="100%">
@@ -55,10 +58,10 @@ const QnAList = () => {
 
           {/* 문답 목록 */}
           <FlexBox $dir="col" $width="58.438rem" $margin="0 0 30px 0">
-            {initialData?.map((initialData, index) => (
-              <FlexBox key={index} onClick={() => handleClickDetailPage(initialData.id)}>
-                <P $margin="0 10px 0 0">#{initialData.id}</P>
-                <P>{initialData.question} </P>
+            {sortedData?.map((data, index) => (
+              <FlexBox key={index} onClick={() => handleClickDetailPage(data.id)}>
+                <P $margin="0 10px 0 0">#{data.id}</P>
+                <P>{data.question} </P>
               </FlexBox>
             ))}
           </FlexBox>
