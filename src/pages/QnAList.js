@@ -58,10 +58,10 @@ const QnAList = () => {
 
           {/* 문답 목록 */}
           <FlexBox $dir="col" $width="58.438rem" $margin="0 0 30px 0">
-            {sortedData?.map((data, index) => (
-              <FlexBox key={index} onClick={() => handleClickDetailPage(data.id)}>
-                <P $margin="0 10px 0 0">#{data.id}</P>
-                <P>{data.question} </P>
+            {sortedData?.map((sortedData, index) => (
+              <FlexBox key={index} onClick={() => handleClickDetailPage(sortedData.id)}>
+                <P $margin="0 10px 0 0">#{sortedData.id}</P>
+                <P>{sortedData.question} </P>
               </FlexBox>
             ))}
           </FlexBox>
