@@ -1,7 +1,7 @@
 import { atom } from "recoil";
 
-export const isClickedEditButton = atom({
-  key: "isClickedEditButton",
+export const isClickedEditButtonState = atom({
+  key: "isClickedEditButtonState",
   default: {
     isAnniversaryEditButtonVisible: true,
     isNicknameEditButtonVisible: true,
