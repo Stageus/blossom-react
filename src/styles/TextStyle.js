@@ -8,6 +8,9 @@ export const P = styled.p`
   font-size: ${(props) => props.$fontSize || "18px"};
   margin: ${(props) => props.$margin || "0"};
   padding: ${(props) => props.$padding || "0"};
+
+  /* filter */
+  filter: ${(props) => props.$blur || "none"};
 `;
 
 export const Label = styled.label`
