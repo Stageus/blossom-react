@@ -1,6 +1,6 @@
 import { atom } from "recoil";
 
-export const isVisitedPage = atom({
-  key: "isVisitedPage",
+export const isVisitedPageState = atom({
+  key: "isVisitedPageState",
   default: false,
 });

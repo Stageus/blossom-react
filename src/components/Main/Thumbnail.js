@@ -13,7 +13,7 @@ import ImageUploader from "../Common/ImageUploader";
 import AlertModal from "../Modal/AlertModal";
 
 // ===== recoil import =====
-import { isClickedEditButton } from "../../recoil/editButtonState";
+import { isClickedEditButtonState } from "../../recoil/editButtonState";
 
 // ===== style =====
 const StyledRelativeDiv = styled(Div)`
@@ -36,7 +36,7 @@ const Thumbnail = ({ thumbnail }) => {
   // === state ===
   const [ourThumbnail, setOurThumbnail] = useState("");
   const [isThumbnailEditMode, setIsThumbnailEditMode] = useState(false);
-  const [isToggledEditButton, setIsToggledEditButton] = useRecoilState(isClickedEditButton);
+  const [isToggledEditButton, setIsToggledEditButton] = useRecoilState(isClickedEditButtonState);
   const [uploadErrorModalOpen, setUploadErrorModalOpen] = useState(false);
   const [tokenErrorModalOpen, setTokenErrorModalOpen] = useState(false);
   const [message, setMessage] = useState("");
