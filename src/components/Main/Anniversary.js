@@ -17,7 +17,7 @@ import ErrorMessage from "../Common/ErrorMessage";
 import AlertModal from "../Modal/AlertModal";
 
 // ===== recoil & utils import =====
-import { isClickedEditButton } from "../../recoil/editButtonState";
+import { isClickedEditButtonState } from "../../recoil/editButtonState";
 import { calculateAnniversary } from "../../utils/calculation";
 
 // ===== style =====
@@ -34,7 +34,7 @@ const Anniversary = ({ anniversary }) => {
 
   // === state ===
   const [isAnniversaryEditMode, setIsAnniversaryEditMode] = useState(false);
-  const [isToggledEditButton, setIsToggledEditButton] = useRecoilState(isClickedEditButton);
+  const [isToggledEditButton, setIsToggledEditButton] = useRecoilState(isClickedEditButtonState);
   const [anniversaryError, setAnniversaryError] = useState("");
   const [tokenErrorModalOpen, setTokenErrorModalOpen] = useState(false);
   const [ourAnniversary, setOurAnniversary] = useState("");

@@ -18,7 +18,7 @@ import ErrorMessage from "../Common/ErrorMessage";
 import AlertModal from "../Modal/AlertModal";
 
 // ===== recoil & utils import =====
-import { isClickedEditButton } from "../../recoil/editButtonState";
+import { isClickedEditButtonState } from "../../recoil/editButtonState";
 import { isNameValid } from "../../utils/validation";
 
 // ===== style =====
@@ -36,7 +36,7 @@ const NicknameWrapper = ({ myNickname, loverNickname }) => {
 
   // === state ===
   const [isNicknameEditMode, setIsNicknameEditMode] = useState(false);
-  const [isToggledEditButton, setIsToggledEditButton] = useRecoilState(isClickedEditButton);
+  const [isToggledEditButton, setIsToggledEditButton] = useRecoilState(isClickedEditButtonState);
   const [nicknameError, setNicknameError] = useState("");
   const [tokenErrorModalOpen, setTokenErrorModalOpen] = useState(false);
 

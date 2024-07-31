@@ -12,7 +12,7 @@ import { faImage } from "@fortawesome/free-solid-svg-icons"; // 피드 아이콘
 import { faComments } from "@fortawesome/free-solid-svg-icons"; // 문답 아이콘
 
 // ===== recoil import =====
-import { isVisitedPage } from "../../recoil/visitedPageState";
+import { isVisitedPageState } from "../../recoil/visitedPageState";
 
 // ===== component =====
 const Nav = () => {
@@ -20,7 +20,7 @@ const Nav = () => {
   const navigate = useNavigate();
 
   // === state ===
-  const [visitedToday, setVisitedToday] = useRecoilState(isVisitedPage);
+  const [visitedToday, setVisitedToday] = useRecoilState(isVisitedPageState);
 
   useEffect(() => {
     const lastVisit = localStorage.getItem("lastVisit"); // 로컬 스토리지에서 마지막 방문 날짜 가져오기
