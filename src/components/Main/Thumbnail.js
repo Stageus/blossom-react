@@ -8,12 +8,12 @@ import { Img } from "../../styles/ImgStyle";
 import Div from "../../styles/LayoutStyle";
 import { Button } from "../../styles/ButtonStyle";
 
+// ===== recoil import =====
+import { isClickedEditButtonState } from "../../recoil/editButtonState";
+
 // ===== components import =====
 import ImageUploader from "../Common/ImageUploader";
 import AlertModal from "../Modal/AlertModal";
-
-// ===== recoil import =====
-import { isClickedEditButtonState } from "../../recoil/editButtonState";
 
 // ===== style =====
 const StyledRelativeDiv = styled(Div)`
@@ -33,7 +33,7 @@ const StyledAbsoluteButton = styled(Button)`
 
 // ===== component =====
 const Thumbnail = ({ thumbnail }) => {
-  // === state ===
+  // === state & recoil ===
   const [ourThumbnail, setOurThumbnail] = useState("");
   const [isThumbnailEditMode, setIsThumbnailEditMode] = useState(false);
   const [isToggledEditButton, setIsToggledEditButton] = useRecoilState(isClickedEditButtonState);
