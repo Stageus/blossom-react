@@ -1,8 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { useSetRecoilState } from "recoil";
 
 // ===== styles & img import =====
 import FlexBox from "../styles/FlexStyle";
 import TestImage from "../assets/images/test.jpg";
+
+// ===== recoil import =====
+import { currentNicknameState } from "../recoil/ninknameState";
 
 // ===== components import =====
 import Nav from "../components/Main/Nav";
@@ -14,6 +18,7 @@ import NicknameWrapper from "../components/Main/NicknameWrapper";
 const Main = () => {
   // === state ===
   const [initialData, setInitialData] = useState([]);
+  const setCurrentNickname = useSetRecoilState(currentNicknameState);
 
   useEffect(() => {
     // 초기 정보 불러오기 성공 시, 각 컴포넌트에 데이터 뿌리기
@@ -29,6 +34,7 @@ const Main = () => {
     };
 
     setInitialData(data);
+    setCurrentNickname({ myNickname: data.myNickname, LoverNickname: data.partnerNickname });
   }, []);
 
   return (

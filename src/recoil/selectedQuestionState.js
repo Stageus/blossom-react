@@ -7,3 +7,11 @@ export const selectedQuestionState = atom({
     question: "",
   },
 });
+
+export const latestQuestionState = atom({
+  key: "latestQuestionState",
+  default: {
+    id: null,
+    question: "",
+  },
+});

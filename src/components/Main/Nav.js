@@ -19,7 +19,7 @@ const Nav = () => {
   // === navigate ===
   const navigate = useNavigate();
 
-  // === state ===
+  // === recoil ===
   const [visitedToday, setVisitedToday] = useRecoilState(isVisitedPageState);
 
   useEffect(() => {

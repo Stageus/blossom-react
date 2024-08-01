@@ -12,14 +12,14 @@ import Div from "../../styles/LayoutStyle";
 import { faHeart } from "@fortawesome/free-solid-svg-icons"; // 하트 아이콘
 import { faUserPen } from "@fortawesome/free-solid-svg-icons"; // 수정 아이콘
 
+// ===== recoil & utils import =====
+import { isClickedEditButtonState } from "../../recoil/editButtonState";
+import { isNameValid } from "../../utils/validation";
+
 // ===== components import =====
 import InputField from "../Common/InputField";
 import ErrorMessage from "../Common/ErrorMessage";
 import AlertModal from "../Modal/AlertModal";
-
-// ===== recoil & utils import =====
-import { isClickedEditButtonState } from "../../recoil/editButtonState";
-import { isNameValid } from "../../utils/validation";
 
 // ===== style =====
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
@@ -34,7 +34,7 @@ const NicknameWrapper = ({ myNickname, loverNickname }) => {
   const myNicknameRef = useRef("");
   const loverNicknameRef = useRef("");
 
-  // === state ===
+  // === state & recoil ===
   const [isNicknameEditMode, setIsNicknameEditMode] = useState(false);
   const [isToggledEditButton, setIsToggledEditButton] = useRecoilState(isClickedEditButtonState);
   const [nicknameError, setNicknameError] = useState("");
