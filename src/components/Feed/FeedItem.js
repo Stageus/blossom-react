@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
+import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 // ===== styles & img import =====
 import FlexBox from "../../styles/FlexStyle";
@@ -7,10 +10,92 @@ import P from "../../styles/TextStyle";
 import { Img } from "../../styles/ImgStyle";
 import { Div } from "../../styles/LayoutStyle";
 
+import { faXmark } from "@fortawesome/free-solid-svg-icons"; // 닫기 아이콘
+import { faPenToSquare } from "@fortawesome/free-solid-svg-icons"; // 수정 아이콘
+
+// ===== component import =====
+import ConfirmModal from "../Modal/ConfirmModal";
+import AlertModal from "../Modal/AlertModal";
+
+// ===== style =====
+const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
+  width: ${(props) => props.$width || "24px"};
+  height: ${(props) => props.$height || "24px"};
+  color: #ffffff;
+`;
+
 // ===== component =====
 const FeedItem = ({ authorNickname, creationDate, feedImage, feedContent }) => {
+  // === state ===
+  const [isDeletedModalOpen, setIsDeletedModalOpen] = useState(false);
+  const [tokenErrorModalOpen, setTokenErrorModalOpen] = useState(false);
+  const [authorityErrorModalOpen, setAuthorityErrorModalOpen] = useState(false);
+
+  // === navigate ===
+  const navigate = useNavigate();
+
+  const handleClickFixButton = () => {
+    navigate("/feededitor/edit");
+  };
+
+  const handleClickDeleteButton = () => {
+    setIsDeletedModalOpen(true);
+  };
+
+  const handleDeleteFeedItem = () => {
+    // 특정 문답 삭제 API 호출 코드
+    const status = 200;
+
+    if (status === 401) {
+      setTokenErrorModalOpen(true);
+    } else if (status === 403) {
+      setAuthorityErrorModalOpen(true);
+    } else if (status === 404) {
+      // idx 존재하지 않음
+      // 새로고침
+    } else if (status === 200) {
+      // 삭제 성공
+      // 새로고침
+    }
+  };
+
+  const handleCloseTokenErrorModal = () => {
+    navigate("/login");
+  };
+
+  const handleCloseAuthorityErrorModal = () => {
+    // 새로고침
+  };
+
   return (
     <>
+      {/* 피드 삭제 Confirm Modal */}
+      {isDeletedModalOpen && (
+        <ConfirmModal
+          message={["피드를 삭제하시겠습니까?"]}
+          setIsOpen={setIsDeletedModalOpen}
+          onClick={handleDeleteFeedItem}
+        />
+      )}
+
+      {/* 토큰 에러 Alert Modal */}
+      {tokenErrorModalOpen && (
+        <AlertModal
+          hasFunc={true}
+          message="로그인이 필요합니다."
+          onClick={handleCloseTokenErrorModal}
+        />
+      )}
+
+      {/* 권한 에러 Alert Modal */}
+      {authorityErrorModalOpen && (
+        <AlertModal
+          hasFunc={true}
+          message="접근 권한이 없습니다."
+          onClick={handleCloseAuthorityErrorModal}
+        />
+      )}
+
       <FlexBox $dir="col" $width="100%" $borderBottom="1px solid #d3d3d3" $margin="0 0 15px 0">
         {/* Feed Item 내 Header */}
         <FlexBox $row="between" $width="100%" $margin="0 0 5px 0">
@@ -26,29 +111,33 @@ const FeedItem = ({ authorNickname, creationDate, feedImage, feedContent }) => {
           <FlexBox $margin="0 10px 0 0">
             {/* 수정 버튼 */}
             <Button
-              $width="20px"
-              $height="20px"
+              $width="24px"
+              $height="24px"
               $margin="0 5px 0 0"
               $backgroundColor="#FFC4C4"
               $borderRadius="50%"
-            ></Button>
-            {/* 추가 버튼 */}
-            <Button
-              $width="20px"
-              $height="20px"
-              $margin="0 5px 0 0"
-              $backgroundColor="#FFA7A7"
-              $borderRadius="50%"
-            ></Button>
+              $fontSize="0px"
+              onClick={handleClickFixButton}
+            >
+              <StyledFontAwesomeIcon $width="18px" $height="18px" icon={faPenToSquare} />
+            </Button>
             {/* 삭제 버튼 */}
             <Button
-              $width="20px"
-              $height="20px"
+              $width="24px"
+              $height="24px"
               $margin="0 0 0 0"
               $backgroundColor="#FF7979"
               $borderRadius="50%"
               $hoverColor="#CF5757"
-            ></Button>
+              $fontSize="0px"
+              onClick={handleClickDeleteButton}
+              // style={{
+              //   display: "grid",
+              //   placeItems: "center",
+              // }}
+            >
+              <StyledFontAwesomeIcon icon={faXmark} />
+            </Button>
           </FlexBox>
         </FlexBox>
 
