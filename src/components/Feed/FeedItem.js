@@ -30,6 +30,7 @@ const FeedItem = ({ authorNickname, creationDate, feedImage, feedContent }) => {
   const [isDeletedModalOpen, setIsDeletedModalOpen] = useState(false);
   const [tokenErrorModalOpen, setTokenErrorModalOpen] = useState(false);
   const [authorityErrorModalOpen, setAuthorityErrorModalOpen] = useState(false);
+  const [deleteErrorModalOpen, setDeleteErrorModalOpen] = useState(false);
 
   // === navigate ===
   const navigate = useNavigate();
@@ -44,18 +45,16 @@ const FeedItem = ({ authorNickname, creationDate, feedImage, feedContent }) => {
 
   const handleDeleteFeedItem = () => {
     // 특정 문답 삭제 API 호출 코드
-    const status = 200;
+    const status = 404;
 
     if (status === 401) {
       setTokenErrorModalOpen(true);
     } else if (status === 403) {
       setAuthorityErrorModalOpen(true);
     } else if (status === 404) {
-      // idx 존재하지 않음
-      // 새로고침
+      setDeleteErrorModalOpen(true);
     } else if (status === 200) {
-      // 삭제 성공
-      // 새로고침
+      window.location.reload();
     }
   };
 
@@ -63,8 +62,8 @@ const FeedItem = ({ authorNickname, creationDate, feedImage, feedContent }) => {
     navigate("/login");
   };
 
-  const handleCloseAuthorityErrorModal = () => {
-    // 새로고침
+  const handleCloseErrorModal = () => {
+    window.location.reload();
   };
 
   return (
@@ -92,7 +91,15 @@ const FeedItem = ({ authorNickname, creationDate, feedImage, feedContent }) => {
         <AlertModal
           hasFunc={true}
           message="접근 권한이 없습니다."
-          onClick={handleCloseAuthorityErrorModal}
+          onClick={handleCloseErrorModal}
+        />
+      )}
+
+      {deleteErrorModalOpen && (
+        <AlertModal
+          hasFunc={true}
+          message="게시물이 존재하지 않습니다."
+          onClick={handleCloseErrorModal}
         />
       )}
 
