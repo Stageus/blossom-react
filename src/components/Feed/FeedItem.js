@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -16,6 +16,7 @@ import { faPenToSquare } from "@fortawesome/free-solid-svg-icons"; // 수정 아
 // ===== component import =====
 import ConfirmModal from "../Modal/ConfirmModal";
 import AlertModal from "../Modal/AlertModal";
+import Comment from "./Comment";
 
 // ===== style =====
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
@@ -25,12 +26,14 @@ const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
 `;
 
 // ===== component =====
-const FeedItem = ({ authorNickname, creationDate, feedImage, feedContent }) => {
+const FeedItem = ({ feedIdx, authorNickname, creationDate, feedImage, feedContent }) => {
   // === state ===
   const [isDeletedModalOpen, setIsDeletedModalOpen] = useState(false);
   const [tokenErrorModalOpen, setTokenErrorModalOpen] = useState(false);
   const [authorityErrorModalOpen, setAuthorityErrorModalOpen] = useState(false);
   const [deleteErrorModalOpen, setDeleteErrorModalOpen] = useState(false);
+  const [selectedFeedIdx, setSelectedFeedIdx] = useState(null);
+  const [isCommentModalOpen, setIsCommentModalOpen] = useState(false);
 
   // === navigate ===
   const navigate = useNavigate();
@@ -66,6 +69,11 @@ const FeedItem = ({ authorNickname, creationDate, feedImage, feedContent }) => {
     window.location.reload();
   };
 
+  const handleOpenCommentModal = (idx) => {
+    setSelectedFeedIdx(idx);
+    setIsCommentModalOpen(true);
+  };
+
   return (
     <>
       {/* 피드 삭제 Confirm Modal */}
@@ -95,12 +103,18 @@ const FeedItem = ({ authorNickname, creationDate, feedImage, feedContent }) => {
         />
       )}
 
+      {/* 삭제 에러 Alert Modal */}
       {deleteErrorModalOpen && (
         <AlertModal
           hasFunc={true}
           message="게시물이 존재하지 않습니다."
           onClick={handleCloseErrorModal}
         />
+      )}
+
+      {/* 전체 댓글 Modal */}
+      {isCommentModalOpen && (
+        <Comment feedIdx={selectedFeedIdx} setIsOpen={setIsCommentModalOpen} />
       )}
 
       <FlexBox $dir="col" $width="100%" $borderBottom="1px solid #d3d3d3" $margin="0 0 15px 0">
@@ -159,7 +173,13 @@ const FeedItem = ({ authorNickname, creationDate, feedImage, feedContent }) => {
         </FlexBox>
 
         {/* 전체 댓글 보기 버튼 */}
-        <Button $backgroundColor="transparent" $hoverColor="null" $padding="10px" $fontSize="16px">
+        <Button
+          $backgroundColor="transparent"
+          $hoverColor="null"
+          $padding="10px"
+          $fontSize="16px"
+          onClick={() => handleOpenCommentModal(feedIdx)}
+        >
           전체 댓글 보기
         </Button>
       </FlexBox>
