@@ -97,6 +97,7 @@ const Feed = () => {
           {feedData?.map((feedData, index) => (
             <FeedItem
               key={index}
+              feedIdx={feedData?.idx}
               authorNickname={feedData?.nickname}
               creationDate={feedData?.date}
               feedImage={feedData?.image}
