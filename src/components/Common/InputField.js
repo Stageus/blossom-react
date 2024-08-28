@@ -9,6 +9,7 @@ import FlexBox from "../../styles/FlexStyle";
 const InputField = ({
   fontSize,
   width,
+  height,
   margin,
   hasLabel,
   labelMessage,
@@ -89,6 +90,7 @@ const InputField = ({
       ) : (
         <Input
           $width={width}
+          $height={height}
           $margin={margin}
           ref={inputRef}
           type={type}
