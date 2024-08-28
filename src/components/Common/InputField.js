@@ -94,11 +94,11 @@ const InputField = ({
           $margin={margin}
           ref={inputRef}
           type={type}
+          {...(type === "date" ? { max: currentDate } : {})}
           placeholder={placeholderMessage}
           onChange={updateValueEvent}
           onBlur={onBlur}
           disabled={disabled}
-          max={currentDate}
           autoFocus={autoFocus}
           defaultValue={defaultValue}
         />
