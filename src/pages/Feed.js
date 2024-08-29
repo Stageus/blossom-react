@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -15,6 +15,7 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"; // 검색
 
 // ===== components import =====
 import FeedItem from "../components/Feed/FeedItem";
+import InputField from "../components/Common/InputField";
 
 // ===== style =====
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
@@ -25,6 +26,9 @@ const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
 
 // ===== component =====
 const Feed = () => {
+  // === ref ===
+  const dateRef = useRef("");
+
   // === state ===
   const [feedData, setFeedData] = useState([]);
 
@@ -66,6 +70,32 @@ const Feed = () => {
     navigate("/");
   };
 
+  const handleClickSearchButton = () => {
+    if (dateRef.current) {
+      dateRef.current.focus();
+      dateRef.current.showPicker();
+    }
+  };
+
+  const handleDateChange = () => {
+    if (dateRef.current) {
+      console.log(dateRef.current.value);
+
+      // 날짜로 검색 API 호출 코드
+      const status = 200;
+
+      if (status === 400) {
+        // 정규식 에러
+      } else if (status === 401) {
+        // 토큰 에러
+      } else if (status === 500) {
+        // 서버 내부 에러
+      } else {
+        // 성공
+      }
+    }
+  };
+
   return (
     <>
       <FlexBox $row="center" $width="100%">
@@ -87,9 +117,21 @@ const Feed = () => {
             <Img src={logo} />
 
             {/* 날짜로 검색하기 위한 검색 버튼 */}
-            <Button $backgroundColor="transparent" $hoverColor="null" $margin="0 24px 0 0">
+            <Button
+              $backgroundColor="transparent"
+              $hoverColor="null"
+              $margin="0 24px 0 0"
+              onClick={handleClickSearchButton}
+            >
               <StyledFontAwesomeIcon icon={faMagnifyingGlass} />
             </Button>
+            <InputField
+              width="715px"
+              type="date"
+              inputRef={dateRef}
+              style={{ visibility: "hidden", position: "absolute", right: 0 }}
+              onChange={handleDateChange}
+            />
           </FlexBox>
 
           {/* 피드 출력부 */}
