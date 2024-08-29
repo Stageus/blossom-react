@@ -11,12 +11,14 @@ const InputField = ({
   width,
   height,
   margin,
+  style,
   hasLabel,
   labelMessage,
   inputType,
   inputRef,
   type = "text",
   placeholderMessage,
+  onChange,
   onBlur,
   disabled,
   onValidateAndSend,
@@ -96,11 +98,12 @@ const InputField = ({
           type={type}
           {...(type === "date" ? { max: currentDate } : {})}
           placeholder={placeholderMessage}
-          onChange={updateValueEvent}
+          onChange={onChange || updateValueEvent}
           onBlur={onBlur}
           disabled={disabled}
           autoFocus={autoFocus}
           defaultValue={defaultValue}
+          style={style}
         />
       )}
     </>
