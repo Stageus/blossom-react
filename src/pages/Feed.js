@@ -12,6 +12,7 @@ import { Button } from "../styles/ButtonStyle";
 import TestImage from "../assets/images/test.jpg";
 
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"; // 검색 아이콘
+import { faPlus } from "@fortawesome/free-solid-svg-icons"; // 추가 아이콘
 
 // ===== components import =====
 import FeedItem from "../components/Feed/FeedItem";
@@ -96,6 +97,10 @@ const Feed = () => {
     }
   };
 
+  const handleNewPost = () => {
+    navigate("/feededitor/add");
+  };
+
   return (
     <>
       <FlexBox $row="center" $width="100%">
@@ -116,22 +121,34 @@ const Feed = () => {
             {/* 로고 이미지 */}
             <Img src={logo} />
 
-            {/* 날짜로 검색하기 위한 검색 버튼 */}
-            <Button
-              $backgroundColor="transparent"
-              $hoverColor="null"
-              $margin="0 24px 0 0"
-              onClick={handleClickSearchButton}
-            >
-              <StyledFontAwesomeIcon icon={faMagnifyingGlass} />
-            </Button>
-            <InputField
-              width="715px"
-              type="date"
-              inputRef={dateRef}
-              style={{ visibility: "hidden", position: "absolute", right: 0 }}
-              onChange={handleDateChange}
-            />
+            <FlexBox>
+              {/* 날짜로 검색하기 위한 검색 버튼 */}
+              <Button
+                $backgroundColor="transparent"
+                $hoverColor="null"
+                $margin="0 24px 0 0"
+                onClick={handleClickSearchButton}
+              >
+                <StyledFontAwesomeIcon icon={faMagnifyingGlass} />
+              </Button>
+              <InputField
+                width="715px"
+                type="date"
+                inputRef={dateRef}
+                style={{ visibility: "hidden", position: "absolute", right: 0 }}
+                onChange={handleDateChange}
+              />
+
+              {/* 새로운 글 작성 버튼 */}
+              <Button
+                $backgroundColor="transparent"
+                $hoverColor="null"
+                $margin="0 10px 0 0"
+                onClick={handleNewPost}
+              >
+                <StyledFontAwesomeIcon icon={faPlus} />
+              </Button>
+            </FlexBox>
           </FlexBox>
 
           {/* 피드 출력부 */}
