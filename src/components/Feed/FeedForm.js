@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 // ===== styles & img import =====
 import FlexBox from "../../styles/FlexStyle";
@@ -34,6 +35,9 @@ const FeedForm = () => {
   // const [date, setDate] = useState(existingData?.date || new Date().toISOString().slice(0, 10));
   // const [content, setContent] = useState(existingData?.content || "");
 
+  // === navigate ===
+  const navigate = useNavigate();
+
   // 수정 모드일 때 기존 값을 ref에 설정
   useEffect(() => {
     if (isEdit && existingData) {
@@ -51,11 +55,26 @@ const FeedForm = () => {
   };
 
   const handleClickSaveButton = () => {
+    // photo는 state의 photo로
     const date = dateRef.current.value;
     const content = contentRef.current.value;
 
     // 피드 수정, 작성 API 호출 코드
     const status = 200;
+
+    if (status === 400) {
+      // 정규식 에러
+    } else if (status === 401) {
+      // 토큰 유효하지 않음
+    } else if (status === 403) {
+      // 엑세스 권한 없음 (본인 커플의 것만 가능)
+    } else if (status === 404) {
+      // 서버에 존재하지 않음
+    } else if (status === 500) {
+      // 서버 내부 에러
+    } else {
+      navigate("/feed");
+    }
   };
 
   const handleClickCancelButton = () => {};
