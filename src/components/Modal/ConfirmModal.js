@@ -17,7 +17,8 @@ const ConfirmModal = ({ message, setIsOpen, onClick }) => {
   return (
     <Modal setIsOpen={() => setIsOpen(false)}>
       <FlexBox $dir="col" $row="between" $col="center" $height="8rem">
-        {message.map((line, index) => (
+        {/* 이 부분 수정하면 좋을 듯, 객체로만 적어야 하니 불편 */}
+        {message?.map((line, index) => (
           <P key={index} $fontSize="32px">
             {line}
           </P>

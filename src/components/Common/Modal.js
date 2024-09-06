@@ -12,7 +12,17 @@ const TrnasformDiv = styled(Div)`
 `;
 
 // ===== component =====
-const Modal = ({ children, width = "37.5rem", height = "22rem", setIsOpen }) => {
+const Modal = ({
+  children,
+  width = "37.5rem",
+  height = "22rem",
+  backgroundColor = "#E1F2FB",
+  setIsOpen,
+  contentRow = "center",
+  contentCol = "center",
+  // hasHeader = true,
+  dir = "row",
+}) => {
   // children : Modal Content (버튼을 포함하여 모달에 들어가는 내용을 할당)
   // setIsOpen : Modal 닫힘을 위한 funtion
 
@@ -32,7 +42,13 @@ const Modal = ({ children, width = "37.5rem", height = "22rem", setIsOpen }) => 
       {/* Modal Wrapper */}
       <TrnasformDiv $position="fixed" $top="50%" $left="50%" $width={width} $height={height}>
         {/* Modal Header */}
-        <FlexBox $width="100%" $height="4rem" $row="end" $col="center" $backgroundColor="#E1F2FB">
+        <FlexBox
+          $width="100%"
+          $height="4rem"
+          $row="end"
+          $col="center"
+          $backgroundColor={backgroundColor}
+        >
           <Button
             $width="20px"
             $height="20px"
@@ -48,8 +64,9 @@ const Modal = ({ children, width = "37.5rem", height = "22rem", setIsOpen }) => 
         <FlexBox
           $width="100%"
           $height="100%"
-          $row="center"
-          $col="center"
+          $dir={dir}
+          $row={contentRow}
+          $col={contentCol}
           $backgroundColor="#FFFFFF"
         >
           {children}

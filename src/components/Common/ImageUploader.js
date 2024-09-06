@@ -27,7 +27,7 @@ const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
 `;
 
 // ===== component =====
-const ImageUploader = ({ onSelectImage, onClick, isEditMode }) => {
+const ImageUploader = ({ onSelectImage, onClick, isEditMode, top = "4px", right = "4px" }) => {
   // === ref ===
   const fileRef = useRef(null);
 
@@ -75,8 +75,8 @@ const ImageUploader = ({ onSelectImage, onClick, isEditMode }) => {
           {/* file select button */}
           <StyledAbsoluteButton
             onClick={handleButtonClick}
-            $top="4px"
-            $right="4px"
+            $top={top}
+            $right={right}
             $fontSize="32px"
           >
             <StyledFontAwesomeIcon icon={faPenToSquare} />
