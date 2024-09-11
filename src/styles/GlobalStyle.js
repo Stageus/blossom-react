@@ -3,20 +3,25 @@ import { createGlobalStyle } from "styled-components";
 const GlobalStyle = createGlobalStyle`
 
   // 배민 도현체
-  @font-face {
+  /* @font-face {
     font-family: 'BMDOHYEON';
     src: url("/fonts/BMDOHYEON_otf.otf") format('opentype');
   }
 
   * {
   font-family: 'BMDOHYEON', sans-serif;
-  }
+  } */
+
+  /* body {
+  font-family: 'Pretendard', sans-serif;
+} */
 
   body {
     margin: 0;
     padding: 0;
     background-color: #FCF5EE;
     box-sizing: border-box;
+    font-family: 'Pretendard', sans-serif;
   }
 
   a {
