@@ -9,7 +9,8 @@ import TestImage from "../assets/images/test.jpg";
 import { currentNicknameState } from "../recoil/ninknameState";
 
 // ===== components import =====
-import Nav from "../components/Main/Nav";
+import Nav from "../components/Main/Nav/Nav";
+// import Nav from "../components/Main/Nav";
 import Anniversary from "../components/Main/Anniversary";
 import Thumbnail from "../components/Main/Thumbnail";
 import NicknameWrapper from "../components/Main/NicknameWrapper";
