@@ -5,12 +5,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // ===== styles import =====
 import { Button } from "../../../styles/ButtonStyle";
 import FlexBox from "../../../styles/FlexStyle";
-
 import { faCalendarDays } from "@fortawesome/free-solid-svg-icons"; // 일정 아이콘
 import { faImage } from "@fortawesome/free-solid-svg-icons"; // 피드 아이콘
 import { faComments } from "@fortawesome/free-solid-svg-icons"; // 문답 아이콘
-
-// ===== Custom Hook Import =====
+// ===== custom Hook import =====
 import useIsVisited from "./useIsVisited";
 
 // ===== component =====

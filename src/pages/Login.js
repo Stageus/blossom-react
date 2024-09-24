@@ -7,7 +7,8 @@ import { Div } from "../styles/LayoutStyle";
 import { Span } from "../styles/TextStyle";
 
 // ===== components import =====
-import LoginForm from "../components/Auth/LoginForm";
+import LoginForm from "../components/Auth/Login/LoginForm";
+// import LoginForm from "../components/Auth/LoginForm";
 
 // ===== component =====
 const Login = () => {
