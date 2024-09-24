@@ -3,10 +3,11 @@ import React from "react";
 // ===== styles import =====
 import FlexBox from "../styles/FlexStyle";
 import P, { H1 } from "../styles/TextStyle";
-
 // ===== components import =====
-import FindIdForm from "../components/Auth/FindIdForm";
+import FindIdForm from "../components/Auth/FindId/FindIdForm";
+// import FindIdForm from "../components/Auth/FindIdForm";
 
+// ===== component =====
 const FindId = () => {
   return (
     <FlexBox $row="end" $width="100%">

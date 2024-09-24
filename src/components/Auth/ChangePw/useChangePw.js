@@ -19,7 +19,7 @@ const useChangePw = () => {
   const navigate = useNavigate();
   // === api ===
   const { statusCode, fetchData } = useAxios(
-    "/account/pw", // 로그인 api 주소, 추후 백엔드 서버 구축 후 연결
+    "/account/pw", // 비밀번호 변경 api 주소, 추후 백엔드 서버 구축 후 연결
     "PUT",
     {},
     false,
@@ -82,6 +82,7 @@ const useChangePw = () => {
     }
   };
 
+  // === return ===
   return {
     pwRef,
     confirmPwRef,
