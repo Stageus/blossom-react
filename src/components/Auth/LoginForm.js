@@ -1,58 +1,64 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 // ===== styles import =====
 import FlexBox from "../../styles/FlexStyle";
 import { Button } from "../../styles/ButtonStyle";
-
-// ===== utils import =====
+// ===== utils & hook import =====
 import { isIdValid, isPwValid } from "../../utils/validation";
-
-// ===== components import =====
+import useAxios from "../../hooks/useAxios";
+// ===== components import ====
 import InputField from "../../components/Common/InputField";
 import ErrorMessage from "../Common/ErrorMessage";
 
 // ===== component =====
 const LoginForm = () => {
   // === ref ===
-  const IdRef = useRef("");
+  const idRef = useRef("");
   const passwordRef = useRef("");
-
+  const submitRef = useRef(null);
   // === state ===
   const [loginError, setLoginError] = useState("");
-
   // === navigate ===
   const navigate = useNavigate();
+  // === useAxios ===
+  const { data, loading, error, statusCode, fetchData } = useAxios(
+    "/api/login", // 로그인 api 주소, 추후 백엔드 서버 구축 후 연결
+    "POST",
+    {},
+    false,
+    false,
+  );
 
-  useEffect(() => {
-    // 로그인 실패 시, Error Message 출력
-    // 로그인 성공 시, 세션 저장 및 초기 설정 페이지 혹은 메인 페이지로 이동
-  }, []);
+  const handleLogin = async () => {
+    const id = idRef.current.value;
+    const pw = passwordRef.current.value;
 
-  const handleLogin = () => {
-    const id = IdRef.current.value;
-    const password = passwordRef.current.value;
-
-    // 아이디, 비밀번호 유효성 검사
-    if (!isIdValid(id) || !isPwValid(password)) {
-      setLoginError("아이디 혹은 비밀번호를 확인해 주세요.");
+    // 유효성 검사
+    if (!isIdValid(id) || !isPwValid(pw)) {
+      setLoginError("아이디와 비밀번호를 입력하세요.");
     } else {
       setLoginError(""); // 로그인 에러 메세지 초기화
 
-      // 로그인 API 호출 코드
-      const status = 200;
+      // 로그인 API 호출
+      await fetchData({
+        body: {
+          id, // 아이디
+          pw, // 비밀번호
+        },
+      });
 
-      if (status === 400) {
-        setLoginError("아이디 혹은 비밀번호를 확인해 주세요.");
-      } else if (status === 401) {
-        setLoginError("아이디 혹은 비밀번호가 일치하지 않습니다.");
-      } else if (status === 404) {
-        setLoginError("계정이 존재하지 않습니다.");
-      } else if (status === 500) {
-        return;
-      } else {
+      // 로그인 성공 및 실패 처리
+      if (statusCode === 200) {
+        localStorage.setItem("token", data.token); // JWT 토큰을 로컬 스토리지에 저장
         setLoginError("");
-        navigate("/matching");
+        navigate("/");
+      } else if (statusCode === 401 || statusCode === 400) {
+        setLoginError("아이디 또는 비밀번호가 잘못되었습니다.");
+      } else if (statusCode === 404) {
+        setLoginError("해당 계정이 존재하지 않습니다.");
+      } else if (statusCode === 500) {
+        setLoginError("서버 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.");
       }
     }
   };
@@ -61,8 +67,18 @@ const LoginForm = () => {
     <>
       {/* 로그인 Input Field */}
       <FlexBox $dir="col" $row="between" $width="25.625rem" $height="9.875rem">
-        <InputField inputRef={IdRef} placeholderMessage="아이디 입력" />
-        <InputField inputRef={passwordRef} type="password" placeholderMessage="비밀번호 입력" />
+        <InputField inputRef={idRef} placeholderMessage="아이디 입력" />
+        <InputField
+          inputRef={passwordRef}
+          type="password"
+          placeholderMessage="비밀번호 입력"
+          onKeyDown={(event) => {
+            if (event.key === "Enter") {
+              event.preventDefault(); // 엔터 기본 동작 방지
+              submitRef.current.click(); // 마지막 필드에서 엔터가 눌리면 버튼 클릭
+            }
+          }}
+        />
       </FlexBox>
 
       {/* 로그인 에러 시 출력되는 Error Message */}
@@ -73,7 +89,13 @@ const LoginForm = () => {
       )}
 
       {/* 로그인 Button */}
-      <Button $width="25.625rem" $height="5rem" $margin="30px 0 50px 0" onClick={handleLogin}>
+      <Button
+        $width="25.625rem"
+        $height="5rem"
+        $margin="30px 0 50px 0"
+        ref={submitRef}
+        onClick={handleLogin}
+      >
         로그인
       </Button>
     </>
