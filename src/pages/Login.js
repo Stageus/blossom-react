@@ -5,9 +5,8 @@ import { Link } from "react-router-dom";
 import FlexBox from "../styles/FlexStyle";
 import { Div } from "../styles/LayoutStyle";
 import { Span } from "../styles/TextStyle";
-
 // ===== components import =====
-import LoginForm from "../components/Auth/LoginForm";
+import LoginForm from "../components/Auth/Login/LoginForm";
 
 // ===== component =====
 const Login = () => {

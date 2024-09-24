@@ -20,6 +20,7 @@ const InputField = ({
   placeholderMessage,
   onChange,
   onBlur,
+  onKeyDown,
   disabled,
   onValidateAndSend,
   autoFocus,
@@ -82,6 +83,7 @@ const InputField = ({
           $width="100%"
           onChange={handleChangePhonenumber}
           onBlur={onBlur}
+          onKeyDown={onKeyDown}
         >
           <Input type="text" placeholder="010" ref={numbersRef[0]} />
           <Span $margin="0 10px 0 10px">-</Span>
@@ -100,6 +102,7 @@ const InputField = ({
           placeholder={placeholderMessage}
           onChange={onChange || updateValueEvent}
           onBlur={onBlur}
+          onKeyDown={onKeyDown}
           disabled={disabled}
           autoFocus={autoFocus}
           defaultValue={defaultValue}

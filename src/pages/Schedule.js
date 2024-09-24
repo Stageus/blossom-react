@@ -1,7 +1,17 @@
 import React from "react";
 
+// ===== styles import =====
+import FlexBox from "../styles/FlexStyle";
+// ===== components import =====
+// import CalendarForSchedule from "../components/Schedule/CalendarForSchedule/CalendarForSchedule";
+
+// ===== component =====
 const Schedule = () => {
-  return <h1>일정 페이지</h1>;
+  return (
+    <FlexBox $row="center" $width="100%">
+      {/* <CalendarForSchedule /> */}
+    </FlexBox>
+  );
 };
 
 export default Schedule;

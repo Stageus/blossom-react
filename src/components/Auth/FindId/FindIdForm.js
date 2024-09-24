@@ -1,65 +1,30 @@
-import React, { useState, useEffect, useRef } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 // ===== styles import =====
-import FlexBox from "../../styles/FlexStyle";
-import Div from "../../styles/LayoutStyle";
-import { Span } from "../../styles/TextStyle";
-import { Button } from "../../styles/ButtonStyle";
-
-// ===== utils import =====
-import { isNameValid, isPhoneNumberValid } from "../../utils/validation";
-
+import FlexBox from "../../../styles/FlexStyle";
+import Div from "../../../styles/LayoutStyle";
+import { Span } from "../../../styles/TextStyle";
+import { Button } from "../../../styles/ButtonStyle";
 // ===== components import =====
-import ErrorMessage from "../Common/ErrorMessage";
-import InputField from "../Common/InputField";
+import ErrorMessage from "../../Common/ErrorMessage";
+import InputField from "../../Common/InputField";
+// ===== hooks import =====
+import useFindId from "./useFindId";
 
 // ===== component =====
 const FindIdForm = () => {
-  // === ref ===
-  const nameRef = useRef("");
-
-  // === state ===
-  const [phonenumber, setPhonenumber] = useState("");
-  const [userId, setUserId] = useState("");
-  const [hasUserId, setHasUserId] = useState(false);
-  const [findIdError, setFindIdError] = useState("");
-
-  useEffect(() => {
-    // 아이디 찾기 성공 시, 아이디 출력
-    // 아이디 찾기 실패 시, Error Message 출력
-  }, []);
-
-  // props를 통해 전화번호 받아오고, state에 저장
-  const handleSendPhonenumber = (phone) => {
-    setPhonenumber(phone);
-  };
-
-  const handleFindId = () => {
-    const name = nameRef.current.value;
-    const id = "jephpp";
-
-    if (!isNameValid(name) || !isPhoneNumberValid(phonenumber)) {
-      setFindIdError("이름 혹은 전화번호를 확인해 주세요.");
-    } else {
-      setFindIdError(""); // 아이디 찾기 에러 메세지 초기화
-
-      // 아이디 찾기 API 호출 코드
-      const status = 200;
-
-      if (status === 400) {
-        setFindIdError("이름 혹은 전화번호를 확인해 주세요.");
-      } else if (status === 404) {
-        setFindIdError("해당 정보가 존재하지 않습니다.");
-      } else if (status === 500) {
-        return;
-      } else {
-        setHasUserId(true);
-        setUserId(id);
-      }
-    }
-  };
-
+  // === useFindId ===
+  const {
+    nameRef,
+    submitRef,
+    userId,
+    hasUserId,
+    findIdError,
+    handleSendPhonenumber,
+    handleFindId,
+  } = useFindId();
+  // === return ===
   return (
     <>
       {hasUserId ? (
@@ -115,13 +80,25 @@ const FindIdForm = () => {
               labelMessage="전화번호"
               fontSize="18px"
               inputType="phone"
+              onKeyDown={(event) => {
+                if (event.key === "Enter") {
+                  event.preventDefault();
+                  submitRef.current.click();
+                }
+              }}
               onValidateAndSend={handleSendPhonenumber}
             />
             {findIdError && <ErrorMessage message={findIdError} />}
           </FlexBox>
 
           {/* 아이디 찾기 Button */}
-          <Button $width="25.625rem" $height="5rem" $margin="30px 0 50px 0" onClick={handleFindId}>
+          <Button
+            $width="25.625rem"
+            $height="5rem"
+            $margin="30px 0 50px 0"
+            ref={submitRef}
+            onClick={handleFindId}
+          >
             확인
           </Button>
 
