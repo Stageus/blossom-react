@@ -83,6 +83,7 @@ const InputField = ({
           $width="100%"
           onChange={handleChangePhonenumber}
           onBlur={onBlur}
+          onKeyDown={onKeyDown}
         >
           <Input type="text" placeholder="010" ref={numbersRef[0]} />
           <Span $margin="0 10px 0 10px">-</Span>
