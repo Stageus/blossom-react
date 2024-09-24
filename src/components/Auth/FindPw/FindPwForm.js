@@ -15,7 +15,8 @@ import useFindPw from "./useFindPw";
 // ===== component =====
 const FindPwForm = () => {
   // === useFindPw ===
-  const { idRef, nameRef, findPwError, handleSendPhonenumber, handleFindPw } = useFindPw();
+  const { idRef, nameRef, submitRef, findPwError, handleSendPhonenumber, handleFindPw } =
+    useFindPw();
   // === return ===
   return (
     <>
@@ -40,13 +41,25 @@ const FindPwForm = () => {
           labelMessage="전화번호"
           fontSize="18px"
           inputType="phone"
+          onKeyDown={(event) => {
+            if (event.key === "Enter") {
+              event.preventDefault();
+              submitRef.current.click();
+            }
+          }}
           onValidateAndSend={handleSendPhonenumber}
         />
         {findPwError && <ErrorMessage message={findPwError} />}
       </FlexBox>
 
       {/* 비밀번호 찾기 Button */}
-      <Button $width="25.625rem" $height="5rem" $margin="30px 0 30px 0" onClick={handleFindPw}>
+      <Button
+        $width="25.625rem"
+        $height="5rem"
+        $margin="30px 0 30px 0"
+        ref={submitRef}
+        onClick={handleFindPw}
+      >
         확인
       </Button>
 

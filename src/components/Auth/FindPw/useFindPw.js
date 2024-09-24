@@ -3,12 +3,14 @@ import { useNavigate } from "react-router-dom";
 
 // ===== utils import =====
 import { isIdValid, isNameValid, isPhoneNumberValid } from "../../../utils/validation";
+import useAxios from "../../../hooks/useAxios";
 
 // ===== custom hook =====
 const useFindPw = () => {
   // === ref ===
   const idRef = useRef("");
   const nameRef = useRef("");
+  const submitRef = useRef(null);
   // === state ===
   const [phonenumber, setPhonenumber] = useState("");
   const [findPwError, setFindPwError] = useState("");
@@ -58,7 +60,7 @@ const useFindPw = () => {
   };
 
   // === return ===
-  return { idRef, nameRef, findPwError, handleSendPhonenumber, handleFindPw };
+  return { idRef, nameRef, submitRef, findPwError, handleSendPhonenumber, handleFindPw };
 };
 
 export default useFindPw;
