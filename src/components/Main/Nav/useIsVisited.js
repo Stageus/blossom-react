@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useRecoilState } from "recoil";
 import { isVisitedPageState } from "../../../recoil/visitedPageState"; // Recoil
 
-// ===== Custom Hook =====
+// ===== custom hook =====
 const useIsVisited = () => {
   const [visitedToday, setVisitedToday] = useRecoilState(isVisitedPageState);
 

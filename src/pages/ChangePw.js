@@ -3,10 +3,10 @@ import React from "react";
 // ===== styles import =====
 import FlexBox from "../styles/FlexStyle";
 import P, { H1 } from "../styles/TextStyle";
-
 // ===== components import =====
-import ChangePwForm from "../components/Auth/ChangePwForm";
+import ChangePwForm from "../components/Auth/ChangePw/ChangePwForm";
 
+// ===== component =====
 const ChangePw = () => {
   return (
     <FlexBox $row="end" $width="100%">

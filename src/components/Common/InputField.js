@@ -20,6 +20,7 @@ const InputField = ({
   placeholderMessage,
   onChange,
   onBlur,
+  onKeyDown,
   disabled,
   onValidateAndSend,
   autoFocus,
@@ -100,6 +101,7 @@ const InputField = ({
           placeholder={placeholderMessage}
           onChange={onChange || updateValueEvent}
           onBlur={onBlur}
+          onKeyDown={onKeyDown}
           disabled={disabled}
           autoFocus={autoFocus}
           defaultValue={defaultValue}
