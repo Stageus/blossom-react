@@ -6,19 +6,15 @@ import FlexBox from "../styles/FlexStyle";
 import { Button } from "../styles/ButtonStyle";
 import { Img } from "../styles/ImgStyle";
 import { H1 } from "../styles/TextStyle";
-
 // ===== components import =====
-import SignupForm from "../components/Auth/SignupForm";
+import SignupForm from "../components/Auth/Signup/SignupForm";
 import WhiteArrow from "../assets/images/icon_park_left.png";
 
+// ===== component =====
 const Signup = () => {
   // === navigate ===
   const navigate = useNavigate();
-
-  const handleGoBack = () => {
-    navigate("/login");
-  };
-
+  // === return ===
   return (
     <FlexBox $row="center" $width="100%">
       <FlexBox
@@ -34,7 +30,7 @@ const Signup = () => {
             $backgroundColor="transparent"
             $hoverColor="null"
             $margin="0 0 0 50px"
-            onClick={handleGoBack}
+            onClick={() => navigate("/login")}
           >
             <Img src={WhiteArrow} />
           </Button>
