@@ -9,6 +9,7 @@ import useAxios from "../../../hooks/useAxios";
 const useMatching = () => {
   // === ref ===
   const idRef = useRef("");
+  const submitRef = useRef(null);
   // === state ===
   const [inquiryError, setInquiryError] = useState(false);
   const [matchingError, setMatchingError] = useState(false);
@@ -87,6 +88,7 @@ const useMatching = () => {
 
   return {
     idRef,
+    submitRef,
     inquiryError,
     matchingError,
     hasLoverId,

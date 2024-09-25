@@ -8,11 +8,23 @@ import { Button } from "../../../styles/ButtonStyle";
 import InputField from "../../Common/InputField";
 import ErrorMessage from "../../Common/ErrorMessage";
 import AlertModal from "../../Modal/AlertModal";
+// ===== hooks import =====
+import useSetup from "./useSetup";
 
 // ===== component =====
 const SetupForm = () => {
   // === navigate ===
   const navigate = useNavigate();
+  // === useSetup ===
+  const {
+    nicknameRef,
+    firstDayRef,
+    submitRef,
+    setupError,
+    tokenErrorModalOpen,
+    matchingError,
+    handleClickSettingButton,
+  } = useSetup();
   // === return ===
   return (
     <>
@@ -39,6 +51,12 @@ const SetupForm = () => {
           labelMessage="기념일"
           fontSize="18px"
           type="date"
+          onKeyDown={(event) => {
+            if (event.key === "Enter") {
+              event.preventDefault();
+              submitRef.current.click();
+            }
+          }}
           inputRef={firstDayRef}
         />
 
@@ -49,6 +67,7 @@ const SetupForm = () => {
         $width="25.625rem"
         $height="5rem"
         $margin="30px 0 0 0"
+        ref={submitRef}
         onClick={handleClickSettingButton}
       >
         확인

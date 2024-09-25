@@ -19,6 +19,7 @@ const MatchingForm = () => {
   // === useMatching ===
   const {
     idRef,
+    submitRef,
     inquiryError,
     matchingError,
     hasLoverId,
@@ -72,7 +73,18 @@ const MatchingForm = () => {
       ) : (
         <>
           <FlexBox $dir="col" $row="between" $width="25.625rem" $height="8rem">
-            <InputField hasLabel="true" labelMessage="아이디" fontSize="18px" inputRef={idRef} />
+            <InputField
+              hasLabel="true"
+              labelMessage="아이디"
+              fontSize="18px"
+              onKeyDown={(event) => {
+                if (event.key === "Enter") {
+                  event.preventDefault();
+                  submitRef.current.click();
+                }
+              }}
+              inputRef={idRef}
+            />
 
             {inquiryError && <ErrorMessage message={inquiryError} />}
           </FlexBox>
@@ -81,6 +93,7 @@ const MatchingForm = () => {
             $width="25.625rem"
             $height="5rem"
             $margin="30px 0 0 0"
+            ref={submitRef}
             onClick={handleClickInquiryLoverIdButton}
           >
             조회

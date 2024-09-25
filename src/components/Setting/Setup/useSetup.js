@@ -53,6 +53,7 @@ const useSetup = () => {
   return {
     nicknameRef,
     firstDayRef,
+    submitRef,
     setupError,
     tokenErrorModalOpen,
     matchingError,
