@@ -3,10 +3,10 @@ import React from "react";
 // ===== stlyes import =====
 import FlexBox from "../styles/FlexStyle";
 import P, { H1 } from "../styles/TextStyle";
-
 // ===== components import =====
-import SetupForm from "../components/Setting/SetupForm";
+import SetupForm from "../components/Setting/Setup/SetupForm";
 
+// ===== component =====
 const Setup = () => {
   return (
     <FlexBox $row="end" $width="100%">

@@ -1,68 +1,23 @@
-import React, { useState, useEffect, useRef } from "react";
-import { useNavigate } from "react-router-dom";
+import React from "react";
 import { Link } from "react-router-dom";
 
 // ===== styles import =====
-import FlexBox from "../../styles/FlexStyle";
-import Div from "../../styles/LayoutStyle";
-import { Span } from "../../styles/TextStyle";
-import { Button } from "../../styles/ButtonStyle";
-
-// ===== utils import =====
-import { isIdValid, isNameValid, isPhoneNumberValid } from "../../utils/validation";
-
+import FlexBox from "../../../styles/FlexStyle";
+import Div from "../../../styles/LayoutStyle";
+import { Span } from "../../../styles/TextStyle";
+import { Button } from "../../../styles/ButtonStyle";
 // ===== components import =====
-import ErrorMessage from "../Common/ErrorMessage";
-import InputField from "../Common/InputField";
+import ErrorMessage from "../../Common/ErrorMessage";
+import InputField from "../../Common/InputField";
+// ===== hooks import =====
+import useFindPw from "./useFindPw";
 
 // ===== component =====
 const FindPwForm = () => {
-  // === ref ===
-  const idRef = useRef("");
-  const nameRef = useRef("");
-
-  // === state ===
-  const [phonenumber, setPhonenumber] = useState("");
-  const [findPwError, setFindPwError] = useState("");
-
-  // === navigate ===
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    // 비밀번호 찾기 성공 시, 비밀번호 변경 페이지로 이동
-    // 비밀번호 찾기 실패 시, Error Message 출력
-  }, []);
-
-  // props를 통해 전화번호 받아오고, state에 저장
-  const handleSendPhonenumber = (phone) => {
-    setPhonenumber(phone);
-  };
-
-  const handleFindPw = () => {
-    const id = idRef.current.value;
-    const name = nameRef.current.value;
-
-    if (!isIdValid(id) || !isNameValid(name) || !isPhoneNumberValid(phonenumber)) {
-      setFindPwError("입력하신 정보를 확인해 주세요.");
-    } else {
-      setFindPwError(""); // 비밀번호 찾기 에러 메세지 초기화
-
-      // 비밀번호 찾기 API 호출 코드
-      const status = 200;
-
-      if (status === 400) {
-        setFindPwError("입력하신 정보를 확인해 주세요.");
-      } else if (status === 404) {
-        setFindPwError("해당 정보가 존재하지 않습니다.");
-      } else if (status === 500) {
-        return;
-      } else {
-        setFindPwError("");
-        navigate("/changepw"); // 비밀번호 변경 페이지로 이동
-      }
-    }
-  };
-
+  // === useFindPw ===
+  const { idRef, nameRef, submitRef, findPwError, handleSendPhonenumber, handleFindPw } =
+    useFindPw();
+  // === return ===
   return (
     <>
       {/* 비밀번호 찾기 Input Field */}
@@ -86,13 +41,25 @@ const FindPwForm = () => {
           labelMessage="전화번호"
           fontSize="18px"
           inputType="phone"
+          onKeyDown={(event) => {
+            if (event.key === "Enter") {
+              event.preventDefault();
+              submitRef.current.click();
+            }
+          }}
           onValidateAndSend={handleSendPhonenumber}
         />
         {findPwError && <ErrorMessage message={findPwError} />}
       </FlexBox>
 
       {/* 비밀번호 찾기 Button */}
-      <Button $width="25.625rem" $height="5rem" $margin="30px 0 30px 0" onClick={handleFindPw}>
+      <Button
+        $width="25.625rem"
+        $height="5rem"
+        $margin="30px 0 30px 0"
+        ref={submitRef}
+        onClick={handleFindPw}
+      >
         확인
       </Button>
 

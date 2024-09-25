@@ -3,10 +3,10 @@ import React from "react";
 // ===== styles import =====
 import FlexBox from "../styles/FlexStyle";
 import P, { H1 } from "../styles/TextStyle";
-
 // ===== components import =====
-import FindPwForm from "../components/Auth/FindPwForm";
+import FindPwForm from "../components/Auth/FindPw/FindPwForm";
 
+// ===== component =====
 const FindPw = () => {
   return (
     <FlexBox $row="end" $width="100%">

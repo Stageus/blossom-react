@@ -3,9 +3,8 @@ import React from "react";
 // ===== stlyes import =====
 import FlexBox from "../styles/FlexStyle";
 import P, { H1 } from "../styles/TextStyle";
-
 // ===== components import =====
-import MatchingForm from "../components/Setting/MatchingForm";
+import MatchingForm from "../components/Setting/Matching/MatchingForm";
 
 // ===== component =====
 const Matching = () => {
