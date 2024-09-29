@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import { useRecoilState } from "recoil";
+import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 // ===== styles import =====
@@ -42,6 +43,9 @@ const NicknameWrapper = ({ myNickname, loverNickname }) => {
 
   const [fixedMyNickname, setFixedMyNickname] = useState("");
   const [fixedLoverNickname, setFixedLoverNickname] = useState("");
+
+  // === navigate ===
+  const navigate = useNavigate();
 
   useEffect(() => {
     // 애칭 수정 성공 시, 수정된 애칭 출력
@@ -121,7 +125,13 @@ const NicknameWrapper = ({ myNickname, loverNickname }) => {
 
   return (
     <>
-      {tokenErrorModalOpen && <AlertModal />}
+      {tokenErrorModalOpen && (
+        <AlertModal
+          hasFunc={true}
+          message="로그인이 필요합니다."
+          onClick={() => navigate("/login")}
+        />
+      )}
 
       {isNicknameEditMode ? (
         <>

@@ -5,12 +5,8 @@ import { useSetRecoilState } from "recoil";
 import FlexBox from "../styles/FlexStyle";
 import TestImage from "../assets/images/test.jpg";
 
-// ===== recoil import =====
-import { currentNicknameState } from "../recoil/ninknameState";
-
 // ===== components import =====
 import Nav from "../components/Main/Nav/Nav";
-// import Nav from "../components/Main/Nav";
 import Anniversary from "../components/Main/Anniversary";
 import Thumbnail from "../components/Main/Thumbnail";
 import NicknameWrapper from "../components/Main/NicknameWrapper";
@@ -19,7 +15,6 @@ import NicknameWrapper from "../components/Main/NicknameWrapper";
 const Main = () => {
   // === state ===
   const [initialData, setInitialData] = useState([]);
-  const setCurrentNickname = useSetRecoilState(currentNicknameState);
 
   useEffect(() => {
     // 초기 정보 불러오기 성공 시, 각 컴포넌트에 데이터 뿌리기
@@ -35,7 +30,6 @@ const Main = () => {
     };
 
     setInitialData(data);
-    setCurrentNickname({ myNickname: data.myNickname, LoverNickname: data.partnerNickname });
   }, []);
 
   return (

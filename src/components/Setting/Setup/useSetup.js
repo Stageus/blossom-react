@@ -10,6 +10,7 @@ const useSetup = () => {
   // === ref ===
   const nicknameRef = useRef("");
   const firstDayRef = useRef("");
+  const submitRef = useRef(null);
   // === state ===
   const [setupError, setSetupError] = useState(false);
   const [tokenErrorModalOpen, setTokenErrorModalOpen] = useState(false);

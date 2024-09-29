@@ -9,13 +9,9 @@ import { Img } from "../../styles/ImgStyle";
 import WhiteArrow from "../../assets/images/icon_park_left.png";
 
 // ===== component =====
-const QuestionField = ({ id, question }) => {
+const QuestionField = ({ questionIdx, question }) => {
   // === navigate ===
   const navigate = useNavigate();
-
-  const handleGoBack = () => {
-    navigate("/qnalist");
-  };
 
   return (
     <>
@@ -24,12 +20,12 @@ const QuestionField = ({ id, question }) => {
           $backgroundColor="transparent"
           $hoverColor="null"
           $margin="0 0 0 30px"
-          onClick={handleGoBack}
+          onClick={() => navigate("/qnalist")}
         >
           <Img src={WhiteArrow} />
         </Button>
         <FlexBox $row="center" $width="80%">
-          <H1 $margin="0 15px 10px 0">#{id}</H1>
+          <H1 $margin="0 15px 10px 0">#{questionIdx}</H1>
           <H1 $margin="0 0 10px 0">{question}</H1>
         </FlexBox>
       </FlexBox>

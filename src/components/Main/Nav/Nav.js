@@ -13,8 +13,9 @@ import useIsVisited from "./useIsVisited";
 
 // ===== component =====
 const Nav = () => {
-  const navigate = useNavigate(); // for using navigate
-  const [visitedToday] = useIsVisited(); // refer to useIsVisited
+  // === navigate
+  const navigate = useNavigate();
+  const [handleClickQnAButton] = useIsVisited();
 
   return (
     <>
@@ -54,12 +55,7 @@ const Nav = () => {
           </Button>
 
           {/* 문답 버튼 */}
-          <Button
-            $width="108px"
-            $height="108px"
-            $borderRadius="50%"
-            onClick={() => (visitedToday ? navigate("/qnalist") : navigate("/qna/today"))}
-          >
+          <Button $width="108px" $height="108px" $borderRadius="50%" onClick={handleClickQnAButton}>
             <FlexBox $width="108px" $height="108px" $row="center" $col="center">
               <FontAwesomeIcon icon={faComments} />
             </FlexBox>
