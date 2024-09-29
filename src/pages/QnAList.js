@@ -10,15 +10,13 @@ import { Img } from "../styles/ImgStyle";
 import WhiteArrow from "../assets/images/icon_park_left.png";
 
 // ===== recoil import =====
-import { selectedQuestionState } from "../recoil/selectedQuestionState";
-import { latestQuestionState } from "../recoil/selectedQuestionState";
+import { latestQuestionIdxState } from "../recoil/latestQuestionIdxState";
 
 // ===== component =====
 const QnAList = () => {
   // === state & recoil ===
   const [initialData, setInitialData] = useState([]);
-  const setSelectedQuestion = useSetRecoilState(selectedQuestionState);
-  const setLatestQuestion = useSetRecoilState(latestQuestionState);
+  const setLatestQuestionIdx = useSetRecoilState(latestQuestionIdxState);
 
   // === navigate ===
   const navigate = useNavigate();
@@ -29,11 +27,11 @@ const QnAList = () => {
 
     const data = [
       {
-        id: 1,
+        idx: 1,
         question: "좋아하는 노래는?",
       },
       {
-        id: 2,
+        idx: 2,
         question: "좋아하는 음식은?",
       },
     ];
@@ -41,24 +39,9 @@ const QnAList = () => {
     setInitialData(data);
     if (data && data.length > 0) {
       const latestQuestion = data[data.length - 1]; // 최신 문답 찾기 (배열의 마지막 요소)
-
-      setLatestQuestion({
-        id: latestQuestion.id,
-        question: latestQuestion.question,
-      });
+      setLatestQuestionIdx(latestQuestion.idx);
     }
   }, []);
-
-  const handleClickDetailPage = (id, question) => {
-    setSelectedQuestion({ id, question });
-    // 문답 목록에서 특정 문답 클릭 시, 해당 문답의 id, question recoil에 저장
-    // 단, 클릭 후 특정 문답 페이지로 이동 후 새로고침 시, recoil에 저장된 내용 reset됨, API 수정 요청해야 하는지 팀장님께 여쭤보기
-    navigate(`/qna/${id}`);
-  };
-
-  const handleGoBack = () => {
-    navigate("/");
-  };
 
   // 최신순으로 출력하기 위해 데이터 재정렬
   const sortedData = initialData.slice().reverse();
@@ -79,7 +62,7 @@ const QnAList = () => {
               $backgroundColor="transparent"
               $hoverColor="null"
               $margin="0 0 0 30px"
-              onClick={handleGoBack}
+              onClick={() => navigate("/")}
             >
               <Img src={WhiteArrow} />
             </Button>
@@ -94,11 +77,8 @@ const QnAList = () => {
           {/* 문답 목록 */}
           <FlexBox $dir="col" $width="58.438rem" $margin="0 0 30px 0">
             {sortedData?.map((sortedData, index) => (
-              <FlexBox
-                key={index}
-                onClick={() => handleClickDetailPage(sortedData.id, sortedData.question)}
-              >
-                <P $margin="0 10px 0 0">#{sortedData.id}</P>
+              <FlexBox key={index} onClick={() => navigate(`/qna/${sortedData.idx}`)}>
+                <P $margin="0 10px 0 0">#{sortedData.idx}</P>
                 <P>{sortedData.question} </P>
               </FlexBox>
             ))}
