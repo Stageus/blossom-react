@@ -111,14 +111,14 @@ const Anniversary = ({ anniversary }) => {
     }
   };
 
-  const handleCloseErrorModal = () => {
-    navigate("/login");
-  };
-
   return (
     <>
       {tokenErrorModalOpen && (
-        <AlertModal hasFunc={true} message="로그인이 필요합니다." onClick={handleCloseErrorModal} />
+        <AlertModal
+          hasFunc={true}
+          message="로그인이 필요합니다."
+          onClick={() => navigate("/login")}
+        />
       )}
 
       {isAnniversaryEditMode ? (

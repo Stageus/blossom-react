@@ -1,6 +1,5 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { useParams } from "react-router-dom";
 
 // ===== styles import =====
 import FlexBox from "../../styles/FlexStyle";
@@ -11,17 +10,8 @@ import WhiteArrow from "../../assets/images/icon_park_left.png";
 
 // ===== component =====
 const QuestionField = ({ questionIdx, question }) => {
-  // === params ===
-  const { idx } = useParams();
-
   // === navigate ===
   const navigate = useNavigate();
-
-  // if (idx) {
-  // } else {
-  // }
-
-  // const handleClickBackButton = () => {};
 
   return (
     <>

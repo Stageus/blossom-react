@@ -40,7 +40,7 @@ const AnswerField = ({ isMyAnswer, myNickname, myAnswer, loverNickname, loverAns
       setAnserError("답변 내용을 다시 확인해 주세요.");
     } else {
       // 문답 답변 작성하기 API 호출 코드
-      const status = 404;
+      const status = 200;
 
       if (status === 400) {
         setAnserError("답변 내용을 다시 확인해 주세요.");
