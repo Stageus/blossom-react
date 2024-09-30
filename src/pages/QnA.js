@@ -33,7 +33,7 @@ const QnA = () => {
       idx: 1,
       question: "좋아하는 노래는?",
       myAnswer: null,
-      partnerAnswer: "qqwwqwq",
+      partnerAnswer: "메롱",
     };
 
     setAnswerData(data);
@@ -54,7 +54,7 @@ const QnA = () => {
 
           {/* 내 답변 영역 */}
           <AnswerField
-            isMyAnswer={true}
+            isMyAnswerField={true}
             myNickname={answerData.myNickname}
             myAnswer={answerData.myAnswer}
           />
