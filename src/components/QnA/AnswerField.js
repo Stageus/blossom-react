@@ -15,13 +15,13 @@ import ErrorMessage from "../Common/ErrorMessage";
 import AlertModal from "../Modal/AlertModal";
 
 // ===== component =====
-const AnswerField = ({ isMyAnswer, myNickname, myAnswer, loverNickname, loverAnswer }) => {
+const AnswerField = ({ isMyAnswerField, myNickname, myAnswer, loverNickname, loverAnswer }) => {
   // === ref ===
   const textAreaRef = useRef("");
 
   // === state & recoil ===
-  const [answer, setAnswer] = useState(false);
-  const [hasMyAnswer, setHasMyAnswer] = useState(!!myAnswer);
+  const [isAnswered, setIsAnswered] = useState(false);
+  const [hasMyAnswer, setHasMyAnswer] = useState(!!myAnswer); // !!myAnswer: 자바스크립트에서 "이중 부정"을 사용하여 값을 boolean으로 변환하는 방식
   const [answerError, setAnserError] = useState("");
   const [tokenErrorModalOpen, setTokenErrorModalOpen] = useState(false);
 
@@ -56,7 +56,7 @@ const AnswerField = ({ isMyAnswer, myNickname, myAnswer, loverNickname, loverAns
         return;
       } else {
         setAnserError("");
-        setAnswer(true);
+        setIsAnswered(true);
         setHasMyAnswer(true);
       }
     }
@@ -72,47 +72,63 @@ const AnswerField = ({ isMyAnswer, myNickname, myAnswer, loverNickname, loverAns
         />
       )}
 
-      {isMyAnswer ? (
-        <FlexBox $dir="col" $width="100%">
+      {isMyAnswerField ? (
+        <FlexBox $dir="col" $width="100%" $margin="10px 0 0 0">
+          {/* 내 닉네임 */}
           <P $fontSize="24px" $margin="0 0 10px 35px">
             {myNickname}
           </P>
-          {myAnswer ? (
-            <>
-              <FlexBox $width="95%">
+
+          <FlexBox $dir="col" $col="center" $width="100%">
+            {myAnswer ? (
+              // 답변이 있을 시, 내 답변
+              <FlexBox $width="93%" $margin="10px 0 0 0">
                 <P>{myAnswer}</P>
               </FlexBox>
-            </>
-          ) : (
-            <>
-              {answer ? (
-                <P>{textAreaRef.current.value}</P>
-              ) : (
-                <>
-                  <FlexBox $dir="col" $col="center" $width="100%">
-                    <TextArea $width="95%" ref={textAreaRef} />
-                    <FlexBox $width="95%" $margin="10px 0 0 0">
-                      <ErrorMessage message={answerError} />
-                    </FlexBox>
+            ) : isAnswered ? (
+              // 답변이 없었고, 입력 후, 내 답변
+              <FlexBox $width="93%" $margin="10px 0 0 0">
+                <P>{textAreaRef.current?.value}</P>
+              </FlexBox>
+            ) : (
+              <>
+                {/* 내 답변 입력 field */}
+                <TextArea $width="93%" ref={textAreaRef} />
+                <FlexBox $width="93%" $margin="10px 0 0 0">
+                  <ErrorMessage message={answerError} />
+                </FlexBox>
 
-                    <FlexBox $row="end" $width="95%" $margin="10px 0 0 0">
-                      <Button onClick={handleClickAnswerButton}>답변하기</Button>
-                    </FlexBox>
-                  </FlexBox>
-                </>
-              )}
-            </>
-          )}
+                <FlexBox $row="end" $width="95%" $margin="10px 0 0 0">
+                  <Button onClick={handleClickAnswerButton}>답변하기</Button>
+                </FlexBox>
+              </>
+            )}
+          </FlexBox>
         </FlexBox>
       ) : (
-        <>
-          <P>{loverNickname}</P>
-          {loverAnswer ? (
-            <P $blur={hasMyAnswer ? "none" : "blur(5px)"}>{loverAnswer}</P>
-          ) : (
-            <P>연인의 답변을 기다리는 중...</P>
-          )}
-        </>
+        <FlexBox
+          $dir="col"
+          $width="100%"
+          $margin={
+            myAnswer ? "30px 0 0 0" : "10px 0 0 0" || isAnswered ? "30px 0 0 0" : "10px 0 0 0"
+          }
+        >
+          <P $fontSize="24px" $margin="0 0 10px 35px">
+            {loverNickname}
+          </P>
+
+          <FlexBox $dir="col" $col="center" $width="100%">
+            {loverAnswer ? (
+              <FlexBox $width="93%" $margin="10px 0 0 0">
+                <P $blur={isAnswered ? "none" : "blur(5px)"}>{loverAnswer}</P>
+              </FlexBox>
+            ) : (
+              <FlexBox $width="93%" $margin="10px 0 0 0">
+                <P>연인의 답변을 기다리는 중...</P>
+              </FlexBox>
+            )}
+          </FlexBox>
+        </FlexBox>
       )}
     </>
   );
