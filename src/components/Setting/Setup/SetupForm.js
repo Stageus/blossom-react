@@ -45,10 +45,21 @@ const SetupForm = () => {
       )}
 
       <FlexBox $dir="col" $row="between" $width="25.625rem" $height="15rem">
-        <InputField hasLabel="true" labelMessage="애칭" fontSize="18px" inputRef={nicknameRef} />
+        <InputField
+          hasLabel="true"
+          labelMessage="애칭"
+          padding="0 0 0 10px"
+          border="3px solid #FFC4D0"
+          borderRadius="8px"
+          fontSize="18px"
+          inputRef={nicknameRef}
+        />
         <InputField
           hasLabel="true"
           labelMessage="기념일"
+          padding="0 0 0 10px"
+          border="3px solid #FFC4D0"
+          borderRadius="8px"
           fontSize="18px"
           type="date"
           onKeyDown={(event) => {
@@ -67,6 +78,7 @@ const SetupForm = () => {
         $width="25.625rem"
         $height="5rem"
         $margin="30px 0 0 0"
+        $borderRadius="8px"
         ref={submitRef}
         onClick={handleClickSettingButton}
       >
