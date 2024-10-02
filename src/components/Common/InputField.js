@@ -11,6 +11,9 @@ const InputField = ({
   width,
   height,
   margin,
+  padding,
+  border,
+  borderRadius,
   style,
   hasLabel,
   labelMessage,
@@ -67,15 +70,7 @@ const InputField = ({
 
   return (
     <>
-      {/* haeLabel : true or false */}
-      {/* labelMessage : String */}
       {hasLabel && <Label $fontSize={fontSize}>{labelMessage}</Label>}
-
-      {/* inputType : phone or else */}
-      {/* type : text, password or email, etc. */}
-      {/* placeholderMessage : String */}
-      {/* disabled : true or false */}
-      {/* onChane, onBlur : Funtion */}
       {inputType === "phone" ? (
         <FlexBox
           $row="between"
@@ -96,6 +91,9 @@ const InputField = ({
           $width={width}
           $height={height}
           $margin={margin}
+          $padding={padding}
+          $border={border}
+          $borderRadius={borderRadius}
           ref={inputRef}
           type={type}
           {...(type === "date" ? { max: currentDate } : {})}

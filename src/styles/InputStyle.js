@@ -14,6 +14,7 @@ export const Input = styled.input`
 
   /* border */
   border: ${(props) => props.$border || "0"};
+  border-radius: ${(props) => props.$borderRadius || "0"};
 
   box-sizing: border-box;
 `;
@@ -32,6 +33,7 @@ export const TextArea = styled.textarea`
 
   /* border */
   border: ${(props) => props.$border || "0"};
+  border-radius: ${(props) => props.$borderRadius || "0"};
 
   box-sizing: border-box;
 `;
