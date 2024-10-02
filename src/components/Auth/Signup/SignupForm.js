@@ -66,12 +66,14 @@ const SignupForm = () => {
         <tbody>
           <>
             <Td>
-              <P $fontSize="32px">아이디</P>
+              <P $fontSize="28px">아이디</P>
             </Td>
             <Td>
               <FlexBox $row="between" $width="38.5rem">
                 <InputField
                   margin="0 0 10px 0"
+                  padding="0 0 0 10px"
+                  borderRadius="8px"
                   width="29rem"
                   placeholderMessage="4 ~ 11자를 입력해 주세요."
                   inputRef={idRef}
@@ -80,8 +82,11 @@ const SignupForm = () => {
                 />
                 <Button
                   $width="7.75rem"
-                  $height="4.375rem"
+                  $height="3.75rem"
                   $fontSize="24px"
+                  $border="3px solid #FFC4D0"
+                  $borderRadius="8px"
+                  $backgroundColor="transparent"
                   disabled={isDisable}
                   onClick={handleDuplicateId}
                 >
@@ -93,11 +98,13 @@ const SignupForm = () => {
           </>
           <Tr>
             <Td>
-              <P $fontSize="32px">비밀번호</P>
+              <P $fontSize="28px">비밀번호</P>
             </Td>
             <Td>
               <InputField
                 margin="15px 0 10px 0"
+                padding="0 0 0 10px"
+                borderRadius="8px"
                 placeholderMessage="영어, 숫자를 필수 포함한 8자 ~ 15자를 입력해 주세요."
                 type="password"
                 inputRef={pwRef}
@@ -108,13 +115,15 @@ const SignupForm = () => {
           </Tr>
           <Tr>
             <Td>
-              <P $fontSize="32px" $margin="0 20px 0 0">
+              <P $fontSize="28px" $margin="0 20px 0 0">
                 비밀번호 확인
               </P>
             </Td>
             <Td>
               <InputField
                 margin="15px 0 10px 0"
+                padding="0 0 0 10px"
+                borderRadius="8px"
                 placeholderMessage="입력하신 비밀번호와 동일하게 입력해 주세요."
                 type="password"
                 inputRef={confirmPwRef}
@@ -125,11 +134,13 @@ const SignupForm = () => {
           </Tr>
           <Tr>
             <Td>
-              <P $fontSize="32px">이름</P>
+              <P $fontSize="28px">이름</P>
             </Td>
             <Td>
               <InputField
                 margin="15px 0 10px 0"
+                padding="0 0 0 10px"
+                borderRadius="8px"
                 placeholderMessage="2자 ~ 30자를 입력해 주세요"
                 inputRef={nameRef}
                 onBlur={handleValidateName}
@@ -139,12 +150,14 @@ const SignupForm = () => {
           </Tr>
           <Tr>
             <Td>
-              <P $fontSize="32px">전화번호</P>
+              <P $fontSize="28px">전화번호</P>
             </Td>
             <Td>
               <InputField
                 inputType="phone"
                 margin="15px 0 10px 0"
+                padding="0 0 0 10px"
+                borderRadius="8px"
                 onValidateAndSend={handleValidatePhonenumber}
               />
               {phonenumberError && <ErrorMessage message={phonenumberError} />}
@@ -152,11 +165,13 @@ const SignupForm = () => {
           </Tr>
           <Tr>
             <Td>
-              <P $fontSize="32px">생년월일</P>
+              <P $fontSize="28px">생년월일</P>
             </Td>
             <Td>
               <InputField
                 margin="15px 0 10px 0"
+                padding="0 0 0 10px"
+                borderRadius="8px"
                 type="date"
                 inputRef={birthdayRef}
                 onBlur={handleValidateBirthday}
@@ -175,7 +190,13 @@ const SignupForm = () => {
 
       {/* 회원가입 버튼 */}
       <FlexBox $width="52rem" $row="center" $margin="30px 0 0 0">
-        <Button $width="38.5rem" $height="4.375rem" ref={submitRef} onClick={handleSignup}>
+        <Button
+          $width="38.5rem"
+          $height="4.375rem"
+          $borderRadius="8px"
+          ref={submitRef}
+          onClick={handleSignup}
+        >
           가입하기
         </Button>
       </FlexBox>

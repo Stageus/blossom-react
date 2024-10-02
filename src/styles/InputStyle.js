@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Input = styled.input`
   /* dimensions */
   width: ${(props) => props.$width || "100%"};
-  height: ${(props) => props.$height || "70px"};
+  height: ${(props) => props.$height || "60px"};
 
   /* colors */
   color: ${(props) => props.$textColor || "#434343"};
@@ -14,6 +14,7 @@ export const Input = styled.input`
 
   /* border */
   border: ${(props) => props.$border || "0"};
+  border-radius: ${(props) => props.$borderRadius || "0"};
 
   box-sizing: border-box;
 `;
@@ -32,6 +33,7 @@ export const TextArea = styled.textarea`
 
   /* border */
   border: ${(props) => props.$border || "0"};
+  border-radius: ${(props) => props.$borderRadius || "0"};
 
   box-sizing: border-box;
 `;

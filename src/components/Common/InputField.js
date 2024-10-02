@@ -11,6 +11,9 @@ const InputField = ({
   width,
   height,
   margin,
+  padding,
+  border,
+  borderRadius,
   style,
   hasLabel,
   labelMessage,
@@ -67,35 +70,52 @@ const InputField = ({
 
   return (
     <>
-      {/* haeLabel : true or false */}
-      {/* labelMessage : String */}
       {hasLabel && <Label $fontSize={fontSize}>{labelMessage}</Label>}
-
-      {/* inputType : phone or else */}
-      {/* type : text, password or email, etc. */}
-      {/* placeholderMessage : String */}
-      {/* disabled : true or false */}
-      {/* onChane, onBlur : Funtion */}
       {inputType === "phone" ? (
         <FlexBox
           $row="between"
           $col="center"
           $width="100%"
+          $margin={margin}
           onChange={handleChangePhonenumber}
           onBlur={onBlur}
           onKeyDown={onKeyDown}
         >
-          <Input type="text" placeholder="010" ref={numbersRef[0]} />
+          <Input
+            $padding={padding}
+            $border={border}
+            $borderRadius={borderRadius}
+            type="text"
+            placeholder="010"
+            ref={numbersRef[0]}
+          />
           <Span $margin="0 10px 0 10px">-</Span>
-          <Input type="text" placeholder="1234" ref={numbersRef[1]} />
+          <Input
+            $padding={padding}
+            $border={border}
+            $borderRadius={borderRadius}
+            type="text"
+            placeholder="1234"
+            ref={numbersRef[1]}
+          />
           <Span $margin="0 10px 0 10px">-</Span>
-          <Input type="text" placeholder="5678" ref={numbersRef[2]} />
+          <Input
+            $padding={padding}
+            $border={border}
+            $borderRadius={borderRadius}
+            type="text"
+            placeholder="5678"
+            ref={numbersRef[2]}
+          />
         </FlexBox>
       ) : (
         <Input
           $width={width}
           $height={height}
           $margin={margin}
+          $padding={padding}
+          $border={border}
+          $borderRadius={borderRadius}
           ref={inputRef}
           type={type}
           {...(type === "date" ? { max: currentDate } : {})}

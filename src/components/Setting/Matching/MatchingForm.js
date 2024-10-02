@@ -76,6 +76,9 @@ const MatchingForm = () => {
             <InputField
               hasLabel="true"
               labelMessage="아이디"
+              padding="0 0 0 10px"
+              border="3px solid #FFC4D0"
+              borderRadius="8px"
               fontSize="18px"
               onKeyDown={(event) => {
                 if (event.key === "Enter") {
@@ -93,6 +96,7 @@ const MatchingForm = () => {
             $width="25.625rem"
             $height="5rem"
             $margin="30px 0 0 0"
+            $borderRadius="8px"
             ref={submitRef}
             onClick={handleClickInquiryLoverIdButton}
           >
