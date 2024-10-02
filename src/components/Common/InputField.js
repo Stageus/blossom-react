@@ -76,15 +76,37 @@ const InputField = ({
           $row="between"
           $col="center"
           $width="100%"
+          $margin={margin}
           onChange={handleChangePhonenumber}
           onBlur={onBlur}
           onKeyDown={onKeyDown}
         >
-          <Input type="text" placeholder="010" ref={numbersRef[0]} />
+          <Input
+            $padding={padding}
+            $border={border}
+            $borderRadius={borderRadius}
+            type="text"
+            placeholder="010"
+            ref={numbersRef[0]}
+          />
           <Span $margin="0 10px 0 10px">-</Span>
-          <Input type="text" placeholder="1234" ref={numbersRef[1]} />
+          <Input
+            $padding={padding}
+            $border={border}
+            $borderRadius={borderRadius}
+            type="text"
+            placeholder="1234"
+            ref={numbersRef[1]}
+          />
           <Span $margin="0 10px 0 10px">-</Span>
-          <Input type="text" placeholder="5678" ref={numbersRef[2]} />
+          <Input
+            $padding={padding}
+            $border={border}
+            $borderRadius={borderRadius}
+            type="text"
+            placeholder="5678"
+            ref={numbersRef[2]}
+          />
         </FlexBox>
       ) : (
         <Input

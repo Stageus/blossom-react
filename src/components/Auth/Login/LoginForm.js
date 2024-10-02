@@ -19,6 +19,7 @@ const LoginForm = () => {
       {/* 로그인 Input Field (아이디, 비밀번호) */}
       <FlexBox $dir="col" $row="between" $width="25.625rem" $height="9.875rem">
         <InputField
+          height="4.375rem"
           padding="0 0 0 10px"
           border="3px solid #FFC4D0"
           borderRadius="8px"
@@ -26,6 +27,7 @@ const LoginForm = () => {
           placeholderMessage="아이디 입력"
         />
         <InputField
+          height="4.375rem"
           padding="0 0 0 10px"
           border="3px solid #FFC4D0"
           borderRadius="8px"

@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Input = styled.input`
   /* dimensions */
   width: ${(props) => props.$width || "100%"};
-  height: ${(props) => props.$height || "70px"};
+  height: ${(props) => props.$height || "60px"};
 
   /* colors */
   color: ${(props) => props.$textColor || "#434343"};

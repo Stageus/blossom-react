@@ -36,11 +36,11 @@ const Login = () => {
             <Div
               $width="20.813rem"
               $textAlign="center"
-              $borderTop="2px solid #FFC4D0"
-              $borderBottom="2px solid #FFC4D0"
+              $borderTop="2px solid #FFFFFF"
+              $borderBottom="2px solid #FFFFFF"
               $padding="20px 0 20px 0"
             >
-              <Span $margin="0 5px 0 0" $textColor="#FFF">
+              <Span $margin="0 5px 0 0" $textColor="#FFFFFF">
                 계정이 없으신가요?
               </Span>
               <Link to="/signup">

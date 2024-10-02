@@ -25,7 +25,7 @@ const Signup = () => {
         $backgroundColor="#FBE8E7"
       >
         {/* 회원가입 Header */}
-        <FlexBox $row="between" $col="center" $margin="40px 0 0 0" $width="100%">
+        <FlexBox $row="between" $col="center" $margin="20px 0 10px 0" $width="100%">
           <Button
             $backgroundColor="transparent"
             $hoverColor="null"

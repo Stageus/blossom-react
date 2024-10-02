@@ -71,6 +71,9 @@ const FindIdForm = () => {
             <InputField
               hasLabel="true"
               labelMessage="이름"
+              padding="0 0 0 10px"
+              border="3px solid #FFC4D0"
+              borderRadius="8px"
               fontSize="18px"
               type="text"
               inputRef={nameRef}
@@ -78,6 +81,9 @@ const FindIdForm = () => {
             <InputField
               hasLabel="true"
               labelMessage="전화번호"
+              padding="0 0 0 10px"
+              border="3px solid #FFC4D0"
+              borderRadius="8px"
               fontSize="18px"
               inputType="phone"
               onKeyDown={(event) => {
@@ -96,6 +102,7 @@ const FindIdForm = () => {
             $width="25.625rem"
             $height="5rem"
             $margin="30px 0 50px 0"
+            $borderRadius="8px"
             ref={submitRef}
             onClick={handleFindId}
           >
