@@ -2,26 +2,40 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
 
-  // 배민 도현체
-  /* @font-face {
-    font-family: 'BMDOHYEON';
-    src: url("/fonts/BMDOHYEON_otf.otf") format('opentype');
+  @font-face {
+    font-family: 'KoddiUD_Regular';
+    font-weight: 400;
+    font-display: swap;
+    src: url("/fonts/KoddiUDOnGothic-Regular.woff2") format ('woff2');
   }
 
-  * {
-  font-family: 'BMDOHYEON', sans-serif;
-  } */
+  @font-face {
+    font-family: 'KoddiUD_Bold';
+    font-weight: 600;
+    src: url("/fonts/KoddiUDOnGothic-Bold.woff2") format ('woff2');
+  }
 
-  /* body {
-  font-family: 'Pretendard', sans-serif;
-} */
+  @font-face {
+    font-family: 'KoddiUD_ExtraBold';
+    font-weight: 800;
+    src: url("/fonts/KoddiUDOnGothic-ExtraBold.woff2") format ('woff2');
+  }
+
+  *, body {
+    font-family: 'KoddiUD_Regular', Arial, sans-serif;
+    font-weight: 400;
+  }
+
+  h1 {
+    font-family: 'KoddiUD_Bold', Arial, sans-serif;
+    font-weight: 600;
+  }
 
   body {
     margin: 0;
     padding: 0;
     background-color: #FCF5EE;
     box-sizing: border-box;
-    font-family: 'Pretendard', sans-serif;
   }
 
   a {
@@ -39,11 +53,11 @@ const GlobalStyle = createGlobalStyle`
   }
 
   input[type="password"] {
-    font-family: sans-serif;
+    font-family: 'KoddiUD_Bold', Arial, sans-serif;
   }
 
   input[type="password"]::placeholder {
-    font-family: 'BMDOHYEON', sans-serif;
+    font-family: 'KoddiUD_Bold', Arial, sans-serif;
   }
 
   textarea {
