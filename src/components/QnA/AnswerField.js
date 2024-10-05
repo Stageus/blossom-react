@@ -15,47 +15,49 @@ import ErrorMessage from "../Common/ErrorMessage";
 import AlertModal from "../Modal/AlertModal";
 
 // ===== component =====
-const AnswerField = ({ isMyAnswerField, myNickname, myAnswer, loverNickname, loverAnswer }) => {
+const AnswerField = ({
+  isMyAnswerField,
+  myNickname,
+  myAnswer,
+  loverNickname,
+  loverAnswer,
+  hasMyAnswer,
+  setHasMyAnswer,
+}) => {
   // === ref ===
   const textAreaRef = useRef("");
 
   // === state & recoil ===
   const [isAnswered, setIsAnswered] = useState(false);
-  const [hasMyAnswer, setHasMyAnswer] = useState(!!myAnswer); // !!myAnswer: 자바스크립트에서 "이중 부정"을 사용하여 값을 boolean으로 변환하는 방식
-  const [answerError, setAnserError] = useState("");
+  // const [hasMyAnswer, setHasMyAnswer] = useState(false); // !!myAnswer: 자바스크립트에서 "이중 부정"을 사용하여 값을 boolean으로 변환하는 방식
+  const [answerError, setAnswerError] = useState("");
   const [tokenErrorModalOpen, setTokenErrorModalOpen] = useState(false);
 
   // === navigate ===
   const navigate = useNavigate();
 
-  useEffect(() => {
-    // 문답 답변 성공 시, 답변 내용 출력
-    // 문답 답변 실패 시, Error Message 출력
-  }, [hasMyAnswer]);
-
   const handleClickAnswerButton = () => {
     const textArea = textAreaRef.current.value;
 
     if (!isAnswerValid(textArea)) {
-      setAnserError("답변 내용을 다시 확인해 주세요.");
+      setAnswerError("답변 내용을 다시 확인해 주세요.");
     } else {
-      // 문답 답변 작성하기 API 호출 코드
       const status = 200;
 
       if (status === 400) {
-        setAnserError("답변 내용을 다시 확인해 주세요.");
+        setAnswerError("답변 내용을 다시 확인해 주세요.");
       } else if (status === 401) {
-        setAnserError("");
+        setAnswerError("");
         setTokenErrorModalOpen(true);
       } else if (status === 403) {
         // 권한 오류
         return;
       } else if (status === 404) {
-        setAnserError("존재하지 않는 문답입니다.");
+        setAnswerError("존재하지 않는 문답입니다.");
       } else if (status === 500) {
-        return;
-      } else {
-        setAnserError("");
+        setAnswerError("서버 오류가 발생했습니다. 나중에 다시 시도해 주세요.");
+      } else if (status === 200) {
+        setAnswerError("");
         setIsAnswered(true);
         setHasMyAnswer(true);
       }
@@ -93,7 +95,12 @@ const AnswerField = ({ isMyAnswerField, myNickname, myAnswer, loverNickname, lov
             ) : (
               <>
                 {/* 내 답변 입력 field */}
-                <TextArea $width="93%" ref={textAreaRef} />
+                <TextArea
+                  $width="93%"
+                  $padding="10px 0 0 10px"
+                  ref={textAreaRef}
+                  placeholder="답변을 작성하고 상대방 답변을 확인해 보세요!"
+                />
                 <FlexBox $width="93%" $margin="10px 0 0 0">
                   <ErrorMessage message={answerError} />
                 </FlexBox>
@@ -109,18 +116,15 @@ const AnswerField = ({ isMyAnswerField, myNickname, myAnswer, loverNickname, lov
         <FlexBox
           $dir="col"
           $width="100%"
-          $margin={
-            myAnswer ? "30px 0 0 0" : "10px 0 0 0" || isAnswered ? "30px 0 0 0" : "10px 0 0 0"
-          }
+          $margin={myAnswer ? "30px 0 0 0" : isAnswered ? "30px 0 0 0" : "10px 0 0 0"}
         >
           <P $fontSize="24px" $margin="0 0 10px 35px">
             {loverNickname}
           </P>
-
           <FlexBox $dir="col" $col="center" $width="100%">
             {loverAnswer ? (
               <FlexBox $width="93%" $margin="10px 0 0 0">
-                <P $blur={isAnswered ? "none" : "blur(5px)"}>{loverAnswer}</P>
+                <P $filter={hasMyAnswer ? "none" : "blur(5px)"}>{loverAnswer}</P>
               </FlexBox>
             ) : (
               <FlexBox $width="93%" $margin="10px 0 0 0">

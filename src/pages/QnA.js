@@ -18,6 +18,7 @@ const QnA = () => {
   const { idx } = useParams(); // 백엔드 통신 시 사용
 
   // === state & recoil ===
+  const [hasMyAnswer, setHasMyAnswer] = useState(false); // 불필요한 ui 변화, 백엔드 통신 시 로딩 상태 추가 ui 스피너라든가
   const [answerData, setAnswerData] = useState([]);
   const latestQuestionIdx = useRecoilValue(latestQuestionIdxState); // 백엔드 통신 시 사용
 
@@ -32,10 +33,11 @@ const QnA = () => {
       partnerNickname: "바보",
       idx: 1,
       question: "좋아하는 노래는?",
-      myAnswer: null,
+      myAnswer: "멜ㅇ",
       partnerAnswer: "메롱",
     };
 
+    setHasMyAnswer(!!data?.myAnswer);
     setAnswerData(data);
   }, []);
 
@@ -57,12 +59,16 @@ const QnA = () => {
             isMyAnswerField={true}
             myNickname={answerData.myNickname}
             myAnswer={answerData.myAnswer}
+            hasMyAnswer={hasMyAnswer}
+            setHasMyAnswer={setHasMyAnswer}
           />
 
           {/* 상대 답변 영역 */}
           <AnswerField
+            isMyAnswerField={false}
             loverNickname={answerData.partnerNickname}
             loverAnswer={answerData.partnerAnswer}
+            hasMyAnswer={hasMyAnswer}
           />
         </FlexBox>
       </FlexBox>

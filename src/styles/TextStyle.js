@@ -10,7 +10,7 @@ export const P = styled.p`
   padding: ${(props) => props.$padding || "0"};
 
   /* filter */
-  filter: ${(props) => props.$blur || "none"};
+  filter: ${(props) => props.$filter || "none"};
 `;
 
 export const Label = styled.label`
