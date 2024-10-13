@@ -5,20 +5,19 @@ import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 // ===== styles import =====
-import P from "../../styles/TextStyle";
-import FlexBox from "../../styles/FlexStyle";
-import { Button } from "../../styles/ButtonStyle";
-
+import P from "../../../styles/TextStyle";
+import FlexBox from "../../../styles/FlexStyle";
+import { Button } from "../../../styles/ButtonStyle";
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons"; // 수정 아이콘
 
 // ===== recoil & utils import =====
-import { isClickedEditButtonState } from "../../recoil/editButtonState";
-import { calculateAnniversary } from "../../utils/calculation";
+import { isClickedEditButtonState } from "../../../recoil/editButtonState";
+import { calculateAnniversary } from "../../../utils/calculation";
 
 // ===== components import =====
-import InputField from "../Common/InputField";
-import ErrorMessage from "../Common/ErrorMessage";
-import AlertModal from "../Modal/AlertModal";
+import InputField from "../../Common/InputField";
+import ErrorMessage from "../../Common/ErrorMessage";
+import AlertModal from "../../Modal/AlertModal";
 
 // ===== style =====
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
