@@ -13,7 +13,8 @@ import FindId from "./pages/FindId";
 import FindPw from "./pages/FindPw";
 import ChangePw from "./pages/ChangePw";
 // === Service pages ===
-import Main from "./pages/Main";
+import Main from "./pages/Main/Main";
+// import Main from "./pages/Main";
 import Setup from "./pages/Setup";
 import Schedule from "./pages/Schedule";
 import Matching from "./pages/Matching";
