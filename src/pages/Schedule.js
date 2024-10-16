@@ -9,7 +9,7 @@ import CalendarForSchedule from "../components/Schedule/CalendarForSchedule/Cale
 // ===== component =====
 const Schedule = () => {
   return (
-    <FlexBox $row="center" $width="100%">
+    <FlexBox $row="center" $col="center" $width="100%" $height="100vh">
       <CalendarForSchedule />
     </FlexBox>
   );
