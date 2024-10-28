@@ -16,7 +16,7 @@ const Modal = ({
   children,
   width = "37.5rem",
   height = "22rem",
-  backgroundColor = "#E1F2FB",
+  backgroundColor = "#ffedec",
   setIsOpen,
   contentRow = "center",
   contentCol = "center",

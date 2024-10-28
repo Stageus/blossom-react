@@ -50,7 +50,7 @@ export const StyledCalendar = styled(Calendar)`
     align-items: center;
     height: 4.375rem;
     position: relative;
-    // justify-content: space-between;
+    z-index: 0;
     background-color: #ffedec;
     padding: 16px;
     border-bottom: 1px solid #d0d0d0;
@@ -127,10 +127,11 @@ export const StyledCalendar = styled(Calendar)`
     background: none;
     border: 2px solid #ffd7d6;
     position: relative;
+    z-index: 0;
     border-radius: 10px;
 
     &:hover {
-      background: #f9e6dc; // 상아색
+      background: #f9e6dc;
     }
     &:focus {
       background: #f9e6dc;
