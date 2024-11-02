@@ -6,8 +6,8 @@ import { Button } from "../../../styles/ButtonStyle";
 import { P } from "../../../styles/TextStyle";
 import { Tr, Td } from "../../../styles/LayoutStyle";
 // ===== components import =====
-import InputField from "../../Common/InputField";
-import ErrorMessage from "../../Common/ErrorMessage";
+import InputField from "../../Common/InputField/InputField";
+import ErrorMessage from "../../Common/ErrorMessage/ErrorMessage";
 import ConfirmModal from "../../Modal/ConfirmModal";
 import AlertModal from "../../Modal/AlertModal";
 // ===== hooks import =====

@@ -5,7 +5,7 @@ import ReactDOM from "react-dom";
 import FlexBox from "../../../styles/FlexStyle";
 
 // ===== component import =====
-import Modal from "../../Common/Modal";
+import Modal from "../../Common/Modal/Modal";
 
 // ===== component =====
 const ScheduleDetailModal = ({ setIsOpen }) => {

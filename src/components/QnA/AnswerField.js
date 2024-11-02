@@ -9,7 +9,7 @@ import FlexBox from "../../styles/FlexStyle";
 
 // ===== utils & recoil import =====
 import { isAnswerValid } from "../../utils/validation";
-import ErrorMessage from "../Common/ErrorMessage";
+import ErrorMessage from "../Common/ErrorMessage/ErrorMessage";
 
 // ===== components import =====
 import AlertModal from "../Modal/AlertModal";

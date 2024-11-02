@@ -1,9 +1,9 @@
 import React from "react";
 
 // ===== styles import =====
-import { Label, Span } from "../../styles/TextStyle";
-import { Input } from "../../styles/InputStyle";
-import FlexBox from "../../styles/FlexStyle";
+import { Label, Span } from "../../../styles/TextStyle";
+import { Input } from "../../../styles/InputStyle";
+import FlexBox from "../../../styles/FlexStyle";
 
 // ===== component =====
 const InputField = ({

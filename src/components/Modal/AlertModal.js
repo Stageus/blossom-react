@@ -6,7 +6,7 @@ import { P } from "../../styles/TextStyle";
 
 // ===== components import =====
 import FlexBox from "../../styles/FlexStyle";
-import Modal from "../Common/Modal";
+import Modal from "../Common/Modal/Modal";
 
 // ===== component =====
 const AlertModal = ({ message, hasFunc, onClick, setIsOpen }) => {

@@ -12,7 +12,7 @@ import { Button } from "../../styles/ButtonStyle";
 import { isClickedEditButtonState } from "../../recoil/editButtonState";
 
 // ===== components import =====
-import ImageUploader from "../Common/ImageUploader";
+import ImageUploader from "../Common/ImageUploader/ImageUploader";
 import AlertModal from "../Modal/AlertModal";
 
 // ===== style =====

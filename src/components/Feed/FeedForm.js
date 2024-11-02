@@ -9,8 +9,8 @@ import Div from "../../styles/LayoutStyle";
 import { Img } from "../../styles/ImgStyle";
 
 // ===== components import =====
-import ImageUploader from "../Common/ImageUploader";
-import InputField from "../Common/InputField";
+import ImageUploader from "../Common/ImageUploader/ImageUploader";
+import InputField from "../Common/InputField/InputField";
 import P from "../../styles/TextStyle";
 import { TextArea } from "../../styles/InputStyle";
 import { Button } from "../../styles/ButtonStyle";

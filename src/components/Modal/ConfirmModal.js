@@ -6,7 +6,7 @@ import { Button } from "../../styles/ButtonStyle";
 
 // ===== components import =====
 import FlexBox from "../../styles/FlexStyle";
-import Modal from "../Common/Modal";
+import Modal from "../Common/Modal/Modal";
 
 // ===== component =====
 const ConfirmModal = ({ message, setIsOpen, onClick }) => {

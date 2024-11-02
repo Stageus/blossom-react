@@ -18,8 +18,8 @@ import { isClickedEditButtonState } from "../../recoil/editButtonState";
 import { isNameValid } from "../../utils/validation";
 
 // ===== components import =====
-import InputField from "../Common/InputField";
-import ErrorMessage from "../Common/ErrorMessage";
+import InputField from "../Common/InputField/InputField";
+import ErrorMessage from "../Common/ErrorMessage/ErrorMessage";
 import AlertModal from "../Modal/AlertModal";
 
 // ===== style =====
