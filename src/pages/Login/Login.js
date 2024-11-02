@@ -2,13 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 // ===== styles & img import ====
-import FlexBox from "../styles/FlexStyle";
-import { Div } from "../styles/LayoutStyle";
-import { Span } from "../styles/TextStyle";
-import { Img } from "../styles/ImgStyle";
-import Logo from "../assets/images/blossom.png";
+import FlexBox from "../../styles/FlexStyle";
+import { Div } from "../../styles/LayoutStyle";
+import { Span } from "../../styles/TextStyle";
+import { Img } from "../../styles/ImgStyle";
+import Logo from "../../assets/images/blossom.png";
 // ===== components import =====
-import LoginForm from "../components/Auth/Login/LoginForm";
+import LoginForm from "../../components/Auth/Login/LoginForm";
 
 // ===== component =====
 const Login = () => {

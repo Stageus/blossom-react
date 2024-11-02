@@ -1,10 +1,10 @@
 import React from "react";
 
 // ===== styles & img import =====
-import FlexBox from "../styles/FlexStyle";
+import FlexBox from "../../styles/FlexStyle";
 
 // ===== components import =====
-import FeedForm from "../components/Feed/FeedForm/FeedForm";
+import FeedForm from "../../components/Feed/FeedForm/FeedForm";
 
 // ===== component =====
 const FeedEditor = () => {

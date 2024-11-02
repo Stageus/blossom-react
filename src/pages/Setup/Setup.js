@@ -1,13 +1,13 @@
 import React from "react";
 
 // ===== stlyes import =====
-import FlexBox from "../styles/FlexStyle";
-import P, { H1 } from "../styles/TextStyle";
+import FlexBox from "../../styles/FlexStyle";
+import P, { H1 } from "../../styles/TextStyle";
 // ===== components import =====
-import MatchingForm from "../components/Setting/Matching/MatchingForm";
+import SetupForm from "../../components/Setting/Setup/SetupForm";
 
 // ===== component =====
-const Matching = () => {
+const Setup = () => {
   return (
     <FlexBox $row="end" $width="100%">
       <FlexBox
@@ -18,17 +18,17 @@ const Matching = () => {
         $height="100vh;"
         $backgroundColor="#FBE8E7"
       >
-        {/* 매칭 Header */}
+        {/* 초기 설정 Header */}
         <FlexBox $dir="col" $width="25.625rem" $margin="0 0 30px 0">
-          <H1>매칭하기</H1>
-          <P $fontSize="16px">매칭을 희망하는 상대방의 아이디를 입력해 주세요.</P>
+          <H1>초기 설정</H1>
+          <P $fontSize="16px">연인 간 애칭, 처음 만난 날을 입력해 주세요.</P>
         </FlexBox>
 
-        {/* 매칭 Form */}
-        <MatchingForm />
+        {/* 초기 설정 Form */}
+        <SetupForm />
       </FlexBox>
     </FlexBox>
   );
 };
 
-export default Matching;
+export default Setup;

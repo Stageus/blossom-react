@@ -3,14 +3,14 @@ import { useSetRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";
 
 // ===== styles import =====
-import FlexBox from "../styles/FlexStyle";
-import P, { H1 } from "../styles/TextStyle";
-import { Button } from "../styles/ButtonStyle";
-import { Img } from "../styles/ImgStyle";
-import WhiteArrow from "../assets/images/icon_park_left.png";
+import FlexBox from "../../styles/FlexStyle";
+import P, { H1 } from "../../styles/TextStyle";
+import { Button } from "../../styles/ButtonStyle";
+import { Img } from "../../styles/ImgStyle";
+import WhiteArrow from "../../assets/images/icon_park_left.png";
 
 // ===== recoil import =====
-import { latestQuestionIdxState } from "../recoil/latestQuestionIdxState";
+import { latestQuestionIdxState } from "../../recoil/latestQuestionIdxState";
 
 // ===== component =====
 const QnAList = () => {
