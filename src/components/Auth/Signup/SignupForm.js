@@ -6,10 +6,10 @@ import { Button } from "../../../styles/ButtonStyle";
 import { P } from "../../../styles/TextStyle";
 import { Tr, Td } from "../../../styles/LayoutStyle";
 // ===== components import =====
-import InputField from "../../Common/InputField";
-import ErrorMessage from "../../Common/ErrorMessage";
-import ConfirmModal from "../../Modal/ConfirmModal";
-import AlertModal from "../../Modal/AlertModal";
+import InputField from "../../Common/InputField/InputField";
+import ErrorMessage from "../../Common/ErrorMessage/ErrorMessage";
+import ConfirmModal from "../../Modal/Confirm/ConfirmModal";
+import AlertModal from "../../Modal/Alert/AlertModal";
 // ===== hooks import =====
 import useSignup from "./useSignup";
 

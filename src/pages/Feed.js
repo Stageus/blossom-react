@@ -15,8 +15,8 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"; // 검색
 import { faPlus } from "@fortawesome/free-solid-svg-icons"; // 추가 아이콘
 
 // ===== components import =====
-import FeedItem from "../components/Feed/FeedItem";
-import InputField from "../components/Common/InputField";
+import FeedItem from "../components/Feed/FeedItem/FeedItem";
+import InputField from "../components/Common/InputField/InputField";
 
 // ===== style =====
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`

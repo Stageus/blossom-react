@@ -1,12 +1,12 @@
 import React from "react";
 
 // ===== styles import =====
-import { P } from "../../styles/TextStyle";
-import { Button } from "../../styles/ButtonStyle";
+import { P } from "../../../styles/TextStyle";
+import { Button } from "../../../styles/ButtonStyle";
 
 // ===== components import =====
-import FlexBox from "../../styles/FlexStyle";
-import Modal from "../Common/Modal";
+import FlexBox from "../../../styles/FlexStyle";
+import Modal from "../../Common/Modal/Modal";
 
 // ===== component =====
 const ConfirmModal = ({ message, setIsOpen, onClick }) => {

@@ -15,9 +15,9 @@ import { isClickedEditButtonState } from "../../../recoil/editButtonState";
 import { calculateAnniversary } from "../../../utils/calculation";
 
 // ===== components import =====
-import InputField from "../../Common/InputField";
-import ErrorMessage from "../../Common/ErrorMessage";
-import AlertModal from "../../Modal/AlertModal";
+import InputField from "../../Common/InputField/InputField";
+import ErrorMessage from "../../Common/ErrorMessage/ErrorMessage";
+import AlertModal from "../../Modal/Alert/AlertModal";
 
 // ===== style =====
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`

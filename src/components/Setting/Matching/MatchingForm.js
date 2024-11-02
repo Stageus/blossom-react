@@ -6,9 +6,9 @@ import FlexBox from "../../../styles/FlexStyle";
 import P from "../../../styles/TextStyle";
 import { Button } from "../../../styles/ButtonStyle";
 // ===== components import =====
-import InputField from "../../Common/InputField";
-import ErrorMessage from "../../Common/ErrorMessage";
-import AlertModal from "../../Modal/AlertModal";
+import InputField from "../../Common/InputField/InputField";
+import ErrorMessage from "../../Common/ErrorMessage/ErrorMessage";
+import AlertModal from "../../Modal/Alert/AlertModal";
 // ===== hooks import =====
 import useMatching from "./useMatching";
 

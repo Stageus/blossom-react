@@ -4,7 +4,7 @@ import React from "react";
 import FlexBox from "../styles/FlexStyle";
 
 // ===== components import =====
-import FeedForm from "../components/Feed/FeedForm";
+import FeedForm from "../components/Feed/FeedForm/FeedForm";
 
 // ===== component =====
 const FeedEditor = () => {

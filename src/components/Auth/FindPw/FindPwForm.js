@@ -7,8 +7,8 @@ import Div from "../../../styles/LayoutStyle";
 import { Span } from "../../../styles/TextStyle";
 import { Button } from "../../../styles/ButtonStyle";
 // ===== components import =====
-import ErrorMessage from "../../Common/ErrorMessage";
-import InputField from "../../Common/InputField";
+import ErrorMessage from "../../Common/ErrorMessage/ErrorMessage";
+import InputField from "../../Common/InputField/InputField";
 // ===== hooks import =====
 import useFindPw from "./useFindPw";
 

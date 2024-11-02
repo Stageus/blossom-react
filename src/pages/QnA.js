@@ -6,8 +6,8 @@ import { useParams } from "react-router-dom";
 import FlexBox from "../styles/FlexStyle";
 
 // ===== components import =====
-import QuestionField from "../components/QnA/QuestionField";
-import AnswerField from "../components/QnA/AnswerField";
+import QuestionField from "../components/QnA/QuestionField/QuestionField";
+import AnswerField from "../components/QnA/AnswerField/AnswerField";
 
 // ===== recoil import =====
 import { latestQuestionIdxState } from "../recoil/latestQuestionIdxState";

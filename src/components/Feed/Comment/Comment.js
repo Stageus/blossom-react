@@ -3,17 +3,17 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 // ===== styles import =====
-import FlexBox from "../../styles/FlexStyle";
-import P from "../../styles/TextStyle";
+import FlexBox from "../../../styles/FlexStyle";
+import P from "../../../styles/TextStyle";
+import { Button } from "../../../styles/ButtonStyle";
 
 import { faXmark } from "@fortawesome/free-solid-svg-icons"; // 닫기 아이콘
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons"; // 수정 아이콘
 import { faCircleArrowUp } from "@fortawesome/free-solid-svg-icons"; // 등록 아이콘
 
 // ===== components import =====
-import Modal from "../Common/Modal";
-import { Button } from "../../styles/ButtonStyle";
-import InputField from "../Common/InputField";
+import Modal from "../../Common/Modal/Modal";
+import InputField from "../../Common/InputField/InputField";
 
 // ===== style =====
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`

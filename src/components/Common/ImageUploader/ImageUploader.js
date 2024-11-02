@@ -3,8 +3,8 @@ import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 // ===== styles & img import =====
-import { Input } from "../../styles/InputStyle";
-import { Button } from "../../styles/ButtonStyle";
+import { Input } from "../../../styles/InputStyle";
+import { Button } from "../../../styles/ButtonStyle";
 
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons"; // 수정 아이콘
 

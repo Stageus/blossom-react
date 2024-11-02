@@ -4,16 +4,16 @@ import { useRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";
 
 // ===== styles import =====
-import { Img } from "../../styles/ImgStyle";
-import Div from "../../styles/LayoutStyle";
-import { Button } from "../../styles/ButtonStyle";
+import { Img } from "../../../styles/ImgStyle";
+import Div from "../../../styles/LayoutStyle";
+import { Button } from "../../../styles/ButtonStyle";
 
 // ===== recoil import =====
-import { isClickedEditButtonState } from "../../recoil/editButtonState";
+import { isClickedEditButtonState } from "../../../recoil/editButtonState";
 
 // ===== components import =====
-import ImageUploader from "../Common/ImageUploader";
-import AlertModal from "../Modal/AlertModal";
+import ImageUploader from "../../Common/ImageUploader/ImageUploader";
+import AlertModal from "../../Modal/Alert/AlertModal";
 
 // ===== style =====
 const StyledRelativeDiv = styled(Div)`

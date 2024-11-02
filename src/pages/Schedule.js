@@ -3,8 +3,7 @@ import React from "react";
 // ===== styles import =====
 import FlexBox from "../styles/FlexStyle";
 // ===== components import =====
-import CalendarForSchedule from "../components/Schedule/CalendarForSchedule/CalendarForSchedule.test";
-// import CalendarForSchedule from "../components/Schedule/CalendarForSchedule/CalendarForSchedule";
+import CalendarForSchedule from "../components/Schedule/Calendar/CalendarForSchedule";
 
 // ===== component =====
 const Schedule = () => {
