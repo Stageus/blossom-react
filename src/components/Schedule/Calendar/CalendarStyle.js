@@ -154,8 +154,8 @@ export const StyledCalendar = styled(Calendar)`
 
   // react-calendar__tile--hasActive: 선택된 날짜를 포함한 타일
   .react-calendar__tile--hasActive {
-    background: #ffb8b7;
-    color: white;
+    background: transparent;
+    color: #333333;
   }
 
   .react-calendar__tile--hasActive:enabled:hover,
