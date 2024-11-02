@@ -6,9 +6,9 @@ import TestImage from "../../assets/images/test.jpg";
 // ===== components import =====
 import Nav from "../../components/Main/Nav/Nav";
 import Anniversary from "../../components/Main/Anniversary/Anniversary";
-import Thumbnail from "../../components/Main/Thumbnail";
-import NicknameWrapper from "../../components/Main/NicknameWrapper";
-import AlertModal from "../../components/Modal/AlertModal";
+import Thumbnail from "../../components/Main/Thumbnail/Thumbnail";
+import NicknameWrapper from "../../components/Main/Nickname/NicknameWrapper";
+import AlertModal from "../../components/Modal/Alert/AlertModal";
 
 // ===== component =====
 const Main = () => {

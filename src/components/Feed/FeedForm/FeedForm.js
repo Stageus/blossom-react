@@ -4,16 +4,16 @@ import { useLocation } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 // ===== styles & img import =====
-import FlexBox from "../../styles/FlexStyle";
-import Div from "../../styles/LayoutStyle";
-import { Img } from "../../styles/ImgStyle";
+import FlexBox from "../../../styles/FlexStyle";
+import Div from "../../../styles/LayoutStyle";
+import { Img } from "../../../styles/ImgStyle";
 
 // ===== components import =====
-import ImageUploader from "../Common/ImageUploader/ImageUploader";
-import InputField from "../Common/InputField/InputField";
-import P from "../../styles/TextStyle";
-import { TextArea } from "../../styles/InputStyle";
-import { Button } from "../../styles/ButtonStyle";
+import ImageUploader from "../../Common/ImageUploader/ImageUploader";
+import InputField from "../../Common/InputField/InputField";
+import P from "../../../styles/TextStyle";
+import { TextArea } from "../../../styles/InputStyle";
+import { Button } from "../../../styles/ButtonStyle";
 
 // ===== style =====
 const StyledRelativeDiv = styled(Div)`

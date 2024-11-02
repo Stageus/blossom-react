@@ -4,19 +4,19 @@ import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 // ===== styles & img import =====
-import FlexBox from "../../styles/FlexStyle";
-import { Button } from "../../styles/ButtonStyle";
-import P from "../../styles/TextStyle";
-import { Img } from "../../styles/ImgStyle";
-import { Div } from "../../styles/LayoutStyle";
+import FlexBox from "../../../styles/FlexStyle";
+import { Button } from "../../../styles/ButtonStyle";
+import P from "../../../styles/TextStyle";
+import { Img } from "../../../styles/ImgStyle";
+import { Div } from "../../../styles/LayoutStyle";
 
 import { faXmark } from "@fortawesome/free-solid-svg-icons"; // 닫기 아이콘
 import { faPenToSquare } from "@fortawesome/free-solid-svg-icons"; // 수정 아이콘
 
 // ===== component import =====
-import ConfirmModal from "../Modal/ConfirmModal";
-import AlertModal from "../Modal/AlertModal";
-import Comment from "./Comment";
+import ConfirmModal from "../../Modal/Confirm/ConfirmModal";
+import AlertModal from "../../Modal/Alert/AlertModal";
+import Comment from "../Comment/Comment";
 
 // ===== style =====
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`

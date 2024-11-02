@@ -2,11 +2,11 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 // ===== styles import =====
-import FlexBox from "../../styles/FlexStyle";
-import { H1 } from "../../styles/TextStyle";
-import { Button } from "../../styles/ButtonStyle";
-import { Img } from "../../styles/ImgStyle";
-import WhiteArrow from "../../assets/images/icon_park_left.png";
+import FlexBox from "../../../styles/FlexStyle";
+import { H1 } from "../../../styles/TextStyle";
+import { Button } from "../../../styles/ButtonStyle";
+import { Img } from "../../../styles/ImgStyle";
+import WhiteArrow from "../../../assets/images/icon_park_left.png";
 
 // ===== component =====
 const QuestionField = ({ questionIdx, question }) => {

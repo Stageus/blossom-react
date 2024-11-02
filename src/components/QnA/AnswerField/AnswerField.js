@@ -2,17 +2,17 @@ import React, { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 // ===== styles import =====
-import P from "../../styles/TextStyle";
-import { TextArea } from "../../styles/InputStyle";
-import { Button } from "../../styles/ButtonStyle";
-import FlexBox from "../../styles/FlexStyle";
+import P from "../../../styles/TextStyle";
+import { TextArea } from "../../../styles/InputStyle";
+import { Button } from "../../../styles/ButtonStyle";
+import FlexBox from "../../../styles/FlexStyle";
 
 // ===== utils & recoil import =====
-import { isAnswerValid } from "../../utils/validation";
-import ErrorMessage from "../Common/ErrorMessage/ErrorMessage";
+import { isAnswerValid } from "../../../utils/validation";
+import ErrorMessage from "../../Common/ErrorMessage/ErrorMessage";
 
 // ===== components import =====
-import AlertModal from "../Modal/AlertModal";
+import AlertModal from "../../Modal/Alert/AlertModal";
 
 // ===== component =====
 const AnswerField = ({

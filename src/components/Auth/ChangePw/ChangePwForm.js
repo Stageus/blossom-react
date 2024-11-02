@@ -6,7 +6,7 @@ import { Button } from "../../../styles/ButtonStyle";
 // ===== components import =====
 import ErrorMessage from "../../Common/ErrorMessage/ErrorMessage";
 import InputField from "../../Common/InputField/InputField";
-import AlertModal from "../../Modal/AlertModal";
+import AlertModal from "../../Modal/Alert/AlertModal";
 // ===== hooks import =====
 import useChangePw from "./useChangePw";
 

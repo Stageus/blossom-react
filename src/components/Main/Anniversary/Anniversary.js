@@ -17,7 +17,7 @@ import { calculateAnniversary } from "../../../utils/calculation";
 // ===== components import =====
 import InputField from "../../Common/InputField/InputField";
 import ErrorMessage from "../../Common/ErrorMessage/ErrorMessage";
-import AlertModal from "../../Modal/AlertModal";
+import AlertModal from "../../Modal/Alert/AlertModal";
 
 // ===== style =====
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
