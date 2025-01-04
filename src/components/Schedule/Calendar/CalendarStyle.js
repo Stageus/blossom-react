@@ -152,6 +152,23 @@ export const StyledCalendar = styled(Calendar)`
     font-weight: bold;
   }
 
+  // 일정이 있는 날짜 셀
+  .react-calendar__tile--hasSchedule {
+    position: relative;
+  }
+
+  .react-calendar__tile--hasSchedule::after {
+    content: "";
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 6px;
+    height: 6px;
+    background-color: #ff0000; /* 점 색상 */
+    border-radius: 50%;
+  }
+
   // react-calendar__tile--hasActive: 선택된 날짜를 포함한 타일
   .react-calendar__tile--hasActive {
     background: transparent;
