@@ -1,14 +1,13 @@
 import React from "react";
 
 // ===== styles import =====
-import FlexBox from "../styles/FlexStyle";
-import P, { H1 } from "../styles/TextStyle";
+import FlexBox from "../../styles/FlexStyle";
+import P, { H1 } from "../../styles/TextStyle";
 // ===== components import =====
-import FindIdForm from "../components/Auth/FindId/FindIdForm";
-// import FindIdForm from "../components/Auth/FindIdForm";
+import FindPwForm from "../../components/Auth/FindPw/FindPwForm";
 
 // ===== component =====
-const FindId = () => {
+const FindPw = () => {
   return (
     <FlexBox $row="end" $width="100%">
       <FlexBox
@@ -19,19 +18,19 @@ const FindId = () => {
         $height="100vh;"
         $backgroundColor="#FBE8E7"
       >
-        {/* 아이디 찾기 Header */}
+        {/* 비밀번호 찾기 Header */}
         <FlexBox $dir="col" $width="25.625rem" $margin="0 0 30px 0">
           <H1 $fontSize="36px" $margin="0 0 10px 0">
-            아이디 찾기
+            비밀번호 찾기
           </H1>
-          <P $fontSize="16px">회원가입 시 등록하신 이름과 전화번호를 입력해 주세요.</P>
+          <P $fontSize="16px">회원가입 시 등록하신 아이디, 이름 및 전화번호를 입력해 주세요.</P>
         </FlexBox>
 
-        {/* 아이디 찾기 Form */}
-        <FindIdForm />
+        {/* 비밀번호 찾기 Form */}
+        <FindPwForm />
       </FlexBox>
     </FlexBox>
   );
 };
 
-export default FindId;
+export default FindPw;

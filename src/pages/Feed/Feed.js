@@ -4,19 +4,19 @@ import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 // ===== styles & img import =====
-import FlexBox from "../styles/FlexStyle";
-import logo from "../assets/images/logo.png";
-import WhiteArrow from "../assets/images/icon_park_left.png";
-import { Img } from "../styles/ImgStyle";
-import { Button } from "../styles/ButtonStyle";
-import TestImage from "../assets/images/test.jpg";
+import FlexBox from "../../styles/FlexStyle";
+import { Img } from "../../styles/ImgStyle";
+import { Button } from "../../styles/ButtonStyle";
+import logo from "../../assets/images/logo.png";
+import WhiteArrow from "../../assets/images/icon_park_left.png";
+import TestImage from "../../assets/images/test.jpg";
 
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons"; // 검색 아이콘
 import { faPlus } from "@fortawesome/free-solid-svg-icons"; // 추가 아이콘
 
 // ===== components import =====
-import FeedItem from "../components/Feed/FeedItem/FeedItem";
-import InputField from "../components/Common/InputField/InputField";
+import FeedItem from "../../components/Feed/FeedItem/FeedItem";
+import InputField from "../../components/Common/InputField/InputField";
 
 // ===== style =====
 const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`

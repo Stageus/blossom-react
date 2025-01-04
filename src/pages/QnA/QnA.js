@@ -3,14 +3,14 @@ import { useRecoilValue } from "recoil";
 import { useParams } from "react-router-dom";
 
 // ===== styles import =====
-import FlexBox from "../styles/FlexStyle";
+import FlexBox from "../../styles/FlexStyle";
 
 // ===== components import =====
-import QuestionField from "../components/QnA/QuestionField/QuestionField";
-import AnswerField from "../components/QnA/AnswerField/AnswerField";
+import QuestionField from "../../components/QnA/QuestionField/QuestionField";
+import AnswerField from "../../components/QnA/AnswerField/AnswerField";
 
 // ===== recoil import =====
-import { latestQuestionIdxState } from "../recoil/latestQuestionIdxState";
+import { latestQuestionIdxState } from "../../recoil/latestQuestionIdxState";
 
 // ===== component =====
 const QnA = () => {

@@ -7,23 +7,22 @@ import GlobalStyle from "./styles/GlobalStyle";
 
 // ===== pages import =====
 // === Auth pages ===
-import Signup from "./pages/Signup";
-import Login from "./pages/Login";
-import FindId from "./pages/FindId";
-import FindPw from "./pages/FindPw";
-import ChangePw from "./pages/ChangePw";
+import Signup from "./pages/Signup/Signup";
+import Login from "./pages/Login/Login";
+import FindId from "./pages/FindId/FindId";
+import FindPw from "./pages/FindPw/FindPw";
+import ChangePw from "./pages/ChangePw/ChangePw";
 // === Service pages ===
 import Main from "./pages/Main/Main";
-// import Main from "./pages/Main";
-import Setup from "./pages/Setup";
-import Schedule from "./pages/Schedule";
-import Matching from "./pages/Matching";
-import Feed from "./pages/Feed";
-import FeedEditor from "./pages/FeedEditor";
-import QnA from "./pages/QnA";
-import QnAList from "./pages/QnAList";
+import Setup from "./pages/Setup/Setup";
+import Schedule from "./pages/Schedule/Schedule";
+import Matching from "./pages/Matching/Matching";
+import Feed from "./pages/Feed/Feed";
+import FeedEditor from "./pages/FeedEditor/FeedEditor";
+import QnA from "./pages/QnA/QnA";
+import QnAList from "./pages/QnAList/QnAList";
 // === Not Found page ===
-import NotFound from "./pages/NotFound";
+import NotFound from "./pages/NotFound/NotFound";
 
 // ===== component =====
 const App = () => {
