@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { StyledCalendar } from "./CalendarStyle";
+
 // ===== components import =====
 import ScheduleDetailModal from "../Modal/ScheduleDetailModal";
 
@@ -35,8 +36,6 @@ const CalendarForSchedule = () => {
       return updatedSchedules;
     });
   };
-
-  // formatDay 함수는 첫 번째 매개변수로 locale을, 두 번째 매개변수로 date를 받기 때문애 locale을 사용하지 않더라도 순서를 맞춰 코드를 작성해야 함
 
   return (
     <>

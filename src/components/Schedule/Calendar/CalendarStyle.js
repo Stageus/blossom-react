@@ -138,18 +138,19 @@ export const StyledCalendar = styled(Calendar)`
     }
   }
 
-  /* "today" 텍스트 추가 */
-  .react-calendar__tile--now::after {
+  /* "today" 텍스트 유지 */
+  .react-calendar__tile--now:before {
     content: "today";
     position: absolute;
     bottom: 5px;
-    right: 5px;
-    font-size: 0.75rem;
+    right: -10px;
+    transform: translateX(-50%);
+    font-size: 0.8rem;
     color: #ffd7d6;
     background: white;
-    padding: 2px 5px;
-    border-radius: 4px;
+    border-radius: 2px;
     font-weight: bold;
+    padding: 2px;
   }
 
   // 일정이 있는 날짜 셀
@@ -165,7 +166,7 @@ export const StyledCalendar = styled(Calendar)`
     transform: translateX(-50%);
     width: 6px;
     height: 6px;
-    background-color: #ff0000; /* 점 색상 */
+    background-color: #ff9999;
     border-radius: 50%;
   }
 
