@@ -12,27 +12,23 @@ import Modal from "../../Common/Modal/Modal";
 const AlertModal = ({ message, hasFunc, onClick, setIsOpen }) => {
   // message : String
   // hasFunc : Boolean
-  // onClick : Funtion
-  // setIsOpen : Funtion
+  // onClick : Function
+  // setIsOpen : Function
+
+  const handleClick = hasFunc ? onClick : () => setIsOpen(false);
 
   return (
-    <Modal setIsOpen={hasFunc ? onClick : () => setIsOpen(false)}>
+    <Modal setIsOpen={handleClick}>
       <FlexBox $dir="col" $row="between" $col="center" $height="8rem">
         <P $fontSize="32px">{message}</P>
-        {hasFunc ? (
-          <Button $width="12.75rem" $height="3.25rem" $backgroundColor="#E1F2FB" onClick={onClick}>
-            확인
-          </Button>
-        ) : (
-          <Button
-            $width="12.75rem"
-            $height="3.25rem"
-            $backgroundColor="#E1F2FB"
-            onClick={() => setIsOpen(false)}
-          >
-            확인
-          </Button>
-        )}
+        <Button
+          $width="12.75rem"
+          $height="3.25rem"
+          $backgroundColor="#FBE8E7"
+          onClick={handleClick}
+        >
+          확인
+        </Button>
       </FlexBox>
     </Modal>
   );
