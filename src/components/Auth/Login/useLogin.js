@@ -20,7 +20,7 @@ const useLogin = () => {
 
   // === api ===
   const { data, statusCode, fetchData } = useAxios(
-    "/account/login", // 로그인 api 주소, 추후 백엔드 서버 구축 후 연결
+    "/account/login", // 로그인 api 주소
     "POST",
     {},
     false,

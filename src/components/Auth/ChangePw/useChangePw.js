@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 // ===== utils & hooks import =====
@@ -11,15 +11,18 @@ const useChangePw = () => {
   const pwRef = useRef("");
   const confirmPwRef = useRef("");
   const submitRef = useRef(null);
+
   // === state ===
   const [pwError, setPwError] = useState("");
   const [confirmPwError, setConfirmPwError] = useState("");
   const [failModalOpen, setFailModalOpen] = useState(false);
+
   // === navigate ===
   const navigate = useNavigate();
+
   // === api ===
   const { statusCode, fetchData } = useAxios(
-    "/account/pw", // 비밀번호 변경 api 주소, 추후 백엔드 서버 구축 후 연결
+    "/account/pw", // 비밀번호 변경 api 주소
     "PUT",
     {},
     false,
@@ -49,6 +52,16 @@ const useChangePw = () => {
     }
   };
 
+  useEffect(() => {
+    if (statusCode === 200) {
+      navigate("/login");
+    } else if (statusCode === 401) {
+      setConfirmPwError("비밀번호가 일치하지 않습니다.");
+    } else if ([400, 404, 500].includes(statusCode)) {
+      setFailModalOpen(true);
+    }
+  }, [statusCode, navigate]);
+
   const handleChangePw = async () => {
     const newPw = pwRef.current.value;
     const newPwCheck = confirmPwRef.current.value;
@@ -56,27 +69,11 @@ const useChangePw = () => {
     // 비밀번호 변경 API 호출
     if (!pwError && !confirmPwError) {
       await fetchData({
-        body: { newPw, newPwCheck },
+        body: {
+          newPw, // 새로운 비밀번호
+          newPwCheck, // 새로운 비밀번호 확인
+        },
       });
-
-      // 비밀번호 변경 성공 및 실패 처리
-      if (statusCode === 200) {
-        navigate("/login");
-      } else {
-        switch (statusCode) {
-          case 400:
-          case 404:
-          case 500:
-            setFailModalOpen(true);
-            break;
-          case 401:
-            setConfirmPwError("비밀번호가 일치하지 않습니다.");
-            break;
-          default:
-            setFailModalOpen(true);
-            break;
-        }
-      }
     } else {
       setFailModalOpen(true);
     }
