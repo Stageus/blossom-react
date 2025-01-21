@@ -21,6 +21,7 @@ const Login = () => {
         $width="32.438rem"
         $height="100vh"
         $backgroundColor="#FBE8E7"
+        $margin="0 3rem 0 0"
       >
         <FlexBox>
           <Img src={Logo} />

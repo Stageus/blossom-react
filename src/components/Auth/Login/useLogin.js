@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 // ===== utils & hook import =====
@@ -11,18 +11,35 @@ const useLogin = () => {
   const idRef = useRef("");
   const passwordRef = useRef("");
   const submitRef = useRef(null);
+
   // === state ===
   const [loginError, setLoginError] = useState("");
+
   // === navigate ===
   const navigate = useNavigate();
+
   // === api ===
   const { data, statusCode, fetchData } = useAxios(
-    "/account/login", // 로그인 api 주소, 추후 백엔드 서버 구축 후 연결
+    "/account/login", // 로그인 api 주소
     "POST",
     {},
     false,
     false,
   );
+
+  useEffect(() => {
+    if (statusCode === 200) {
+      localStorage.setItem("token", data.token); // JWT 토큰을 로컬 스토리지에 저장
+      setLoginError("");
+      navigate("/");
+    } else if (statusCode === 401 || statusCode === 400) {
+      setLoginError("아이디 또는 비밀번호가 잘못되었습니다.");
+    } else if (statusCode === 404) {
+      setLoginError("해당 계정이 존재하지 않습니다.");
+    } else if (statusCode === 500) {
+      setLoginError("서버 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.");
+    }
+  }, [statusCode, data, navigate]);
 
   const handleLogin = async () => {
     const id = idRef.current.value;
@@ -41,19 +58,6 @@ const useLogin = () => {
           pw, // 비밀번호
         },
       });
-
-      // 로그인 성공 및 실패 처리
-      if (statusCode === 200) {
-        localStorage.setItem("token", data.token); // JWT 토큰을 로컬 스토리지에 저장
-        setLoginError("");
-        navigate("/");
-      } else if (statusCode === 401 || statusCode === 400) {
-        setLoginError("아이디 또는 비밀번호가 잘못되었습니다.");
-      } else if (statusCode === 404) {
-        setLoginError("해당 계정이 존재하지 않습니다.");
-      } else if (statusCode === 500) {
-        setLoginError("서버 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.");
-      }
     }
   };
 

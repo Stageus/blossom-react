@@ -17,6 +17,7 @@ const Matching = () => {
         $width="32.438rem"
         $height="100vh;"
         $backgroundColor="#FBE8E7"
+        $margin="0 3rem 0 0"
       >
         {/* 매칭 Header */}
         <FlexBox $dir="col" $width="25.625rem" $margin="0 0 30px 0">

@@ -3,9 +3,11 @@ import React from "react";
 // ===== styles import =====
 import FlexBox from "../../../styles/FlexStyle";
 import { Button } from "../../../styles/ButtonStyle";
+
 // ===== components import =====
 import InputField from "../../Common/InputField/InputField";
 import ErrorMessage from "../../Common/ErrorMessage/ErrorMessage";
+
 // ===== hooks import =====
 import useLogin from "./useLogin";
 
@@ -13,6 +15,7 @@ import useLogin from "./useLogin";
 const LoginForm = () => {
   // === useLogin ===
   const { idRef, passwordRef, submitRef, loginError, handleLogin } = useLogin();
+
   // === return ===
   return (
     <>
@@ -21,16 +24,14 @@ const LoginForm = () => {
         <InputField
           height="4.375rem"
           padding="0 0 0 10px"
-          border="3px solid #FFC4D0"
-          borderRadius="8px"
+          borderRadius="12px"
           inputRef={idRef}
           placeholderMessage="아이디 입력"
         />
         <InputField
           height="4.375rem"
           padding="0 0 0 10px"
-          border="3px solid #FFC4D0"
-          borderRadius="8px"
+          borderRadius="12px"
           inputRef={passwordRef}
           type="password"
           placeholderMessage="비밀번호 입력"
@@ -55,7 +56,7 @@ const LoginForm = () => {
         $width="25.625rem"
         $height="5rem"
         $margin="30px 0 50px 0"
-        $borderRadius="8px"
+        $borderRadius="12px"
         ref={submitRef}
         onClick={handleLogin}
       >

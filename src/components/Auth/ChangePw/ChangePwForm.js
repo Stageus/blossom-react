@@ -3,10 +3,12 @@ import React from "react";
 // ===== styles import =====
 import FlexBox from "../../../styles/FlexStyle";
 import { Button } from "../../../styles/ButtonStyle";
+
 // ===== components import =====
 import ErrorMessage from "../../Common/ErrorMessage/ErrorMessage";
 import InputField from "../../Common/InputField/InputField";
 import AlertModal from "../../Modal/Alert/AlertModal";
+
 // ===== hooks import =====
 import useChangePw from "./useChangePw";
 
@@ -25,6 +27,7 @@ const ChangePwForm = () => {
     handleConfirmPw,
     handleChangePw,
   } = useChangePw();
+
   // === return ===
   return (
     <>
@@ -39,8 +42,7 @@ const ChangePwForm = () => {
           hasLabel="true"
           labelMessage="비밀번호"
           padding="0 0 0 10px"
-          border="3px solid #FFC4D0"
-          borderRadius="8px"
+          borderRadius="12px"
           fontSize="18px"
           type="password"
           placeholderMessage="영어, 숫자를 필수 포함한 8자 ~ 15자를 입력해 주세요. (특수문자 허용)"
@@ -55,8 +57,7 @@ const ChangePwForm = () => {
           hasLabel="true"
           labelMessage="비밀번호 확인"
           padding="0 0 0 10px"
-          border="3px solid #FFC4D0"
-          borderRadius="8px"
+          borderRadius="12px"
           fontSize="18px"
           type="password"
           placeholderMessage="입력하신 비밀번호와 동일하게 입력해 주세요."
@@ -77,7 +78,7 @@ const ChangePwForm = () => {
         $width="25.625rem"
         $height="5rem"
         $margin="30px 0 50px 0"
-        $borderRadius="8px"
+        $borderRadius="12px"
         ref={submitRef}
         onClick={handleChangePw}
       >
