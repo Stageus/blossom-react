@@ -34,7 +34,7 @@ const Main = () => {
       {/* error modal */}
       {/* <AlertModal /> */}
 
-      <FlexBox $width="100%" $height="100%">
+      <FlexBox $width="100%" $height="100vh">
         {/* nav */}
         <Nav />
 

@@ -24,18 +24,18 @@ const GlobalStyle = createGlobalStyle`
   *, body {
     font-family: 'KoddiUD_Regular', Arial, sans-serif;
     font-weight: 400;
-  }
-
-  h1 {
-    font-family: 'KoddiUD_Bold', Arial, sans-serif;
-    font-weight: 600;
+    box-sizing: border-box;
   }
 
   body {
     margin: 0;
     padding: 0;
     background-color: #FCF5EE;
-    box-sizing: border-box;
+  }
+
+  h1 {
+    font-family: 'KoddiUD_Bold', Arial, sans-serif;
+    font-weight: 600;
   }
 
   a {

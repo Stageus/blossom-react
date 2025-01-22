@@ -24,7 +24,7 @@ const Nav = () => {
         $row="between"
         $col="center"
         $width="9.25rem"
-        $height="100vh"
+        $height="100%"
         $padding="50px 0 30px 0"
         $backgroundColor="#FFF1F0"
       >
