@@ -1,13 +1,15 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 // ===== styles import =====
-import { Button } from "../../../styles/ButtonStyle";
 import FlexBox from "../../../styles/FlexStyle";
-import { faCalendarDays } from "@fortawesome/free-solid-svg-icons"; // 일정 아이콘
-import { faImage } from "@fortawesome/free-solid-svg-icons"; // 피드 아이콘
-import { faComments } from "@fortawesome/free-solid-svg-icons"; // 문답 아이콘
+import { Button } from "../../../styles/ButtonStyle";
+import { P } from "../../../styles/TextStyle";
+
+import { CalendarIcon } from "../../../styles/IconStyle";
+import { FeedIcon } from "../../../styles/IconStyle";
+import { QnAIcon } from "../../../styles/IconStyle";
+
 // ===== custom Hook import =====
 import useIsVisited from "./useIsVisited";
 
@@ -23,55 +25,65 @@ const Nav = () => {
         $dir="col"
         $row="between"
         $col="center"
-        $width="9.25rem"
-        $height="100vh"
-        $padding="50px 0 30px 0"
+        $width="4.5rem" // 64px
+        $height="100%"
+        $padding="52px 0 32px 0"
         $backgroundColor="#FFF1F0"
       >
-        <FlexBox $dir="col" $row="between" $col="center" $width="9.25rem" $height="50%">
+        <FlexBox $dir="col" $row="between" $col="center" $width="9.25rem" $height="40%">
           {/* 일정 버튼 */}
           <Button
-            $width="108px"
-            $height="108px"
-            $borderRadius="50%"
+            $borderRadius="12px"
+            $backgroundColor="transparent"
             onClick={() => navigate("/schedule")}
           >
-            <FlexBox $width="108px" $height="108px" $row="center" $col="center">
-              <FontAwesomeIcon icon={faCalendarDays} />
+            <FlexBox $dir="col" $row="center" $col="center" $width="60px" $height="68px">
+              <CalendarIcon />
+              <P $fontSize="12px" $padding="8px 0 0 0">
+                CALENDAR
+              </P>
             </FlexBox>
           </Button>
 
           {/* 피드 버튼 */}
-          <Button $width="108px" $height="108px" $borderRadius="50%">
-            <FlexBox
-              $width="108px"
-              $height="108px"
-              $row="center"
-              $col="center"
-              onClick={() => navigate("/feed")}
-            >
-              <FontAwesomeIcon icon={faImage} />
+          <Button
+            $borderRadius="12px"
+            $backgroundColor="transparent"
+            onClick={() => navigate("/feed")}
+          >
+            <FlexBox $dir="col" $row="center" $col="center" $width="60px" $height="68px">
+              <FeedIcon />
+              <P $fontSize="12px" $padding="8px 0 0 0">
+                FEED
+              </P>
             </FlexBox>
           </Button>
 
           {/* 문답 버튼 */}
-          <Button $width="108px" $height="108px" $borderRadius="50%" onClick={handleClickQnAButton}>
-            <FlexBox $width="108px" $height="108px" $row="center" $col="center">
-              <FontAwesomeIcon icon={faComments} />
+          <Button
+            $borderRadius="12px"
+            $backgroundColor="transparent"
+            onClick={handleClickQnAButton}
+          >
+            <FlexBox $dir="col" $row="center" $col="center" $width="60px" $height="68px">
+              <QnAIcon />
+              <P $fontSize="12px" $padding="8px 0 0 0">
+                Q & A
+              </P>
             </FlexBox>
           </Button>
         </FlexBox>
 
         {/* 로그아웃 버튼 */}
         <Button
-          $width="108px"
-          $height="62px"
-          $borderRadius="20%"
-          $fontSize="28px"
-          $backgroundColor="#d9d9d9"
+          $width="60px"
+          $height="32px"
+          $borderRadius="8px"
+          $fontSize="16px"
+          $backgroundColor="transparent"
           onClick={() => navigate("/login")}
         >
-          Logout
+          LOGOUT
         </Button>
       </FlexBox>
     </>

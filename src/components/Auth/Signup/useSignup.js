@@ -14,6 +14,7 @@ const useSignup = () => {
   const nameRef = useRef("");
   const birthdayRef = useRef("");
   const submitRef = useRef(null);
+
   // === state ===
   const [phonenumber, setPhonenumber] = useState(""); // 전화번호 저장하는 state
   // (에러 메세지 관련)
@@ -27,16 +28,54 @@ const useSignup = () => {
   const [isDuplicationModalOpen, setIsDuplicationModalOpen] = useState(false); // 중복 확인 modal state
   const [isAlertModalOpen, setIsAlertModalOpen] = useState(false); // 회원가입 실패 modal state
   const [isDisable, setIsDisable] = useState(false); // 중복 확인 후 input, button disable 설정 state
+
   // === navigate ===
   const navigate = useNavigate();
+
   // === api ===
-  const { data, statusCode, fetchData } = useAxios(
-    "/account/login", // 로그인 api 주소, 추후 백엔드 서버 구축 후 연결
+  const {
+    data: checkIdData,
+    statusCode: checkIdStatusCode,
+    fetchData: fetchCheckIdData,
+  } = useAxios(
+    "/account/checkId", // 중복확인 api 주소
+    "GET",
+    {},
+    false,
+    false,
+  );
+
+  const {
+    data: signupData,
+    statusCode: signupStatusCode,
+    fetchData: fetchSignupData,
+  } = useAxios(
+    "/account/signup", // 회원가입 api 주소
     "POST",
     {},
     false,
     false,
   );
+
+  useEffect(() => {
+    if (checkIdStatusCode === 400 || checkIdStatusCode === 409) {
+      setIdError("사용 불가한 아이디입니다.");
+    } else if (checkIdStatusCode === 500) {
+      setIdError("서버 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.");
+    } else if (checkIdStatusCode === 200) {
+      setIsDuplicationModalOpen(true);
+    }
+  }, [checkIdStatusCode]);
+
+  useEffect(() => {
+    if (signupStatusCode === 200) {
+      navigate("/login");
+    } else if (signupStatusCode === 400 || signupStatusCode === 409) {
+      setIsAlertModalOpen(true);
+    } else if (signupStatusCode === 500) {
+      setBirthdayError("서버 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.");
+    }
+  }, [signupStatusCode, navigate]);
 
   // 아이디 유효성 검사
   const handleValidateId = () => {
@@ -105,20 +144,20 @@ const useSignup = () => {
   };
 
   // 중복 확인 버튼 클릭 시, 실행되는 이벤트 함수
-  const handleDuplicateId = () => {
+  const handleDuplicateId = async () => {
     const id = idRef.current.value;
 
     if (!isIdValid(id)) {
       setIdError("아이디 형식이 올바르지 않습니다.");
     } else {
-      // 중복 확인 API 호출 코드
-      const status = 200;
+      console.log("Checking ID:", id);
 
-      if (status === 400) {
-        setIdError("사용 불가한 아이디입니다.");
-      } else {
-        setIsDuplicationModalOpen(true);
-      }
+      // 중복 확인 API 호출 코드
+      await fetchCheckIdData({
+        body: {
+          id, // 아이디
+        },
+      });
     }
   };
 
@@ -149,7 +188,7 @@ const useSignup = () => {
       setBirthdayError("");
 
       // 회원가입 API 호출 코드
-      await fetchData({
+      await fetchSignupData({
         body: {
           id, // 아이디
           pw, // 비밀번호
@@ -158,15 +197,6 @@ const useSignup = () => {
           birth: birthday, // 생일
         },
       });
-
-      // 회원가입 성공 및 실패 처리
-      if (statusCode === 200) {
-        navigate("/login");
-      } else if (statusCode === 400 || statusCode === 409) {
-        setIsAlertModalOpen(true);
-      } else if (statusCode === 500) {
-        setBirthdayError("서버 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.");
-      }
     } else {
       setBirthdayError("");
       setIsAlertModalOpen(true);

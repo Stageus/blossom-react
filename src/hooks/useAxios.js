@@ -2,6 +2,7 @@ import { useRef, useEffect, useState } from "react";
 import axios from "axios";
 
 const API_BASE_URL = process.env.REACT_APP_API_BASE_URL; // 환경 변수에서 API 베이스 URL 가져오기
+
 // useAxios 매개변수
 // endpoint: 필수 인자 / API 요청을 보낼 엔드포인트(주소)를 지정하는 값
 // method: 선택 인자, 기본값: "GET" / HTTP 요청의 메서드를 지정

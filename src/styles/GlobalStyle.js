@@ -2,40 +2,27 @@ import { createGlobalStyle } from "styled-components";
 
 const GlobalStyle = createGlobalStyle`
 
-  @font-face {
-    font-family: 'KoddiUD_Regular';
-    font-weight: 400;
-    font-display: swap;
-    src: url("/fonts/KoddiUDOnGothic-Regular.woff2") format ('woff2');
-  }
+  @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap");
 
-  @font-face {
-    font-family: 'KoddiUD_Bold';
-    font-weight: 600;
-    src: url("/fonts/KoddiUDOnGothic-Bold.woff2") format ('woff2');
-  }
-
-  @font-face {
-    font-family: 'KoddiUD_ExtraBold';
-    font-weight: 800;
-    src: url("/fonts/KoddiUDOnGothic-ExtraBold.woff2") format ('woff2');
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
   }
 
   *, body {
-    font-family: 'KoddiUD_Regular', Arial, sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
     font-weight: 400;
-  }
-
-  h1 {
-    font-family: 'KoddiUD_Bold', Arial, sans-serif;
-    font-weight: 600;
+    box-sizing: border-box;
   }
 
   body {
     margin: 0;
     padding: 0;
     background-color: #FCF5EE;
-    box-sizing: border-box;
+  }
+
+  h1 {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-weight: 600;
   }
 
   a {
@@ -53,11 +40,11 @@ const GlobalStyle = createGlobalStyle`
   }
 
   input[type="password"] {
-    font-family: 'KoddiUD_Bold', Arial, sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
   }
 
   input[type="password"]::placeholder {
-    font-family: 'KoddiUD_Bold', Arial, sans-serif;
+    font-family: 'Noto Sans KR', sans-serif;
   }
 
   textarea {

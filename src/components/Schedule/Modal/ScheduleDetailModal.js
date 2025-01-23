@@ -6,6 +6,8 @@ import FlexBox from "../../../styles/FlexStyle";
 
 // ===== component import =====
 import Modal from "../../Common/Modal/Modal";
+import InputField from "../../Common/InputField/InputField";
+import { Button } from "../../../styles/ButtonStyle";
 
 // ===== component =====
 const ScheduleDetailModal = ({
@@ -63,23 +65,23 @@ const ScheduleDetailModal = ({
         </div>
         {isEditing ? (
           <>
-            <input
+            <InputField
               type="text"
               value={editingSchedule}
               onChange={(e) => setEditingSchedule(e.target.value)}
               placeholder="일정을 수정하세요"
             />
-            <button onClick={handleUpdateSchedule}>수정 완료</button>
+            <Button onClick={handleUpdateSchedule}>수정 완료</Button>
           </>
         ) : (
           <>
-            <input
+            <InputField
               type="text"
               value={newSchedule}
               onChange={(e) => setNewSchedule(e.target.value)}
               placeholder="일정을 입력하세요"
             />
-            <button onClick={handleAddSchedule}>추가</button>
+            <Button onClick={handleAddSchedule}>추가</Button>
           </>
         )}
       </FlexBox>
