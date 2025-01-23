@@ -3,7 +3,6 @@ import React from "react";
 // ===== styles import =====
 import FlexBox from "../../../styles/FlexStyle";
 import Div from "../../../styles/LayoutStyle";
-import { Span } from "../../../styles/TextStyle";
 import { Button } from "../../../styles/ButtonStyle";
 
 // ===== components import =====
@@ -28,8 +27,7 @@ const FindPwForm = () => {
           hasLabel="true"
           labelMessage="아이디"
           padding="0 0 0 10px"
-          border="3px solid #FFC4D0"
-          borderRadius="8px"
+          borderRadius="12px"
           fontSize="18px"
           type="text"
           inputRef={idRef}
@@ -38,8 +36,7 @@ const FindPwForm = () => {
           hasLabel="true"
           labelMessage="이름"
           padding="0 0 0 10px"
-          border="3px solid #FFC4D0"
-          borderRadius="8px"
+          borderRadius="12px"
           fontSize="18px"
           type="text"
           inputRef={nameRef}
@@ -48,8 +45,7 @@ const FindPwForm = () => {
           hasLabel="true"
           labelMessage="전화번호"
           padding="0 0 0 10px"
-          border="3px solid #FFC4D0"
-          borderRadius="8px"
+          borderRadius="12px"
           fontSize="18px"
           inputType="phone"
           onKeyDown={(event) => {
@@ -68,7 +64,7 @@ const FindPwForm = () => {
         $width="25.625rem"
         $height="5rem"
         $margin="30px 0 30px 0"
-        $borderRadius="8px"
+        $borderRadius="12px"
         ref={submitRef}
         onClick={handleFindPw}
       >
