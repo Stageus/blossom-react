@@ -10,14 +10,17 @@ const useMatching = () => {
   // === ref ===
   const idRef = useRef("");
   const submitRef = useRef(null);
+
   // === state ===
   const [inquiryError, setInquiryError] = useState(false);
   const [matchingError, setMatchingError] = useState(false);
   const [hasLoverId, setHasLoverId] = useState(false);
   const [tokenErrorModalOpen, setTokenErrorModalOpen] = useState(false);
   const [findData, setFindData] = useState([]);
+
   // === navigate ===
   const navigate = useNavigate();
+
   // === api ===
   // 1) 상대방 아이디 조회 API
   const {
@@ -25,53 +28,31 @@ const useMatching = () => {
     statusCode: inquiryStatusCode,
     fetchData: fetchInquiryData,
   } = useAxios("/couple/find/partner", "POST", {}, true, false);
+
   // 2) 커플 매칭 API (partnerIdx는 어디서 가져오는지?)
   const {
     data: matchingData,
     statusCode: matchingStatusCode,
     fetchData: fetchMatchingData,
   } = useAxios("/couple/${partnerIdx}", "POST", {}, true, false);
+
   // === useEffect ===
   useEffect(() => {
     if (hasLoverId) {
       setFindData(inquiryData); // 데이터 저장
     }
-  }, [hasLoverId]);
 
-  // 상대방 아이디 조회 버튼 클릭 시, 실행되는 이벤트 함수
-  const handleClickInquiryLoverIdButton = async () => {
-    const id = idRef.current.value;
-
-    if (!isIdValid(id)) {
-      setInquiryError("존재하지 않는 아이디입니다");
-    } else {
+    if (inquiryStatusCode === 200) {
       setInquiryError("");
-
-      // 상대방 아이디 조회 API 호출
-      await fetchInquiryData({
-        body: {
-          partnerId: id,
-        },
-      });
-
-      if (inquiryStatusCode === 200) {
-        setInquiryError("");
-        setHasLoverId(true);
-      } else if (inquiryStatusCode === 400 || inquiryStatusCode === 404) {
-        setInquiryError("존재하지 않는 아이디입니다.");
-      } else if (inquiryStatusCode === 401) {
-        setInquiryError("");
-        setTokenErrorModalOpen(true);
-      } else if (inquiryStatusCode === 500) {
-        setInquiryError("서버 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.");
-      }
+      setHasLoverId(true);
+    } else if (inquiryStatusCode === 400 || inquiryStatusCode === 404) {
+      setInquiryError("존재하지 않는 아이디입니다.");
+    } else if (inquiryStatusCode === 401) {
+      setInquiryError("");
+      setTokenErrorModalOpen(true);
+    } else if (inquiryStatusCode === 500) {
+      setInquiryError("서버 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.");
     }
-  };
-
-  // 매칭하기 버튼 클릭 시, 실행되는 이벤트 함수
-  const handleClickMatchingButton = async () => {
-    // 커플 매칭 API 호출
-    await fetchMatchingData({});
 
     if (matchingStatusCode === 200) {
       setMatchingError("");
@@ -84,6 +65,28 @@ const useMatching = () => {
     } else if (matchingStatusCode === 500) {
       setInquiryError("서버 오류가 발생했습니다. 잠시 후 다시 시도해 주세요.");
     }
+  }, [hasLoverId, inquiryStatusCode, matchingStatusCode, inquiryData, navigate]);
+
+  // 상대방 아이디 조회 버튼 클릭 시, 실행되는 이벤트 함수
+  const handleClickInquiryLoverIdButton = async () => {
+    const id = idRef.current.value;
+
+    if (!isIdValid(id)) {
+      setInquiryError("존재하지 않는 아이디입니다");
+    } else {
+      setInquiryError("");
+      await fetchInquiryData({
+        body: {
+          partnerId: id,
+        },
+      });
+    }
+  };
+
+  // 매칭하기 버튼 클릭 시, 실행되는 이벤트 함수
+  const handleClickMatchingButton = async () => {
+    // 커플 매칭 API 호출
+    await fetchMatchingData({});
   };
 
   return {

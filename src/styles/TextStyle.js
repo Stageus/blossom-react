@@ -5,7 +5,7 @@ export const P = styled.p`
   color: ${(props) => props.$textColor || "#32250F"};
 
   /* fonts */
-  font-size: ${(props) => props.$fontSize || "18px"};
+  font-size: ${(props) => props.$fontSize || "16px"};
   margin: ${(props) => props.$margin || "0"};
   padding: ${(props) => props.$padding || "0"};
 
@@ -18,7 +18,7 @@ export const Label = styled.label`
   color: ${(props) => props.$textColor || "#32250F"};
 
   /* fonts */
-  font-size: ${(props) => props.$fontSize || "42px"};
+  font-size: ${(props) => props.$fontSize || "48px"};
 
   /* spacing */
   margin: ${(props) => props.$margin || "0"};
@@ -30,7 +30,7 @@ export const Span = styled.span`
   color: ${(props) => props.$textColor || "#32250F"};
 
   /* fonts */
-  font-size: ${(props) => props.$fontSize || "18px"};
+  font-size: ${(props) => props.$fontSize || "16px"};
 
   /* spacing */
   margin: ${(props) => props.$margin || "0"};
@@ -46,7 +46,7 @@ export const H1 = styled.h1`
   color: ${(props) => props.$textColor || "#32250F"};
 
   /* fonts */
-  font-size: ${(props) => props.$fontSize || "42px"};
+  font-size: ${(props) => props.$fontSize || "48px"};
   margin: ${(props) => props.$margin || "0"};
   padding: ${(props) => props.$padding || "0"};
 
