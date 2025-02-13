@@ -1,12 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 // ===== styles & img import =====
 import { Input } from "../../../styles/InputStyle";
 import { Button } from "../../../styles/ButtonStyle";
-
-import { faPenToSquare } from "@fortawesome/free-solid-svg-icons"; // 수정 아이콘
+import { EditIcon } from "../../../styles/IconStyle"; // 수정 아이콘
 
 // ===== style =====
 const StyledAbsoluteButton = styled(Button)`
@@ -18,12 +16,6 @@ const StyledAbsoluteButton = styled(Button)`
   &:hover {
     background-color: ${(props) => props.$hoverColor || "transparent"};
   }
-`;
-
-const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
-  width: 24px;
-  height: 24px;
-  color: #d9d9d9;
 `;
 
 // ===== component =====
@@ -79,7 +71,7 @@ const ImageUploader = ({ onSelectImage, onClick, isEditMode, top = "4px", right 
             $right={right}
             $fontSize="32px"
           >
-            <StyledFontAwesomeIcon icon={faPenToSquare} />
+            <EditIcon width="28px" height="28px" />
           </StyledAbsoluteButton>
         </>
       )}

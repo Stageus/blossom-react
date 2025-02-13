@@ -15,7 +15,7 @@ import useIsVisited from "./useIsVisited";
 
 // ===== component =====
 const Nav = () => {
-  // === navigate
+  // === navigate ===
   const navigate = useNavigate();
   const [handleClickQnAButton] = useIsVisited();
 
