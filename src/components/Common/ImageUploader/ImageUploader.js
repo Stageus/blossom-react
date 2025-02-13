@@ -1,10 +1,13 @@
-import React, { useState, useRef, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 
 // ===== styles & img import =====
 import { Input } from "../../../styles/InputStyle";
 import { Button } from "../../../styles/ButtonStyle";
 import { EditIcon } from "../../../styles/IconStyle"; // 수정 아이콘
+
+// ===== hook import =====
+import useImageUploader from "./useImageUploader";
 
 // ===== style =====
 const StyledAbsoluteButton = styled(Button)`
@@ -20,35 +23,8 @@ const StyledAbsoluteButton = styled(Button)`
 
 // ===== component =====
 const ImageUploader = ({ onSelectImage, onClick, isEditMode, top = "4px", right = "4px" }) => {
-  // === ref ===
-  const fileRef = useRef(null);
-
-  // === state ===
-  const [preview, setPreview] = useState(null);
-
-  useEffect(() => {
-    // callback func
-    onSelectImage(preview);
-  }, [preview]);
-
-  const handleButtonClick = () => {
-    fileRef.current.click();
-  };
-
-  const handleFileChange = (e) => {
-    const selectedFile = e.target.files[0];
-
-    if (!selectedFile) {
-      window.location.reload();
-    } else {
-      // 파일 미리보기 생성
-      const reader = new FileReader();
-      reader.readAsDataURL(selectedFile);
-      reader.onloadend = () => {
-        setPreview(reader.result);
-      };
-    }
-  };
+  // === useImageUploader ===
+  const { fileRef, handleButtonClick, handleFileChange } = useImageUploader(onSelectImage);
 
   return (
     <>
