@@ -8,4 +8,7 @@ export const Img = styled.img`
   /* spacing */
   margin: ${(props) => props.$margin || "0"};
   padding: ${(props) => props.$padding || "0"};
+
+  /* border */
+  border-radius: ${(props) => props.$borderRadius || "none"};
 `;

@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
+import styled, { keyframes } from "styled-components";
 
 // ===== styles & img import =====
 import FlexBox from "../../styles/FlexStyle";
-import TestImage from "../../assets/images/test.jpg";
+
 // ===== components import =====
 import Nav from "../../components/Main/Nav/Nav";
 import Anniversary from "../../components/Main/Anniversary/Anniversary";
@@ -10,24 +11,66 @@ import Thumbnail from "../../components/Main/Thumbnail/Thumbnail";
 import NicknameWrapper from "../../components/Main/Nickname/NicknameWrapper";
 import AlertModal from "../../components/Modal/Alert/AlertModal";
 
+// ===== hook import =====
+import useMainData from "./useMainData";
+
+// ===== stlyes =====
+const TreeContainer = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 300px;
+  cursor: pointer;
+`;
+
+const Trunk = styled.div`
+  width: 40px;
+  height: 150px;
+  background-color: #8b5a2b;
+  border-radius: 10px;
+  position: absolute;
+  bottom: 0;
+`;
+
+const Leaves = styled.div`
+  width: 150px;
+  height: 150px;
+  background-color: #4caf50;
+  border-radius: 50%;
+  position: absolute;
+  top: 20px;
+`;
+
+// 꽃잎 애니메이션 정의
+const fallAnimation = keyframes`
+  0% {
+    transform: translateY(0) rotate(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(500px) rotate(360deg);
+    opacity: 0;
+  }
+`;
+
+// 꽃잎
+const Petal = styled.div`
+  position: absolute;
+  top: 50px;
+  left: ${({ left }) => left}%;
+  width: 20px;
+  height: 20px;
+  background-color: pink;
+  border-radius: 50% 70% 70% 50%;
+  opacity: 0.9;
+  animation: ${fallAnimation} 5s ease-in-out forwards;
+`;
+
 // ===== component =====
 const Main = () => {
-  // === state ===
-  const [initialData, setInitialData] = useState([]);
-
-  useEffect(() => {
-    // 초기 정보 불러오기 성공 시, 각 컴포넌트에 데이터 뿌리기
-    // 초기 정보 불러오기 실패 시, modal 출력
-
-    const data = {
-      myNickname: "왕왕이",
-      partnerNickname: "뿅아리",
-      imageUrl: TestImage,
-      startDate: "123",
-    };
-
-    setInitialData(data);
-  }, []);
+  const { isErrorModalOpen, initialData, petals, handleTreeClick } = useMainData();
 
   return (
     <>
@@ -35,18 +78,34 @@ const Main = () => {
       {/* <AlertModal /> */}
 
       <FlexBox $width="100%" $height="100vh">
-        {/* nav */}
         <Nav />
-
-        {/* 기념일, 대표 사진, 애칭 */}
-        <FlexBox $dir="col" $width="100%" $height="100%" $row="between" $col="center">
-          <Anniversary anniversary={initialData.startDate} />
-          <Thumbnail thumbnail={initialData.imageUrl} />
-          <NicknameWrapper
-            myNickname={initialData.myNickname}
-            loverNickname={initialData.partnerNickname}
-          />
+        <FlexBox $dir="col" $width="100%" $height="100%" $row="between">
+          <FlexBox
+            $dir="col"
+            $row="between"
+            $col="center"
+            $width="100%"
+            $height="100%"
+            // $border="1px solid black"
+            // $borderTop="1px solid black"
+            // $borderBottom="1px solid black"
+          >
+            <Anniversary anniversary={initialData.startDate} />
+            <Thumbnail thumbnail={initialData.imageUrl} />
+            <NicknameWrapper
+              myNickname={initialData.myNickname}
+              loverNickname={initialData.partnerNickname}
+            />
+          </FlexBox>
         </FlexBox>
+
+        {/* <TreeContainer onClick={handleTreeClick}>
+          <Trunk />
+          <Leaves />
+          {petals.map((petal) => (
+            <Petal key={petal.id} left={petal.left} />
+          ))}
+        </TreeContainer> */}
       </FlexBox>
     </>
   );
