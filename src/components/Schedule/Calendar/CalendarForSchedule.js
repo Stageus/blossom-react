@@ -11,30 +11,25 @@ const CalendarForSchedule = () => {
   const [isDetailModalOpen, setIsDetailModalOpen] = useState(false);
   const [schedules, setSchedules] = useState({});
 
-  const handleAddSchedule = (newSchedule) => {
+  const handleAddSchedule = (sortedSchedules) => {
     setSchedules((prevSchedules) => ({
       ...prevSchedules,
-      [selectedDate.toDateString()]: [
-        ...(prevSchedules[selectedDate.toDateString()] || []),
-        newSchedule,
-      ],
+      [selectedDate.toDateString()]: sortedSchedules,
     }));
   };
 
-  const handleUpdateSchedule = (index, updatedSchedule) => {
-    setSchedules((prevSchedules) => {
-      const updatedSchedules = { ...prevSchedules };
-      updatedSchedules[selectedDate.toDateString()][index] = updatedSchedule;
-      return updatedSchedules;
-    });
+  const handleUpdateSchedule = (sortedSchedules) => {
+    setSchedules((prevSchedules) => ({
+      ...prevSchedules,
+      [selectedDate.toDateString()]: sortedSchedules,
+    }));
   };
 
-  const handleDeleteSchedule = (index) => {
-    setSchedules((prevSchedules) => {
-      const updatedSchedules = { ...prevSchedules };
-      updatedSchedules[selectedDate.toDateString()].splice(index, 1);
-      return updatedSchedules;
-    });
+  const handleDeleteSchedule = (sortedSchedules) => {
+    setSchedules((prevSchedules) => ({
+      ...prevSchedules,
+      [selectedDate.toDateString()]: sortedSchedules,
+    }));
   };
 
   return (
