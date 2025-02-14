@@ -7,6 +7,7 @@ export const Input = styled.input`
 
   /* colors */
   color: ${(props) => props.$textColor || "#434343"};
+  background-color: ${(props) => props.$backgroundColor || "#FFFFFF"};
 
   /* spacing */
   margin: ${(props) => props.$margin || "0"};

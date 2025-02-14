@@ -6,6 +6,7 @@ export const P = styled.p`
 
   /* fonts */
   font-size: ${(props) => props.$fontSize || "16px"};
+  font-weight: ${(props) => props.$fontWeight || "400"};
   margin: ${(props) => props.$margin || "0"};
   padding: ${(props) => props.$padding || "0"};
 

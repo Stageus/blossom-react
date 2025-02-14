@@ -17,6 +17,7 @@ const Modal = ({
   width = "37.5rem",
   height = "22rem",
   backgroundColor = "#ffedec",
+  contentBackgroundColor = "#FFFFFF",
   setIsOpen,
   contentRow = "center",
   contentCol = "center",
@@ -67,7 +68,7 @@ const Modal = ({
           $dir={dir}
           $row={contentRow}
           $col={contentCol}
-          $backgroundColor="#FFFFFF"
+          $backgroundColor={contentBackgroundColor}
         >
           {children}
         </FlexBox>
